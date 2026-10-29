@@ -142,3 +142,8 @@ def test_clean_query_flag_selects_cleaned_text_over_raw(tmp_path):
     run_eval(Pol(), Spy(), [g], "dev", {**CFG, "clean_query": False}, results_dir=tmp_path)
     run_eval(Pol(), Spy(), [g], "dev", {**CFG, "clean_query": True}, results_dir=tmp_path)
     assert seen == ["raw text > quoted", "clean text"]
+
+
+def test_prediction_rows_record_top_cosine(tmp_path):
+    res = run_eval(Pol(), Retr(), GOLD, "dev", CFG, results_dir=tmp_path)
+    assert all(r["top_cosine"] == 1.0 for r in res.predictions)

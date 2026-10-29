@@ -92,7 +92,8 @@ def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, 
             rows.append({"qid": g.qid, "repeat": repeat, "gold": g.label.value, "pred": _pred_label(d),
                          "reason": d.reason, "draft": d.draft, "citations": d.citations, "missing_detail": d.missing_detail,
                          "cost_usd": d.cost_usd, "latency_s": d.latency_s, "cached": d.cached, "error": error,
-                         "retrieved_pages": pages, "judge": verdict})
+                         "retrieved_pages": pages, "judge": verdict,
+                         "top_cosine": max((r.vector_cosine for r in retrieved if r.vector_cosine is not None), default=None)})
     first = [r for r in rows if r["repeat"] == 0]
     y_true, y_pred = [r["gold"] for r in first], [r["pred"] for r in first]
     prf = M.per_class_prf(y_true, y_pred)
