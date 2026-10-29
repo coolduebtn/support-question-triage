@@ -1,0 +1,4 @@
+# Pre-registered on 2026-10-29, before any labelling or system run. Used by the selection rule (dev only).
+over_ask_max = 0.25          # share of gold-ANSWER items where the system asked a follow-up instead
+over_escalation_max = 0.40   # share of gold-ANSWER items where the system escalated instead
+cost_per_q_max = 0.02        # USD per question
