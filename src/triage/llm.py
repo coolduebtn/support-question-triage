@@ -132,6 +132,8 @@ class FakeLLM:
     def complete(self, messages, *, temperature=0, response_format=None, repeat=0) -> LLMResult:
         self.calls.append({"messages": messages, "response_format": response_format, "repeat": repeat})
         item = self.script.pop(0)
+        if isinstance(item, Exception):
+            raise item
         parsed = item if isinstance(item, BaseModel) else None
         text = item if isinstance(item, str) else item.model_dump_json()
         return LLMResult(text=text, parsed=parsed, usage=Usage(), cost_usd=0.0, cached=False, latency_s=0.0)

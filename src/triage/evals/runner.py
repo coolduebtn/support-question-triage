@@ -40,6 +40,22 @@ def _pred_label(d: Decision) -> str:
     return d.action.value if isinstance(d.action, Action) else str(d.action)
 
 
+def _judge_columns(first: list[dict], items: list[GoldItem]) -> dict:
+    """Judge scores only count on the subsets defined in the design: correctness where gold and prediction are
+    both ANSWER, citation support on every drafted answer, follow-up targeting where both are CLARIFY."""
+    out: dict = {}
+    for name, key, applies in (
+        ("judged_correctness", "correct", lambda g, r: g.label == Action.ANSWER and r["pred"] == "answer"),
+        ("citation_support", "citation_support", lambda g, r: r["pred"] == "answer" and bool(r["draft"])),
+        ("followup_targeting", "followup", lambda g, r: g.label == Action.CLARIFY and r["pred"] == "clarify"),
+    ):
+        vals = [r["judge"][key] for g, r in zip(items, first)
+                if r["judge"] and applies(g, r) and r["judge"].get(key) is not None]
+        out[name] = statistics.fmean(float(v) for v in vals) if vals else None
+        out[f"{name}_n"] = len(vals)
+    return out
+
+
 def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, judge=None, repeats: int = 1,
              results_dir: Path = Path("results")) -> RunResult:
     results_dir = Path(results_dir)
@@ -70,10 +86,13 @@ def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, 
             for r in retrieved:
                 if r.chunk.page_id not in pages:
                     pages.append(r.chunk.page_id)
+            verdict = None
+            if judge is not None and repeat == 0 and error is None:
+                verdict = judge.evaluate(g, d, retrieved)
             rows.append({"qid": g.qid, "repeat": repeat, "gold": g.label.value, "pred": _pred_label(d),
                          "reason": d.reason, "draft": d.draft, "citations": d.citations, "missing_detail": d.missing_detail,
                          "cost_usd": d.cost_usd, "latency_s": d.latency_s, "cached": d.cached, "error": error,
-                         "retrieved_pages": pages})
+                         "retrieved_pages": pages, "judge": verdict})
     first = [r for r in rows if r["repeat"] == 0]
     y_true, y_pred = [r["gold"] for r in first], [r["pred"] for r in first]
     prf = M.per_class_prf(y_true, y_pred)
@@ -92,6 +111,8 @@ def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, 
         gold_pages = [{e.page_id for e in g.evidence} for r, g in zip(first, items) if g.label == Action.ANSWER and g.evidence]
         rm = M.retrieval_metrics(gold_pages, [r["retrieved_pages"] for r in answer_rows], k)
         metrics.update({f"hit@{k}": rm["hit"], f"recall@{k}": rm["recall"], "mrr": rm["mrr"]})
+    if judge is not None:
+        metrics.update(_judge_columns(first, items))
     if repeats > 1:
         metrics["macro_f1_repeats"] = [
             M.macro_f1([r["gold"] for r in rows if r["repeat"] == i], [r["pred"] for r in rows if r["repeat"] == i])
