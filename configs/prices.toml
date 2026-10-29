@@ -1,0 +1,12 @@
+# USD per 1M tokens. PROVISIONAL: copied from research notes (unverified).
+# Confirm against the OpenAI pricing page and `client.models.list()` on key day (Task 5 smoke test).
+[models."gpt-5-mini"]
+input_per_m = 0.25
+output_per_m = 2.00
+[models."gpt-5.4"]
+input_per_m = 2.50
+output_per_m = 15.00
+[models."text-embedding-3-small"]
+input_per_m = 0.02
+output_per_m = 0.0
+embed_per_m = 0.02
