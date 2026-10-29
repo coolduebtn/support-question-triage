@@ -52,7 +52,7 @@ class Question(BaseModel):
 class Retrieved(BaseModel):
     chunk: Chunk
     score: float
-    score_kind: Literal["cosine", "rrf", "cross_encoder"]
+    score_kind: Literal["cosine", "bm25", "rrf", "cross_encoder"]
     vector_cosine: float | None = None
 
 

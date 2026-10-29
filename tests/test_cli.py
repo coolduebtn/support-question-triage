@@ -27,3 +27,9 @@ def test_smoke_without_key_exits_2_with_message(monkeypatch, capsys):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     assert main(["smoke"]) == 2
     assert "OPENAI_API_KEY" in capsys.readouterr().err
+
+
+def test_ingest_index_without_key_exits_2(monkeypatch, capsys):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    assert main(["ingest", "--index"]) == 2
+    assert "OPENAI_API_KEY" in capsys.readouterr().err
