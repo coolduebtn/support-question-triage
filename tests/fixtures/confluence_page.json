@@ -1,0 +1,1 @@
+{"results": [{"id": "101", "title": "Reset publishing config", "body": {"storage": {"value": "<h1>Reset</h1><p>Run the reset target.</p>"}}, "version": {"when": "2024-01-02T10:00:00.000Z"}, "_links": {"webui": "/display/OFBIZ/Reset+publishing+config"}}], "_links": {"base": "https://cwiki.apache.org/confluence", "next": "/rest/api/space/OFBIZ/content/page?limit=1&start=1"}}
