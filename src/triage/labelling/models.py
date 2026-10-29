@@ -34,6 +34,7 @@ class Entailment(BaseModel):
 class LabelRecord(BaseModel):
     qid: str
     text: str
+    text_raw: str = ""
     split: Literal["dev", "test"]
     annotations: list[Annotation]
     final: Annotation

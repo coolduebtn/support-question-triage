@@ -63,6 +63,9 @@ class Decision(BaseModel):
     citations: list[str] = Field(default_factory=list)
     draft: str | None = None
     error_detail: str | None = None
+    cost_usd: float = 0.0
+    latency_s: float = 0.0
+    cached: bool = False
 
 
 class Evidence(BaseModel):
@@ -90,6 +93,7 @@ class ReviewItem(BaseModel):
 class GoldItem(BaseModel):
     qid: str
     text: str
+    text_raw: str = ""
     label: Action
     evidence: list[Evidence]
     missing_detail: str | None
@@ -106,4 +110,4 @@ class RunResult(BaseModel):
     metrics: dict
     n_errors: int
     cost_per_q: float
-    latency_p50: float
+    latency_p50: float | None

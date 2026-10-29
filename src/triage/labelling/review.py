@@ -38,7 +38,7 @@ def draft_labels(questions: list[Question], tools, annotators: list, adjudicator
         final = check_entailment(final, q.text_clean, checker)
         final = flag_possible_answer(final, q.text_clean, tools)
         flags = list(final.flags) + ([] if agreed else ["disputed"])
-        records.append(LabelRecord(qid=q.qid, text=q.text_clean, split=split[q.qid], annotations=anns,
+        records.append(LabelRecord(qid=q.qid, text=q.text_clean, text_raw=q.text_raw, split=split[q.qid], annotations=anns,
                                    final=final, agreed=agreed, adjudicated=adjudicated, flags=flags))
     return records
 
@@ -117,7 +117,7 @@ def apply_review(records: list[LabelRecord], owner_blind: dict[str, Action], own
         else:
             label, source = r.final.label, "agree"
         same = label == r.final.label
-        gold.append(GoldItem(qid=r.qid, text=r.text, label=label,
+        gold.append(GoldItem(qid=r.qid, text=r.text, text_raw=r.text_raw, label=label,
                              evidence=r.final.evidence if same else [],
                              missing_detail=r.final.missing_detail if same else None,
                              reference_answer=r.final.reference_answer if same else None,
