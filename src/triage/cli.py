@@ -163,6 +163,126 @@ def _label_args(p: argparse.ArgumentParser) -> None:
 
 
 register("label", "select questions, draft labels, build review sheets, apply review", _label, _label_args)
+def _need_key() -> bool:
+    import os
+
+    if not os.environ.get("OPENAI_API_KEY"):
+        print("set OPENAI_API_KEY (cohort key) for this command", file=sys.stderr)
+        return False
+    return True
+
+
+def _build(args, cfg):
+    """Shared by eval and ask: embed client, retriever, policy, config."""
+    from triage.llm import LLMClient, load_price
+    from triage.policies.llm_decision import LLMDecision, prompt_text
+    from triage.policies.threshold import ThresholdRAG
+    from triage.policies.vanilla import ANSWER_SYSTEM, VanillaRAG
+    from triage.wiring import build_retriever, file_sha256, run_config
+
+    emb = LLMClient(cfg.embed_model, cfg.data_dir / "cache" / "embed", load_price(cfg.embed_model))
+    retriever = build_retriever(args.retriever, cfg, emb.embed)
+    sys_llm = LLMClient(cfg.system_model, cfg.data_dir / "cache" / "system", load_price(cfg.system_model))
+    base = VanillaRAG(sys_llm)
+    prompt = ANSWER_SYSTEM
+    policy = base
+    if args.policy == "B":
+        policy = LLMDecision(cfg.system_model, load_price(cfg.system_model), cfg.data_dir / "cache" / "decision")
+        prompt = prompt_text()
+    return emb, retriever, base, policy, prompt, sys_llm, run_config, file_sha256, ThresholdRAG
+
+
+def _eval(args: argparse.Namespace) -> int:
+    import hashlib
+    import json
+
+    from triage.config import load_settings
+    from triage.evals.ablation import append_ablation_row
+    from triage.evals.judge import Judge, assert_judge_differs
+    from triage.evals.metrics import macro_f1
+    from triage.evals.runner import run_eval
+    from triage.llm import LLMClient, load_price
+    from triage.policies.threshold import tune_threshold
+    from triage.schemas import GoldItem
+    from triage.wiring import load_limits
+
+    if not _need_key():
+        return 2
+    cfg = load_settings()
+    gold_file = cfg.data_dir / "gold" / "gold.jsonl"
+    if not gold_file.exists():
+        print(f"no gold set at {gold_file}; finish `triage label` first", file=sys.stderr)
+        return 2
+    gold = [GoldItem.model_validate_json(line) for line in gold_file.read_text().splitlines()]
+    emb, retriever, base, policy, prompt, sys_llm, run_config, sha, Threshold = _build(args, cfg)
+    threshold = args.threshold
+    if args.policy == "A+":
+        if threshold is None:
+            threshold = tune_threshold([g for g in gold if g.split == "dev"], retriever, macro_f1,
+                                       [round(0.2 + 0.02 * i, 2) for i in range(40)], load_limits(), k=cfg.k)
+            print(f"tuned threshold on dev: {threshold}")
+        policy = Threshold(base, threshold)
+    judge = None
+    if args.judge:
+        assert_judge_differs(cfg.system_model, cfg.judge_model)
+        judge = Judge(LLMClient(cfg.judge_model, cfg.data_dir / "cache" / "judge", load_price(cfg.judge_model)))
+    config = run_config(args.policy, args.retriever, args.clean, cfg.k, cfg.system_model,
+                        hashlib.sha256(prompt.encode()).hexdigest(), sha(cfg.data_dir / "snapshot" / "wiki.jsonl"),
+                        sha(cfg.data_dir / "index" / "chunks.jsonl"), threshold, cfg.seed,
+                        cfg.judge_model if judge else None)
+    res = run_eval(policy, retriever, gold, args.split, config, judge=judge, repeats=args.repeats,
+                   results_dir=cfg.results_dir)
+    append_ablation_row(res, args.step or f"{args.policy} {args.retriever}", args.decision, args.notes,
+                        path=cfg.results_dir / "ablation.md")
+    print(json.dumps({k: v for k, v in res.metrics.items() if k != "per_class"}, indent=1, default=str))
+    print(f"run={res.run_id} errors={res.n_errors} cost/q=${res.cost_per_q:.4f}")
+    return 0
+
+
+def _eval_args(p: argparse.ArgumentParser) -> None:
+    p.add_argument("--policy", choices=["A", "A+", "B"], required=True)
+    p.add_argument("--retriever", choices=["vector", "hybrid", "rerank-minilm", "rerank-bge"], default="vector")
+    p.add_argument("--split", choices=["dev", "test"], default="dev")
+    p.add_argument("--clean", action="store_true", help="clean emails before retrieval")
+    p.add_argument("--judge", action="store_true")
+    p.add_argument("--threshold", type=float)
+    p.add_argument("--repeats", type=int, default=1)
+    p.add_argument("--step", default="")
+    p.add_argument("--decision", default="baseline")
+    p.add_argument("--notes", default="")
+
+
+def _ask(args: argparse.Namespace) -> int:
+    from triage.config import load_settings
+    from triage.wiring import run_ask
+
+    if not args.text.strip():
+        print(run_ask(args.text, None, None))
+        return 0
+    if not _need_key():
+        return 2
+    cfg = load_settings()
+    args.policy = "B"
+    _, retriever, _, policy, *_ = _build(args, cfg)
+    print(run_ask(args.text, retriever, policy, k=cfg.k))
+    return 0
+
+
+register("eval", "run an evaluation and append a row to results/ablation.md", _eval, _eval_args)
+register("ask", "triage one question (draft only, nothing is sent)", _ask,
+         lambda p: (p.add_argument("text"), p.add_argument("--retriever", default="vector",
+                                                           choices=["vector", "hybrid", "rerank-minilm", "rerank-bge"])))
+def _report(_: argparse.Namespace) -> int:
+    from triage.config import load_settings
+    from triage.report import insert_ablation
+
+    cfg = load_settings()
+    insert_ablation(cfg.data_dir.parent / "README.md", cfg.results_dir / "ablation.md")
+    print("README ablation table updated from results/ablation.md")
+    return 0
+
+
+register("report", "copy results/ablation.md into the README", _report)
 register("smoke", "check models, embeddings and structured output (key day)", _smoke)
 
 
