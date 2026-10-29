@@ -289,6 +289,11 @@ def test_select_keeps_only_support_style_questions():
     assert looks_like_question("Cost calculations\n\nHow can Ofbiz use custom cost calculation?")
     assert not looks_like_question("Looking for a french senior Ofbiz profile\n\nI am seeking a developer for a contract")
     assert not looks_like_question("Proposal: remove the eBay integration\n\nI'd like to propose removing this")
+    for junk in ["Documentation Highlight: Practical Walkthrough of MRP\n\nHow it works", "[ANNOUNCEMENT] European OFBiz Days\n\nHow to join?",
+                 "Participate in the ASF 25th Anniversary Campaign\n\nHow can you help?", "attempting to join mailing lists\n\nhelp",
+                 "OFBIZ: new contributor request\n\nhow do I start", "Step-by-Step Guide: Calendar Function\n\nhow to",
+                 "Try Apache OFBiz for Manufacturing demo\n\nhow to try", "A few small landing-page improvements\n\nwhy not"]:
+        assert not looks_like_question(junk), junk
     assert not looks_like_question("Community Over Code NA 2024 Travel Assistance Applications now open!\n\nHello")
 
 

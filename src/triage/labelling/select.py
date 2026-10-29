@@ -17,7 +17,9 @@ def _words(text: str) -> set[str]:
 
 NOT_SUPPORT = re.compile(
     r"^(proposal|looking for|community over code|travel assistance|job|hiring|welcome|introduc|"
-    r"want to become|\[?(discuss|proposal))|travel assistance|we are hiring|expert(ise)? (in|needed)",
+    r"want to become|documentation highlight|\[?(announce|announcement|discuss|proposal)|participate in|"
+    r"attempting to join|.*new contributor|step-by-step guide|try apache|.*landing-page)|"
+    r"travel assistance|we are hiring|expert(ise)? (in|needed)|anniversary campaign",
     re.I)
 QUESTION_CUES = re.compile(
     r"\?|\b(how|why|what|where|which|can i|could i|cannot|can't|unable|error|exception|fail(s|ed|ing)?|"
