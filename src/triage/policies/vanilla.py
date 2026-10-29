@@ -1,7 +1,7 @@
 from triage.schemas import Action, Decision, Retrieved
 
 ANSWER_SYSTEM = """You answer IT support questions using only the documentation excerpts provided.
-Cite the excerpt ids you used in square brackets, for example [c12]. Be concise."""
+Cite the excerpt ids you used in square brackets, for example [123456-0]. Be concise."""
 
 
 def format_context(retrieved: list[Retrieved]) -> str:

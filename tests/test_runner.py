@@ -147,3 +147,29 @@ def test_clean_query_flag_selects_cleaned_text_over_raw(tmp_path):
 def test_prediction_rows_record_top_cosine(tmp_path):
     res = run_eval(Pol(), Retr(), GOLD, "dev", CFG, results_dir=tmp_path)
     assert all(r["top_cosine"] == 1.0 for r in res.predictions)
+
+
+def test_error_decisions_returned_by_policy_are_counted_and_excluded_from_latency(tmp_path):
+    def fn(q):
+        if q == "question 2":
+            return Decision(action="error", reason="decision step failed", error_detail="timeout", latency_s=30.0)
+        return Decision(action=Action.ANSWER, latency_s=1.0)
+
+    res = run_eval(Pol(fn), Retr(), GOLD, "dev", CFG, results_dir=tmp_path)
+    assert res.n_errors == 1 and res.latency_p50 == pytest.approx(1.0)
+
+
+def test_test_split_can_only_be_run_once_per_config_unless_forced(tmp_path):
+    from triage.evals.runner import RepeatTestRunError
+    items = GOLD + [gold(5, Action.ANSWER, split="test", page="p1")]
+    run_eval(Pol(), Retr(), items, "dev", CFG, results_dir=tmp_path)
+    run_eval(Pol(), Retr(), items, "test", CFG, results_dir=tmp_path)
+    with pytest.raises(RepeatTestRunError):
+        run_eval(Pol(), Retr(), items, "test", CFG, results_dir=tmp_path)
+    run_eval(Pol(), Retr(), items, "test", CFG, results_dir=tmp_path, allow_test_rerun=True)
+
+
+def test_ablation_row_records_split(tmp_path):
+    res = run_eval(Pol(), Retr(), GOLD, "dev", CFG, results_dir=tmp_path)
+    append_ablation_row(res, "s", "keep", path=tmp_path / "a.md")
+    assert "| dev |" in (tmp_path / "a.md").read_text().splitlines()[2]

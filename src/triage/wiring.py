@@ -16,10 +16,11 @@ def load_limits(path: Path = Path("configs/limits.toml")) -> dict:
 
 def run_config(policy: str, retriever: str, clean_query: bool, k: int, system_model: str, prompt: str,
                snapshot_hash: str, index_hash: str, threshold: float | None, seed: int,
-               judge_model: str | None = None) -> dict:
+               judge_model: str | None = None, embed_model: str = "", gold_hash: str = "") -> dict:
     return {"policy": policy, "retriever": retriever, "clean_query": clean_query, "k": k,
             "system_model": system_model, "prompt": prompt, "snapshot_hash": snapshot_hash,
-            "index_hash": index_hash, "threshold": threshold, "seed": seed, "judge_model": judge_model}
+            "index_hash": index_hash, "threshold": threshold, "seed": seed, "judge_model": judge_model,
+            "embed_model": embed_model, "gold_hash": gold_hash}
 
 
 def render_decision(decision: Decision, retrieved: list[Retrieved]) -> str:

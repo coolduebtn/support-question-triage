@@ -30,14 +30,20 @@ def _smoke(_: argparse.Namespace) -> int:
     available = {m.id for m in openai.OpenAI().models.list()}
     for m in sorted(wanted):
         print(f"model {m}: {'available' if m in available else 'NOT AVAILABLE'}")
-    llm = LLMClient(cfg.system_model, cfg.data_dir / "cache" / "smoke", load_price(cfg.system_model))
+    from triage.llm import PriceMissing
+
+    try:
+        llm = LLMClient(cfg.system_model, cfg.data_dir / "cache" / "smoke", load_price(cfg.system_model))
+        emb = LLMClient(cfg.embed_model, cfg.data_dir / "cache" / "smoke", load_price(cfg.embed_model))
+    except PriceMissing as e:
+        print(str(e), file=sys.stderr)
+        return 2
     print("chat:", llm.complete([{"role": "user", "content": "Say OK."}]).text[:40])
 
     class Ping(BaseModel):
         ok: bool
 
     print("structured:", llm.complete([{"role": "user", "content": "Return ok=true."}], response_format=Ping).parsed)
-    emb = LLMClient(cfg.embed_model, cfg.data_dir / "cache" / "smoke", load_price(cfg.embed_model))
     print("embedding dims:", len(emb.embed(["hello"])[0]))
     from pydantic_ai import Agent
 
@@ -77,6 +83,27 @@ def _ingest(args: argparse.Namespace) -> int:
     return 0
 
 
+def _collect(args: argparse.Namespace) -> int:
+    import json
+
+    from triage.config import load_settings
+    from triage.sources.confluence import make_session
+    from triage.sources.mailing_list import fetch_threads
+
+    cfg = load_settings()
+    if not cfg.contact:
+        print("set TRIAGE_CONTACT (used in the crawler User-Agent)", file=sys.stderr)
+        return 2
+    threads = fetch_threads("user", "ofbiz.apache.org", window=args.window, session=make_session(cfg.contact))
+    out = cfg.data_dir / "snapshot" / "threads.jsonl"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("".join(json.dumps(t.model_dump(), sort_keys=True) + "\n" for t in threads))
+    print(f"threads={len(threads)} replied={sum(t.n_replies > 0 for t in threads)} -> {out}")
+    return 0
+
+
+register("collect", "fetch and scrub list threads (gitignored raw snapshot)", _collect,
+         lambda p: p.add_argument("--window", default="3y"))
 register("ingest", "fetch the wiki snapshot (and later build indexes)", _ingest,
          lambda p: (p.add_argument("--fetch-only", action="store_true"), p.add_argument("--index", action="store_true")))
 def _label(args: argparse.Namespace) -> int:
@@ -95,6 +122,13 @@ def _label(args: argparse.Namespace) -> int:
     qfile, splitfile = gold / "questions.jsonl", gold / "split.json"
     blind, records_file = gold / "owner_blind.md", gold / "records.jsonl"
     if args.select:
+        if splitfile.exists() and not args.force:
+            print(f"{splitfile} already exists; selecting again would redraw the frozen split. Use --force only before labelling.",
+                  file=sys.stderr)
+            return 2
+        if blind.exists() and rv.read_owner_labels(blind):
+            print("the blind sheet already holds owner labels; refusing to overwrite them", file=sys.stderr)
+            return 2
         threads = [Thread(**json.loads(line)) for line in (cfg.data_dir / "snapshot" / "threads.jsonl").read_text().splitlines()]
         qs = select_candidates(threads, args.n, cfg.seed)
         qfile.write_text("".join(q.model_dump_json() + "\n" for q in qs))
@@ -124,9 +158,9 @@ def _label(args: argparse.Namespace) -> int:
         tools = WikiTools(chunks, VectorRetriever(idx, emb.embed), Bm25Retriever(chunks))
         make = lambda m: LLMClient(m, cfg.data_dir / "cache" / "label", load_price(m))  # noqa: E731
         recs = rv.draft_labels(questions, tools, [make(m) for m in models[:2]], make(cfg.judge_model),
-                               make(cfg.judge_model), {p.id: page_text(p) for p in read_snapshot(cfg.data_dir / "snapshot" / "wiki.jsonl")},
-                               splitfile)
-        records_file.write_text("".join(r.model_dump_json() + "\n" for r in recs))
+                               make(cfg.system_model),
+                               {p.id: page_text(p) for p in read_snapshot(cfg.data_dir / "snapshot" / "wiki.jsonl")},
+                               splitfile, out_path=records_file)
         print(f"drafted={len(recs)} agreed={sum(r.agreed for r in recs)} classes={Counter(r.final.label.value for r in recs)}")
         return 0
     from triage.labelling.models import LabelRecord
@@ -146,6 +180,7 @@ def _label(args: argparse.Namespace) -> int:
         review_labels = rv.read_owner_labels(review_file) if review_file.exists() else {}
         items = rv.apply_review(records, blind_labels, review_labels)
         (gold / "gold.jsonl").write_text("".join(g.model_dump_json() + "\n" for g in items))
+        rv.write_gold_public(items, gold / "gold_public.jsonl")
         llm_before = {r.qid: r.final.label.value for r in records}
         ag = rv.owner_agreement({k: v.value for k, v in blind_labels.items()}, llm_before)
         print(f"gold={len(items)} classes={Counter(g.label.value for g in items)} sources={Counter(g.source for g in items)}")
@@ -157,6 +192,7 @@ def _label(args: argparse.Namespace) -> int:
 def _label_args(p: argparse.ArgumentParser) -> None:
     for flag in ("--select", "--draft", "--review", "--apply"):
         p.add_argument(flag, action="store_true")
+    p.add_argument("--force", action="store_true")
     p.add_argument("--n", type=int, default=75)
     p.add_argument("--n-dev", type=int, default=30)
     p.add_argument("--blind", type=int, default=20)
@@ -219,7 +255,8 @@ def _eval(args: argparse.Namespace) -> int:
     if args.policy == "A+":
         if threshold is None:
             threshold = tune_threshold([g for g in gold if g.split == "dev"], retriever, macro_f1,
-                                       [round(0.2 + 0.02 * i, 2) for i in range(40)], load_limits(), k=cfg.k)
+                                       [round(0.2 + 0.02 * i, 2) for i in range(40)], load_limits(), k=cfg.k,
+                                       clean=args.clean)
             print(f"tuned threshold on dev: {threshold}")
         policy = Threshold(base, threshold)
     judge = None
@@ -229,7 +266,7 @@ def _eval(args: argparse.Namespace) -> int:
     config = run_config(args.policy, args.retriever, args.clean, cfg.k, cfg.system_model,
                         hashlib.sha256(prompt.encode()).hexdigest(), sha(cfg.data_dir / "snapshot" / "wiki.jsonl"),
                         sha(cfg.data_dir / "index" / "chunks.jsonl"), threshold, cfg.seed,
-                        cfg.judge_model if judge else None)
+                        cfg.judge_model if judge else None, embed_model=cfg.embed_model, gold_hash=sha(gold_file))
     res = run_eval(policy, retriever, gold, args.split, config, judge=judge, repeats=args.repeats,
                    results_dir=cfg.results_dir)
     append_ablation_row(res, args.step or f"{args.policy} {args.retriever}", args.decision, args.notes,
@@ -287,6 +324,9 @@ register("smoke", "check models, embeddings and structured output (key day)", _s
 
 
 def main(argv: list[str]) -> int:
+    import os
+
+    os.environ.setdefault("PYDANTIC_AI_NO_BANNER", "1")
     parser = argparse.ArgumentParser(prog="triage")
     sub = parser.add_subparsers(dest="command")
     for name, (help_text, _, add_args) in COMMANDS.items():

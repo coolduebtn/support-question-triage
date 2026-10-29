@@ -332,3 +332,41 @@ def test_review_sheet_shows_llm_label_and_evidence_and_is_readable(tmp_path):
     assert "How do I reset?" in text and "answer" in text and QUOTE in text and "audit" in text
     path.write_text(text.replace("owner_label:", "owner_label: clarify"))
     assert read_owner_labels(path) == {"q1": Action.CLARIFY}
+
+
+def test_clarify_without_any_evidence_is_flagged():
+    out = verify_evidence(ann(label=Action.CLARIFY, quote=None, missing="version"), PAGES)
+    assert "evidence_failed" in out.flags
+
+
+def test_pipeline_survives_a_failing_annotation_and_flags_it(tmp_path):
+    qs = [q(1), q(2)]
+    assign_split(qs, n_dev=1, seed=1, path=tmp_path / "split.json")
+    a = FakeLLM([RuntimeError("refusal"), _out("answer")])
+    b = FakeLLM([_out("answer")])
+    recs = draft_labels(qs, Tools(), [a, b], FakeLLM([]), FakeLLM([_V(True)]), PAGES, split_path=tmp_path / "split.json")
+    assert len(recs) == 2
+    assert "annotation_failed" in recs[0].flags and not recs[0].agreed
+    assert recs[1].agreed
+
+
+def test_pipeline_resumes_from_existing_output(tmp_path):
+    qs = [q(1), q(2)]
+    assign_split(qs, n_dev=1, seed=1, path=tmp_path / "split.json")
+    out = tmp_path / "records.jsonl"
+    first = draft_labels(qs[:1], Tools(), [FakeLLM([_out("answer")]), FakeLLM([_out("answer")])], FakeLLM([]),
+                         FakeLLM([_V(True)]), PAGES, split_path=tmp_path / "split.json", out_path=out)
+    a, b = FakeLLM([_out("answer")]), FakeLLM([_out("answer")])
+    both = draft_labels(qs, Tools(), [a, b], FakeLLM([]), FakeLLM([_V(True)]), PAGES,
+                        split_path=tmp_path / "split.json", out_path=out)
+    assert [r.qid for r in both] == ["q1", "q2"] and len(a.calls) == 1 and first[0].qid == "q1"
+    assert len(out.read_text().splitlines()) == 2
+
+
+def test_gold_public_export_has_no_raw_text(tmp_path):
+    from triage.labelling.review import write_gold_public
+    from triage.schemas import GoldItem
+    g = GoldItem(qid="q1", text="clean text", text_raw="RAW with signature +91 123", label=Action.ESCALATE, evidence=[],
+                 missing_detail=None, reference_answer=None, split="dev", source="agree")
+    path = write_gold_public([g], tmp_path / "gold_public.jsonl")
+    assert "RAW" not in path.read_text() and "clean text" in path.read_text()

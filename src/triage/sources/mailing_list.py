@@ -11,6 +11,16 @@ NOISE_SUBJECT = re.compile(
 EMAIL = re.compile(r"[\w.+-]*\w@[\w.\-\u2026]+")
 IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 FROM_NAME = re.compile(r"^(.*?)\s*<")
+LINKEDIN = re.compile(r"https?://\S*linkedin\.com\S*|\blinkedin\.com/\S+", re.I)
+PHONE = re.compile(r"(?<![\w.])\+?\d[\d ().\-]{7,}\d(?![\w])")
+ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+
+def _phone(m: re.Match) -> str:
+    text = m.group(0)
+    if ISO_DATE.fullmatch(text) or sum(c.isdigit() for c in text) < 10:
+        return text
+    return "[phone]"
 
 
 def names_from_senders(senders: list[str]) -> set[str]:
@@ -27,7 +37,9 @@ def names_from_senders(senders: list[str]) -> set[str]:
 
 def scrub_pii(text: str, known_names: set[str]) -> str:
     text = EMAIL.sub("[email]", text)
+    text = LINKEDIN.sub("[link]", text)
     text = IPV4.sub("[ip]", text)
+    text = PHONE.sub(_phone, text)
     for name in sorted(known_names, key=len, reverse=True):
         text = re.sub(rf"\b{re.escape(name)}\b", "[name]", text, flags=re.I)
     return text

@@ -81,11 +81,13 @@ class Judge:
         out: dict = {"correct": None, "citation_support": None, "followup": None}
         if decision.action == Action.ANSWER and decision.draft:
             if item.label == Action.ANSWER and item.reference_answer:
-                out["correct"] = self.answer_correct(item.text, item.reference_answer, decision.draft).passed
+                v = self.answer_correct(item.text, item.reference_answer, decision.draft)
+                out["correct"] = None if v.error else v.passed
             cited = [r.chunk for r in retrieved if r.chunk.id in set(decision.citations)] or [r.chunk for r in retrieved]
             verdicts = [v for v in self.citation_supported(decision.draft, cited) if not v.error]
             if verdicts:
                 out["citation_support"] = sum(v.passed for v in verdicts) / len(verdicts)
         if decision.action == Action.CLARIFY and item.label == Action.CLARIFY and decision.draft and item.missing_detail:
-            out["followup"] = self.followup_targets_missing(decision.draft, item.missing_detail).passed
+            v = self.followup_targets_missing(decision.draft, item.missing_detail)
+            out["followup"] = None if v.error else v.passed
         return out

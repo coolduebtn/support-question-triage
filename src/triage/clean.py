@@ -1,3 +1,4 @@
+import html
 import re
 
 CLOSING = re.compile(r"^(thanks|thank you|regards|best regards|kind regards|cheers|br|best|sincerely)[,.!]?\s*$", re.I)
@@ -12,6 +13,7 @@ CUT_MARKERS = [
 
 def clean_email(text: str) -> str:
     kept: list[str] = []
+    text = html.unescape(html.unescape(text))
     for line in text.splitlines():
         if any(m.match(line.strip()) or m.match(line) for m in CUT_MARKERS):
             break
@@ -22,7 +24,9 @@ def clean_email(text: str) -> str:
         kept.pop()
     for i, line in enumerate(kept):
         trailing = [l for l in kept[i + 1:] if l.strip()]
-        if CLOSING.match(line.strip()) and len(trailing) <= 4:
+        before = [l for l in kept[:i] if l.strip()]
+        if (CLOSING.match(line.strip()) and len(before) >= 2 and len(trailing) <= 4
+                and all(len(l.strip()) <= 60 for l in trailing)):
             kept = kept[:i]
             break
     out = re.sub(r"\n{3,}", "\n\n", "\n".join(kept)).strip()

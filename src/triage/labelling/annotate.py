@@ -10,7 +10,7 @@ SYSTEM = """You label support questions for an IT support triage study over a do
 Choose exactly one label:
 - answer: the documentation snippets below contain the answer. Quote the exact sentence(s) as evidence.
 - clarify: the documentation could answer it, but the question lacks a specific detail (version, environment,
-  error text, which feature). Name that detail in missing_detail.
+  error text, which feature). Name that detail in missing_detail, and quote the passage that would answer it once the detail is known.
 - escalate: the documentation does not cover it.
 Rules: quotes must be copied verbatim from a snippet (at least 40 characters) with its page_id.
 Never invent evidence. If the snippets do not support an answer, choose escalate or clarify.

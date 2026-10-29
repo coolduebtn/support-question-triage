@@ -40,9 +40,15 @@ def cost_from_usage(usage: Usage, price: Price) -> float:
     return usage.input_tokens / 1e6 * price.input_per_m + usage.output_tokens / 1e6 * price.output_per_m
 
 
+class PriceMissing(ValueError):
+    pass
+
+
 def load_price(model: str, path: Path = Path("configs/prices.toml")) -> Price:
-    entry = tomllib.loads(Path(path).read_text())["models"][model]
-    return Price(**entry)
+    models = tomllib.loads(Path(path).read_text())["models"]
+    if model not in models:
+        raise PriceMissing(f"no price for {model!r}; add it to {path} (check the OpenAI pricing page)")
+    return Price(**models[model])
 
 
 def _key(*parts: Any) -> str:
@@ -103,6 +109,8 @@ class LLMClient:
                 return self.backend.chat(self.model, messages, None, response_format)
 
         text, parsed, usage = self._retry(call)
+        if response_format is not None and parsed is None:
+            raise ValueError(f"no structured output from {self.model} (refusal or truncation): {text[:80]!r}")
         latency = time.perf_counter() - start
         cost = cost_from_usage(usage, self.price)
         self.spent_usd += cost

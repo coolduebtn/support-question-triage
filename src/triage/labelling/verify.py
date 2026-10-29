@@ -18,7 +18,7 @@ def verify_evidence(a: Annotation, page_texts: dict[str, str], min_quote_chars: 
     out = a
     if a.label == Action.CLARIFY and not (a.missing_detail or "").strip():
         out = _with_flag(out, "invalid_clarify")
-    if a.label == Action.ANSWER and not a.evidence:
+    if a.label in (Action.ANSWER, Action.CLARIFY) and not a.evidence:
         out = _with_flag(out, "evidence_failed")
     normalised = {pid: normalise(t) for pid, t in page_texts.items()}
     for ev in a.evidence:

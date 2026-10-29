@@ -13,6 +13,8 @@ def select_final(dev_results: dict[str, RunResult], limits: dict, complexity: di
             continue
         if (m.get("over_escalation_rate") or 0.0) > limits.get("over_escalation_max", 1.0):
             continue
+        if (m.get("unsafe_answer_rate") or 0.0) > limits.get("unsafe_answer_max", 1.0):
+            continue
         if r.cost_per_q > limits.get("cost_per_q_max", float("inf")):
             continue
         eligible[name] = r

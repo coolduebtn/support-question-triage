@@ -110,3 +110,27 @@ def test_fake_llm_scripted_order():
     assert len(f.calls) == 2
     with pytest.raises(IndexError):
         f.complete(MSG)
+
+
+def test_missing_structured_output_raises_and_is_not_cached(tmp_path):
+    class NoParse(Backend):
+        def chat(self, model, messages, temperature, response_format):
+            self.chat_calls += 1
+            return "refusal", None, Usage(input_tokens=1, output_tokens=1)
+
+    b = NoParse()
+    c = client(tmp_path, b)
+    with pytest.raises(ValueError):
+        c.complete(MSG, response_format=Out)
+    with pytest.raises(ValueError):
+        c.complete(MSG, response_format=Out)
+    assert b.chat_calls == 2
+
+
+def test_load_price_missing_model_names_the_model(tmp_path):
+    from triage.llm import PriceMissing, load_price
+    p = tmp_path / "prices.toml"
+    p.write_text('[models."a"]\ninput_per_m = 1\noutput_per_m = 1\n')
+    with pytest.raises(PriceMissing) as e:
+        load_price("not-there", p)
+    assert "not-there" in str(e.value)

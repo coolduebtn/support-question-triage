@@ -51,3 +51,25 @@ def test_label_select_writes_questions_split_and_blind_sheet(tmp_path, monkeypat
     split = json.loads((gold / "split.json").read_text())
     assert list(split.values()).count("dev") == 4
     assert (gold / "owner_blind.md").read_text().count("owner_label:") == 5
+
+
+def test_collect_command_registered():
+    from triage.cli import COMMANDS
+    assert "collect" in COMMANDS
+
+
+def test_label_select_refuses_to_overwrite_existing_split_without_force(tmp_path, monkeypatch, capsys):
+    from triage.schemas import Thread
+    monkeypatch.setenv("TRIAGE_ROOT", str(tmp_path))
+    snap = tmp_path / "data" / "snapshot"
+    snap.mkdir(parents=True)
+    ts = [Thread(tid=f"t{i:03d}", subject=f"Export number {i} fails", body=f"How can I fix error {i} xq{i} zr{i}?",
+                 n_replies=i % 2, epoch=1, permalink="u") for i in range(12)]
+    (snap / "threads.jsonl").write_text("".join(t.model_dump_json() + "\n" for t in ts))
+    assert main(["label", "--select", "--n", "10", "--n-dev", "4", "--blind", "5"]) == 0
+    assert main(["label", "--select", "--n", "10", "--n-dev", "4", "--blind", "5"]) == 2
+    assert "already exists" in capsys.readouterr().err
+    blind = tmp_path / "data" / "gold" / "owner_blind.md"
+    blind.write_text(blind.read_text().replace("owner_label:", "owner_label: answer", 1))
+    assert main(["label", "--select", "--force", "--n", "10", "--n-dev", "4", "--blind", "5"]) == 2
+    assert "owner labels" in capsys.readouterr().err

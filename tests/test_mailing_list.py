@@ -82,3 +82,9 @@ def test_fetch_threads_builds_threads_and_skips_noise_and_future():
 def test_scrub_removes_truncated_masked_emails():
     out = scrub_pii("wrote: <jean.le.roux@les7arts...> and cxphan@yah... and a@b.co", set())
     assert "@" not in out
+
+
+def test_scrub_removes_phone_numbers_and_linkedin_links():
+    out = scrub_pii("Call +91 9650427648 or 0731-3622711. https://www.linkedin.com/in/some-person-123 ok", set())
+    assert "9650427648" not in out and "3622711" not in out and "linkedin" not in out.lower()
+    assert "version 18.12.09 failed" in scrub_pii("version 18.12.09 failed", set())

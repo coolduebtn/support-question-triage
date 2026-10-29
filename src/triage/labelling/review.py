@@ -19,27 +19,51 @@ class SplitNotFrozen(RuntimeError):
     pass
 
 
+def _failed_record(q: Question, split: str, why: str) -> LabelRecord:
+    final = Annotation(qid=q.qid, annotator="none", label=Action.ESCALATE, flags=["annotation_failed"],
+                       reference_answer=None, missing_detail=why[:200])
+    return LabelRecord(qid=q.qid, text=q.text_clean, text_raw=q.text_raw, split=split, annotations=[], final=final,
+                       agreed=False, flags=["annotation_failed", "disputed"])
+
+
 def draft_labels(questions: list[Question], tools, annotators: list, adjudicator, checker,
-                 page_texts: dict[str, str], split_path: Path) -> list[LabelRecord]:
+                 page_texts: dict[str, str], split_path: Path, out_path: Path | None = None) -> list[LabelRecord]:
+    """Annotates every question. One failing question is flagged for review instead of stopping the run, and
+    finished records are appended to `out_path` so a rerun resumes where it stopped."""
     split_path = Path(split_path)
     if not split_path.exists():
         raise SplitNotFrozen(f"{split_path} must exist before any annotation call")
     split = json.loads(split_path.read_text())
+    done: dict[str, LabelRecord] = {}
+    if out_path is not None and Path(out_path).exists():
+        for line in Path(out_path).read_text().splitlines():
+            rec = LabelRecord.model_validate_json(line)
+            done[rec.qid] = rec
     records = []
     for q in questions:
-        anns = [verify_evidence(annotate(q, tools, llm), page_texts) for llm in annotators]
-        agreed = len({a.label for a in anns}) == 1
-        adjudicated = False
-        if agreed:
-            final = anns[0]
-        else:
-            final = verify_evidence(annotate(q, tools, adjudicator), page_texts)
-            adjudicated = True
-        final = check_entailment(final, q.text_clean, checker)
-        final = flag_possible_answer(final, q.text_clean, tools)
-        flags = list(final.flags) + ([] if agreed else ["disputed"])
-        records.append(LabelRecord(qid=q.qid, text=q.text_clean, text_raw=q.text_raw, split=split[q.qid], annotations=anns,
-                                   final=final, agreed=agreed, adjudicated=adjudicated, flags=flags))
+        if q.qid in done:
+            records.append(done[q.qid])
+            continue
+        try:
+            anns = [verify_evidence(annotate(q, tools, llm), page_texts) for llm in annotators]
+            agreed = len({a.label for a in anns}) == 1
+            adjudicated = False
+            if agreed:
+                final = anns[0]
+            else:
+                final = verify_evidence(annotate(q, tools, adjudicator), page_texts)
+                adjudicated = True
+            final = check_entailment(final, q.text_clean, checker)
+            final = flag_possible_answer(final, q.text_clean, tools)
+            flags = list(final.flags) + ([] if agreed else ["disputed"])
+            rec = LabelRecord(qid=q.qid, text=q.text_clean, text_raw=q.text_raw, split=split[q.qid], annotations=anns,
+                              final=final, agreed=agreed, adjudicated=adjudicated, flags=flags)
+        except Exception as e:  # noqa: BLE001 - refusal, truncation or API error: flag for the owner, keep going
+            rec = _failed_record(q, split[q.qid], repr(e))
+        records.append(rec)
+        if out_path is not None:
+            with Path(out_path).open("a") as fh:
+                fh.write(rec.model_dump_json() + "\n")
     return records
 
 
@@ -159,4 +183,11 @@ def render_review_sheet(queue: list[ReviewItem], records: list[LabelRecord], pat
         parts.append("\n\nowner_label:\n")
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text("".join(parts))
+    return Path(path)
+
+
+def write_gold_public(items: list[GoldItem], path: Path) -> Path:
+    """Shareable gold file: cleaned question text only, never the raw email."""
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_text("".join(g.model_dump_json(exclude={"text_raw"}) + "\n" for g in items))
     return Path(path)

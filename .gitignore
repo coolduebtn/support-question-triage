@@ -8,3 +8,7 @@ data/snapshot/
 results/runs/*/cache/
 .superpowers/
 *.pdf
+data/index/
+data/cache/
+data/gold/*
+!data/gold/gold_public.jsonl

@@ -14,6 +14,10 @@ class ConfigNotFrozenError(RuntimeError):
     pass
 
 
+class RepeatTestRunError(RuntimeError):
+    pass
+
+
 def config_hash(config: dict) -> str:
     """Covers everything that defines a configuration (prompts, snapshot/index hashes, models, thresholds, seeds).
     The git commit is recorded next to it but deliberately not hashed."""
@@ -31,8 +35,8 @@ def _frozen_path(results_dir: Path) -> Path:
     return Path(results_dir) / "frozen.json"
 
 
-def _read_frozen(results_dir: Path) -> dict:
-    p = _frozen_path(results_dir)
+def _read_frozen(results_dir: Path, name: str = "frozen.json") -> dict:
+    p = Path(results_dir) / name
     return json.loads(p.read_text()) if p.exists() else {}
 
 
@@ -57,11 +61,14 @@ def _judge_columns(first: list[dict], items: list[GoldItem]) -> dict:
 
 
 def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, judge=None, repeats: int = 1,
-             results_dir: Path = Path("results")) -> RunResult:
+             results_dir: Path = Path("results"), allow_test_rerun: bool = False) -> RunResult:
     results_dir = Path(results_dir)
     h = config_hash(config)
-    if split == "test" and h not in _read_frozen(results_dir):
-        raise ConfigNotFrozenError(f"config {h[:8]} has no recorded dev run; run it on dev first")
+    if split == "test":
+        if h not in _read_frozen(results_dir):
+            raise ConfigNotFrozenError(f"config {h[:8]} has no recorded dev run; run it on dev first")
+        if h in _read_frozen(results_dir, "test_runs.json") and not allow_test_rerun:
+            raise RepeatTestRunError(f"config {h[:8]} was already run on test; the test set is used once per finalist")
     items = [g for g in gold if g.split == split]
     if not items:
         raise ValueError(f"no gold items in split {split!r}")
@@ -81,7 +88,8 @@ def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, 
                     d = policy.decide(query, retrieved, repeat=repeat)
                 except Exception as e:  # noqa: BLE001 - any failure becomes a counted error prediction
                     d = Decision(action="error", reason="policy or retrieval failed", error_detail=repr(e))
-                    error = repr(e)
+            if d.action == "error":
+                error = d.error_detail or d.reason
             pages: list[str] = []
             for r in retrieved:
                 if r.chunk.page_id not in pages:
@@ -130,8 +138,8 @@ def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, 
     (out / "metrics.json").write_text(json.dumps(metrics, indent=1))
     (out / "config.json").write_text(json.dumps({"config": config, "config_hash": h, "git_commit": _git_commit(),
                                                  "split": split, "repeats": repeats}, indent=1, default=str))
-    if split == "dev":
-        frozen = _read_frozen(results_dir)
-        frozen[h] = result.run_id
-        _frozen_path(results_dir).write_text(json.dumps(frozen, indent=1))
+    ledger_name = "frozen.json" if split == "dev" else "test_runs.json"
+    recorded = _read_frozen(results_dir, ledger_name)
+    recorded[h] = result.run_id
+    (results_dir / ledger_name).write_text(json.dumps(recorded, indent=1))
     return result

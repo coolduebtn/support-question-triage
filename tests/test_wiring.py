@@ -47,3 +47,18 @@ def test_eval_without_key_exits_2(monkeypatch, capsys):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     assert main(["eval", "--policy", "A", "--split", "dev"]) == 2
     assert "OPENAI_API_KEY" in capsys.readouterr().err
+
+
+def test_run_config_includes_embed_model_and_gold_hash():
+    base = dict(policy="B", retriever="vector", clean_query=False, k=5, system_model="m", prompt="p",
+                snapshot_hash="s", index_hash="i", threshold=None, seed=13, embed_model="e1", gold_hash="g1")
+    a = run_config(**base)
+    assert run_config(**{**base, "embed_model": "e2"}) != a and run_config(**{**base, "gold_hash": "g2"}) != a
+
+
+def test_prompts_use_the_real_chunk_id_format():
+    import re
+    from triage.policies.llm_decision import prompt_text
+    from triage.policies.vanilla import ANSWER_SYSTEM
+    for text in (prompt_text(), ANSWER_SYSTEM):
+        assert "c12" not in text and re.search(r"\b\d+-\d+\b", text)

@@ -89,3 +89,11 @@ def test_run_eval_records_judge_columns(tmp_path):
     assert m["judged_correctness"] == 1.0 and m["judged_correctness_n"] == 2
     assert m["citation_support"] == 0.5 and m["citation_support_n"] == 3
     assert m["followup_targeting"] is None and m["followup_targeting_n"] == 0
+
+
+def test_judge_errors_are_excluded_not_counted_as_failures():
+    gold = GoldItem(qid="q", text="t", label=Action.ANSWER, evidence=[], missing_detail=None, reference_answer="r",
+                    split="dev", source="agree")
+    j = Judge(FakeLLM([RuntimeError("x"), RuntimeError("x"), RuntimeError("x"), RuntimeError("x")]), attempts=2)
+    out = j.evaluate(gold, Decision(action=Action.ANSWER, draft="d", citations=["c0"]), [])
+    assert out["correct"] is None and out["citation_support"] is None

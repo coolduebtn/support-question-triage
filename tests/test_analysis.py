@@ -81,3 +81,12 @@ def test_risk_coverage_is_monotone_in_coverage():
     covs = [c for c, _ in curve]
     assert covs == sorted(covs) and covs[-1] == 1.0
     assert curve[0][1] == 0.0 and curve[-1][1] == pytest.approx(3 / 5)
+
+
+def test_select_final_respects_unsafe_answer_limit():
+    always_answers = result([(A, A)] * 5 + [(C, A)] * 3 + [(E, A)] * 3)
+    safer = result(OK)
+    safer.metrics["unsafe_answer_rate"] = 0.5
+    always_answers.metrics["unsafe_answer_rate"] = 1.0
+    assert select_final({"A": always_answers, "B": safer}, {"unsafe_answer_max": 0.7},
+                        complexity={"A": 1, "B": 2}) == "B"

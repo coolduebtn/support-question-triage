@@ -75,3 +75,18 @@ def test_tune_rejects_test_items():
 def test_tune_raises_when_no_threshold_meets_limits():
     with pytest.raises(ValueError):
         tune_threshold(DEV, Retr(), macro_f1, [0.95], limits={"over_escalation_max": 0.0})
+
+
+def test_tune_uses_cleaned_text_when_clean_flag_is_set():
+    seen = []
+
+    class Spy:
+        def retrieve(self, query, k):
+            seen.append(query)
+            return [r(0.9)]
+
+    items = [GoldItem(qid="q1", text="clean", text_raw="raw", label=Action.ANSWER, evidence=[], missing_detail=None,
+                      reference_answer=None, split="dev", source="agree")]
+    tune_threshold(items, Spy(), macro_f1, [0.5], limits={}, clean=False)
+    tune_threshold(items, Spy(), macro_f1, [0.5], limits={}, clean=True)
+    assert seen == ["raw", "clean"]

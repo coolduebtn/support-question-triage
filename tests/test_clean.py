@@ -28,3 +28,13 @@ def test_clean_email_empty_after_cleaning_returns_empty():
 def test_clean_email_cuts_original_message_marker():
     raw = "Please help\n-----Original Message-----\nFrom: x\nold stuff"
     assert clean_email(raw) == "Please help"
+
+
+def test_clean_email_keeps_content_after_an_early_thanks():
+    raw = "Hi,\nThanks\nI get error 500 when I export the invoice report from the order manager screen every time."
+    assert "error 500" in clean_email(raw)
+
+
+def test_clean_email_unescapes_html_entities_before_stripping_quotes():
+    raw = "It fails.\n&gt; quoted &amp;gt; text\n&gt; more"
+    assert clean_email(raw) == "It fails."
