@@ -75,3 +75,34 @@ class HybridRetriever:
         fused = rrf([[r.chunk.id for r in v], [r.chunk.id for r in b]])
         return [Retrieved(chunk=by_id[i].chunk, score=s, score_kind="rrf", vector_cosine=cos.get(i))
                 for i, s in fused[:k]]
+
+
+class Reranker:
+    """Local cross-encoder. `scorer` can be injected for tests; otherwise sentence-transformers is loaded lazily."""
+
+    def __init__(self, model_name: str, scorer=None):
+        self.model_name, self._scorer = model_name, scorer
+
+    def score(self, query: str, texts: list[str]) -> list[float]:
+        if self._scorer is None:
+            import torch
+            from sentence_transformers import CrossEncoder
+
+            device = "mps" if torch.backends.mps.is_available() else "cpu"
+            model = CrossEncoder(self.model_name, device=device)
+            self._scorer = lambda q, ts: [float(s) for s in model.predict([(q, t) for t in ts])]
+        return self._scorer(query, texts)
+
+
+class RerankedRetriever:
+    def __init__(self, base: Retriever, reranker: Reranker, pool: int = 20):
+        self.base, self.reranker, self.pool = base, reranker, pool
+
+    def retrieve(self, query: str, k: int) -> list[Retrieved]:
+        candidates = self.base.retrieve(query, max(self.pool, k))
+        if not candidates:
+            return []
+        scores = self.reranker.score(query, [c.chunk.text for c in candidates])
+        ranked = sorted(zip(scores, candidates), key=lambda x: -x[0])[:k]
+        return [Retrieved(chunk=c.chunk, score=s, score_kind="cross_encoder", vector_cosine=c.vector_cosine)
+                for s, c in ranked]
