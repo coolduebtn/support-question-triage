@@ -7,35 +7,19 @@ from pathlib import Path
 import httpx
 
 from triage.schemas import Page
+from triage.sources.http import FetchError, get_json  # noqa: F401
 
 BASE = "https://cwiki.apache.org/confluence"
-RETRIES = 3
-
-
-class FetchError(RuntimeError):
-    pass
-
-
 def make_session(contact: str) -> httpx.Client:
     ua = f"capstone-support-triage/0.1 (research; contact: {contact})"
     return httpx.Client(headers={"User-Agent": ua}, timeout=30, follow_redirects=True)
-
-
-def _get_json(session, url: str, params: dict | None, delay: float) -> dict:
-    for attempt in range(RETRIES):
-        resp = session.get(url, params=params)
-        if resp.status_code == 200:
-            return resp.json()
-        if attempt < RETRIES - 1:
-            time.sleep(delay * (2 ** attempt))
-    raise FetchError(f"{url} failed after {RETRIES} attempts (last status {resp.status_code})")
 
 
 def fetch_space_pages(space: str, session, limit: int = 200, delay: float = 1.0) -> Iterator[Page]:
     url = f"{BASE}/rest/api/space/{space}/content/page"
     params: dict | None = {"limit": limit, "start": 0, "expand": "body.storage,version"}
     while url:
-        data = _get_json(session, url, params, delay)
+        data = get_json(session, url, params, delay)
         base = data.get("_links", {}).get("base", BASE)
         for r in data.get("results", []):
             yield Page(
