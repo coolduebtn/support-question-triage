@@ -77,3 +77,8 @@ def test_fetch_threads_builds_threads_and_skips_noise_and_future():
     assert t.permalink == "https://lists.apache.org/thread/r1"
     assert "jane.doe@example.com" not in t.body and "blank" in t.body
     assert not any("n1" in c for c in s.calls)
+
+
+def test_scrub_removes_truncated_masked_emails():
+    out = scrub_pii("wrote: <jean.le.roux@les7arts...> and cxphan@yah... and a@b.co", set())
+    assert "@" not in out

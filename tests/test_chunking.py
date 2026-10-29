@@ -71,3 +71,10 @@ def test_table_rows_flattened_and_macro_parameters_dropped():
     text = chunk_page(page(html))[0].text
     assert "Key | Val" in text and "a | b" in text
     assert "xml" not in text.split("\n", 1)[1]
+
+
+def test_page_text_joins_blocks_without_breadcrumb():
+    from triage.ingest.chunking import page_text
+    text = page_text(page(HTML))
+    assert "Install it." in text and "Edit the file." in text
+    assert "Guide >" not in text and "<" not in text

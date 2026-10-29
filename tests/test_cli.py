@@ -33,3 +33,21 @@ def test_ingest_index_without_key_exits_2(monkeypatch, capsys):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     assert main(["ingest", "--index"]) == 2
     assert "OPENAI_API_KEY" in capsys.readouterr().err
+
+
+def test_label_select_writes_questions_split_and_blind_sheet(tmp_path, monkeypatch):
+    import json
+
+    from triage.schemas import Thread
+    monkeypatch.setenv("TRIAGE_ROOT", str(tmp_path))
+    snap = tmp_path / "data" / "snapshot"
+    snap.mkdir(parents=True)
+    ts = [Thread(tid=f"t{i:03d}", subject=f"Export number {i} fails", body=f"How can I fix error {i} xq{i} zr{i} in the export?",
+                 n_replies=i % 2, epoch=1, permalink="u") for i in range(12)]
+    (snap / "threads.jsonl").write_text("".join(t.model_dump_json() + "\n" for t in ts))
+    assert main(["label", "--select", "--n", "10", "--n-dev", "4", "--blind", "5"]) == 0
+    gold = tmp_path / "data" / "gold"
+    assert len((gold / "questions.jsonl").read_text().splitlines()) == 10
+    split = json.loads((gold / "split.json").read_text())
+    assert list(split.values()).count("dev") == 4
+    assert (gold / "owner_blind.md").read_text().count("owner_label:") == 5

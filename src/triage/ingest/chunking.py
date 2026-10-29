@@ -82,3 +82,8 @@ def chunk_page(page: Page, max_tokens: int = 500) -> list[Chunk]:
 def _make(page: Page, heading_path: list[str], prefix: str, group: list[str], n: int) -> Chunk:
     return Chunk(id=f"{page.id}-{n}", page_id=page.id, page_title=page.title,
                  heading_path=heading_path, text=prefix + "\n".join(group), url=page.url)
+
+
+def page_text(page: Page) -> str:
+    """Plain text of the whole page (no breadcrumbs), used to verify quoted evidence."""
+    return "\n".join(block for _, blocks in _sections(page) for block in blocks)

@@ -8,7 +8,7 @@ API = "https://lists.apache.org/api"
 NOISE_SUBJECT = re.compile(
     r"\[(ANN|ANNOUNCE|VOTE|RESULT|DISCUSS|CANCELLED?)\b|\bCVE-\d{4}-\d+|\breleased?\b|board report|digest|\bDRAFT\b",
     re.I)
-EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
+EMAIL = re.compile(r"[\w.+-]*\w@[\w.\-\u2026]+")
 IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 FROM_NAME = re.compile(r"^(.*?)\s*<")
 
