@@ -38,3 +38,14 @@ def test_clean_email_keeps_content_after_an_early_thanks():
 def test_clean_email_unescapes_html_entities_before_stripping_quotes():
     raw = "It fails.\n&gt; quoted &amp;gt; text\n&gt; more"
     assert clean_email(raw) == "It fails."
+
+
+def test_strong_closing_drops_name_block_and_forwarded_footer():
+    raw = "I tried postgres, it works.\nThanks for the help.\n\nRegards,\nYang\n\n原始邮件\n\n发件人：x\n\n> old"
+    assert clean_email(raw) == "I tried postgres, it works.\nThanks for the help."
+
+
+def test_strong_closing_keeps_pasted_data_after_the_name_block():
+    raw = "The entry looks wrong.\nCan you check it?\n\nRegards,\nEmad\n\n{\n  \"ACCTG_TRANS_ID\": \"10571\"\n}"
+    out = clean_email(raw)
+    assert "Emad" not in out and "ACCTG_TRANS_ID" in out

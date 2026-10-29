@@ -2,6 +2,8 @@ import html
 import re
 
 CLOSING = re.compile(r"^(thanks|thank you|regards|best regards|kind regards|cheers|br|best|sincerely)[,.!]?\s*$", re.I)
+STRONG_CLOSING = re.compile(r"^(thanks\s*&\s*)?(kind |best |warm |with )?(regards|sincerely|cheers)[,.!]?\s*$", re.I)
+FOOTER = re.compile(r"^(原始邮件|-----|from:|发件人|sent:|de :|von:)", re.I)
 CUT_MARKERS = [
     re.compile(r"^-{2,}\s*Original Message\s*-{2,}", re.I),
     re.compile(r"^On .{5,200} wrote:\s*$", re.I),
@@ -23,6 +25,14 @@ def clean_email(text: str) -> str:
     while kept and not kept[-1].strip():
         kept.pop()
     for i, line in enumerate(kept):
+        before_strong = [l for l in kept[:i] if l.strip()]
+        if STRONG_CLOSING.match(line.strip()) and len(before_strong) >= 2:
+            j = i + 1
+            while j < len(kept) and kept[j].strip():  # the name / title block right under the closing
+                j += 1
+            rest = [l for l in kept[j:] if l.strip()]
+            kept = kept[:i] + ([] if not rest or FOOTER.match(rest[0].strip()) else kept[j:])
+            break
         trailing = [l for l in kept[i + 1:] if l.strip()]
         before = [l for l in kept[:i] if l.strip()]
         if (CLOSING.match(line.strip()) and len(before) >= 2 and len(trailing) <= 4
