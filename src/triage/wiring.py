@@ -6,6 +6,18 @@ from pathlib import Path
 from triage.schemas import Action, Decision, Retrieved
 
 
+def load_all_pages(cfg) -> list:
+    """Wiki snapshot plus the official docs snapshot when it exists (the knowledge base the system answers from)."""
+    from triage.sources.confluence import read_snapshot
+
+    pages = []
+    for name in ("wiki.jsonl", "docs.jsonl"):
+        path = cfg.data_dir / "snapshot" / name
+        if path.exists():
+            pages += read_snapshot(path)
+    return pages
+
+
 def file_sha256(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 

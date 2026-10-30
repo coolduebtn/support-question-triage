@@ -75,3 +75,24 @@ def assign_split(questions: list[Question], n_dev: int, seed: int, path: Path | 
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         Path(path).write_text(json.dumps(mapping, indent=1))
     return mapping
+
+
+def extend_candidates(threads: list[Thread], existing_qids: set[str], n: int, seed: int, max_chars: int = 300) -> list[Question]:
+    """Adds short questions (likely to lack detail, so likely CLARIFY candidates) that are not already selected.
+    Sampling stratum is disclosed in the README; labels still come from the labelling protocol, not from length."""
+    pool = [q for q in select_candidates(threads, 10_000, seed) if q.qid not in existing_qids and len(q.text_clean) <= max_chars]
+    random.Random(seed).shuffle(pool)
+    return sorted(pool[:n], key=lambda q: q.qid)
+
+
+def extend_split(existing: dict[str, str], new: list[Question], n_dev: int, seed: int, path: Path | None = None) -> dict[str, str]:
+    """Keeps every existing assignment and splits only the new questions."""
+    merged = dict(existing)
+    qids = sorted(q.qid for q in new)
+    random.Random(seed).shuffle(qids)
+    for i, qid in enumerate(qids):
+        merged[qid] = "dev" if i < n_dev else "test"
+    merged = dict(sorted(merged.items()))
+    if path is not None:
+        Path(path).write_text(json.dumps(merged, indent=1))
+    return merged

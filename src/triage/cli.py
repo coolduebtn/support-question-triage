@@ -69,6 +69,15 @@ def _ingest(args: argparse.Namespace) -> int:
 
     cfg = load_settings()
     snap = cfg.data_dir / "snapshot" / "wiki.jsonl"
+    if args.fetch_docs:
+        from triage.sources.docs_site import BLOB, fetch_docs_repo, load_asciidoc_pages
+
+        repo = cfg.data_dir / "raw" / "ofbiz-framework"
+        commit = fetch_docs_repo(repo)
+        pages = load_asciidoc_pages(repo, BLOB, commit)
+        digest = write_snapshot(pages, cfg.data_dir / "snapshot" / "docs.jsonl")
+        print(f"doc pages={len(pages)} commit={commit} sha256={digest}")
+        return 0
     if args.index:
         if not os.environ.get("OPENAI_API_KEY"):
             print("set OPENAI_API_KEY (cohort key) to build the embedding index", file=sys.stderr)
@@ -77,7 +86,9 @@ def _ingest(args: argparse.Namespace) -> int:
         from triage.ingest.index import build_index
         from triage.llm import LLMClient, load_price
 
-        chunks = [c for p in read_snapshot(snap) for c in chunk_page(p)]
+        from triage.wiring import load_all_pages
+
+        chunks = [c for p in load_all_pages(cfg) for c in chunk_page(p)]
         emb = LLMClient(cfg.embed_model, cfg.data_dir / "cache" / "embed", load_price(cfg.embed_model))
         info = build_index(chunks, emb.embed, cfg.data_dir / "index")
         print(f"chunks={info.n_chunks} index_hash={info.hash} spent=${emb.spent_usd:.4f}")
@@ -113,7 +124,8 @@ def _collect(args: argparse.Namespace) -> int:
 register("collect", "fetch and scrub list threads (gitignored raw snapshot)", _collect,
          lambda p: p.add_argument("--window", default="3y"))
 register("ingest", "fetch the wiki snapshot (and later build indexes)", _ingest,
-         lambda p: (p.add_argument("--fetch-only", action="store_true"), p.add_argument("--index", action="store_true")))
+         lambda p: (p.add_argument("--fetch-only", action="store_true"), p.add_argument("--index", action="store_true"),
+                                p.add_argument("--fetch-docs", action="store_true")))
 def _label(args: argparse.Namespace) -> int:
     import json
     import os
@@ -145,12 +157,23 @@ def _label(args: argparse.Namespace) -> int:
         print(f"questions={len(qs)} dev={args.n_dev} -> {qfile}\nblind sheet ({args.blind} items): {blind}")
         return 0
     questions = [Question.model_validate_json(line) for line in qfile.read_text().splitlines()]
+    if args.extend:
+        from triage.labelling.select import extend_candidates, extend_split
+
+        threads = [Thread(**json.loads(line)) for line in (cfg.data_dir / "snapshot" / "threads.jsonl").read_text().splitlines()]
+        new = extend_candidates(threads, {q.qid for q in questions}, args.extend, cfg.seed)
+        extend_split(json.loads(splitfile.read_text()), new, args.extend_dev, cfg.seed, path=splitfile)
+        with qfile.open("a") as fh:
+            fh.write("".join(q.model_dump_json() + "\n" for q in new))
+        print(f"added {len(new)} short questions ({args.extend_dev} dev); total {len(questions) + len(new)}")
+        return 0
     if args.draft:
         if not os.environ.get("OPENAI_API_KEY"):
             print("set OPENAI_API_KEY (cohort key) to draft labels", file=sys.stderr)
             return 2
         from triage.ingest.chunking import page_text
         from triage.ingest.index import load_chunks
+        from triage.wiring import load_all_pages
         from triage.labelling.annotate import WikiTools
         from triage.llm import LLMClient, load_price
         from triage.retrieval import Bm25Retriever, VectorRetriever
@@ -167,7 +190,7 @@ def _label(args: argparse.Namespace) -> int:
         make = lambda m: LLMClient(m, cfg.data_dir / "cache" / "label", load_price(m))  # noqa: E731
         recs = rv.draft_labels(questions, tools, [make(m) for m in models[:2]], make(cfg.judge_model),
                                make(cfg.system_model),
-                               {p.id: page_text(p) for p in read_snapshot(cfg.data_dir / "snapshot" / "wiki.jsonl")},
+                               {p.id: page_text(p) for p in load_all_pages(cfg)},
                                splitfile, out_path=records_file)
         print(f"drafted={len(recs)} agreed={sum(r.agreed for r in recs)} classes={Counter(r.final.label.value for r in recs)}")
         return 0
@@ -214,6 +237,8 @@ def _label_args(p: argparse.ArgumentParser) -> None:
     for flag in ("--select", "--draft", "--review", "--apply"):
         p.add_argument(flag, action="store_true")
     p.add_argument("--force", action="store_true")
+    p.add_argument("--extend", type=int, default=0, help="add N short (likely vague) questions to the existing set")
+    p.add_argument("--extend-dev", type=int, default=0)
     p.add_argument("--prefill", action="store_true", help="review sheet for the blind-subset questions with LLM drafts (not blind)")
     p.add_argument("--no-blind", action="store_true", help="proceed without blind owner labels (disclosed in the README)")
     p.add_argument("--n", type=int, default=75)

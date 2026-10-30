@@ -378,3 +378,15 @@ def test_read_sheet_qids_returns_question_ids_in_order(tmp_path):
     path = build_owner_blind_sheet(qs, n=3, seed=1, path=tmp_path / "blind.md")
     ids = read_sheet_qids(path)
     assert ids == sorted(ids) and len(ids) == 3 and set(ids) <= {x.qid for x in qs}
+
+
+def test_extend_candidates_adds_only_new_short_questions_and_keeps_existing_split(tmp_path):
+    from triage.labelling.select import extend_candidates, extend_split
+    ts = [thread(f"s{i}", f"Export {i} fails", f"How do I fix it {i}?") for i in range(8)]
+    ts += [thread("long", "Long question here", "How do I fix this? " + "details " * 100)]
+    existing = {"q_s0": "dev", "q_s1": "test"}
+    new = extend_candidates(ts, set(existing), n=4, seed=1, max_chars=200)
+    assert len(new) == 4 and all(len(x.text_clean) <= 200 for x in new) and not ({x.qid for x in new} & set(existing))
+    merged = extend_split(existing, new, n_dev=1, seed=1, path=tmp_path / "split.json")
+    assert merged["q_s0"] == "dev" and merged["q_s1"] == "test"
+    assert sum(v == "dev" for k, v in merged.items() if k not in existing) == 1 and len(merged) == 6

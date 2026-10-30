@@ -62,3 +62,16 @@ def test_prompts_use_the_real_chunk_id_format():
     from triage.policies.vanilla import ANSWER_SYSTEM
     for text in (prompt_text(), ANSWER_SYSTEM):
         assert "c12" not in text and re.search(r"\b\d+-\d+\b", text)
+
+
+def test_load_all_pages_combines_wiki_and_docs_snapshots(tmp_path, monkeypatch):
+    from triage.config import load_settings
+    from triage.schemas import Page
+    from triage.sources.confluence import write_snapshot
+    from triage.wiring import load_all_pages
+    monkeypatch.setenv("TRIAGE_ROOT", str(tmp_path))
+    snap = tmp_path / "data" / "snapshot"
+    write_snapshot([Page(id="1", title="w", url="u", body_html="<p>x</p>")], snap / "wiki.jsonl")
+    assert [p.id for p in load_all_pages(load_settings())] == ["1"]
+    write_snapshot([Page(id="doc:a.adoc", title="d", url="u", body_html="<p>y</p>")], snap / "docs.jsonl")
+    assert sorted(p.id for p in load_all_pages(load_settings())) == ["1", "doc:a.adoc"]
