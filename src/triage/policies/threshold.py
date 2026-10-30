@@ -29,8 +29,8 @@ class ThresholdRAG:
 def tune_threshold(dev_items: list[GoldItem], retriever, metric: Callable, grid: list[float], limits: dict,
                    k: int = 5, clean: bool = False) -> float:
     """Dev-only. The base policy always answers, so a threshold turns answers into escalations; no LLM calls are needed."""
-    if any(g.split != "dev" for g in dev_items):
-        raise ValueError("threshold tuning accepts dev items only")
+    if any(g.split != "dev" or g.synthetic for g in dev_items):
+        raise ValueError("threshold tuning accepts real dev items only")
     tops = []
     for g in dev_items:
         found = top_vector_cosine(retriever.retrieve(g.text if clean else (g.text_raw or g.text), k))

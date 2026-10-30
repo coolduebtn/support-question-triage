@@ -69,7 +69,8 @@ def run_eval(policy, retriever, gold: list[GoldItem], split: str, config: dict, 
             raise ConfigNotFrozenError(f"config {h[:8]} has no recorded dev run; run it on dev first")
         if h in _read_frozen(results_dir, "test_runs.json") and not allow_test_rerun:
             raise RepeatTestRunError(f"config {h[:8]} was already run on test; the test set is used once per finalist")
-    items = [g for g in gold if g.split == split]
+    mode = config.get("synthetic", "none")
+    items = [g for g in gold if g.split == split and (mode == "both" or g.synthetic == (mode == "only"))]
     if not items:
         raise ValueError(f"no gold items in split {split!r}")
     k = int(config.get("k", 5))

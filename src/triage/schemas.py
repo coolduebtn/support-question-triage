@@ -99,7 +99,9 @@ class GoldItem(BaseModel):
     missing_detail: str | None
     reference_answer: str | None
     split: Literal["dev", "test"]
-    source: Literal["agree", "adjudicated", "owner_blind", "owner_review"]
+    source: Literal["agree", "adjudicated", "owner_blind", "owner_review", "synthetic_probe"]
+    synthetic: bool = False
+    derived_from: str | None = None
 
 
 class RunResult(BaseModel):

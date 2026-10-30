@@ -157,6 +157,26 @@ def _label(args: argparse.Namespace) -> int:
         print(f"questions={len(qs)} dev={args.n_dev} -> {qfile}\nblind sheet ({args.blind} items): {blind}")
         return 0
     questions = [Question.model_validate_json(line) for line in qfile.read_text().splitlines()]
+    if args.probes:
+        if not os.environ.get("OPENAI_API_KEY"):
+            print("set OPENAI_API_KEY (cohort key) to make probes", file=sys.stderr)
+            return 2
+        from triage.labelling.probes import probes_from_gold
+        from triage.llm import LLMClient, load_price
+        from triage.schemas import GoldItem
+
+        real = [GoldItem.model_validate_json(line) for line in (gold / "gold.jsonl").read_text().splitlines()]
+        llm = LLMClient(cfg.annotator_models[0], cfg.data_dir / "cache" / "probes", load_price(cfg.annotator_models[0]))
+        probes = probes_from_gold(real, llm, args.probes, cfg.seed)
+        (gold / "probes.jsonl").write_text("".join(p.model_dump_json() + "\n" for p in probes))
+        by = {g.qid: g for g in real}
+        trace = ["# Synthetic CLARIFY probes (derived by deleting words from real ANSWER questions)\n"]
+        for p in probes:
+            trace.append(f"\n## {p.qid} (from {p.derived_from}, {p.split})\n\nORIGINAL:\n{by[p.derived_from].text}\n\n"
+                         f"PROBE:\n{p.text}\n\nremoved detail: {p.missing_detail}\n")
+        (gold / "probes_trace.md").write_text("".join(trace))
+        print(f"probes={len(probes)} dev={sum(p.split == 'dev' for p in probes)} -> {gold / 'probes.jsonl'} (trace: probes_trace.md)")
+        return 0
     if args.extend:
         from triage.labelling.select import extend_candidates, extend_split
 
@@ -237,6 +257,7 @@ def _label_args(p: argparse.ArgumentParser) -> None:
     for flag in ("--select", "--draft", "--review", "--apply"):
         p.add_argument(flag, action="store_true")
     p.add_argument("--force", action="store_true")
+    p.add_argument("--probes", type=int, default=0, help="make N synthetic CLARIFY probes by deleting words from real ANSWER questions")
     p.add_argument("--extend", type=int, default=0, help="add N short (likely vague) questions to the existing set")
     p.add_argument("--extend-dev", type=int, default=0)
     p.add_argument("--prefill", action="store_true", help="review sheet for the blind-subset questions with LLM drafts (not blind)")
@@ -298,11 +319,17 @@ def _eval(args: argparse.Namespace) -> int:
         print(f"no gold set at {gold_file}; finish `triage label` first", file=sys.stderr)
         return 2
     gold = [GoldItem.model_validate_json(line) for line in gold_file.read_text().splitlines()]
+    probes_file = cfg.data_dir / "gold" / "probes.jsonl"
+    if args.synthetic != "none":
+        if not probes_file.exists():
+            print("no probes yet; run `triage label --probes N` first", file=sys.stderr)
+            return 2
+        gold += [GoldItem.model_validate_json(line) for line in probes_file.read_text().splitlines()]
     emb, retriever, base, policy, prompt, sys_llm, run_config, sha, Threshold = _build(args, cfg)
     threshold = args.threshold
     if args.policy == "A+":
         if threshold is None:
-            threshold = tune_threshold([g for g in gold if g.split == "dev"], retriever, macro_f1,
+            threshold = tune_threshold([g for g in gold if g.split == "dev" and not g.synthetic], retriever, macro_f1,
                                        [round(0.2 + 0.02 * i, 2) for i in range(40)], load_limits(), k=cfg.k,
                                        clean=args.clean)
             print(f"tuned threshold on dev: {threshold}")
@@ -315,6 +342,7 @@ def _eval(args: argparse.Namespace) -> int:
                         hashlib.sha256(prompt.encode()).hexdigest(), sha(cfg.data_dir / "snapshot" / "wiki.jsonl"),
                         sha(cfg.data_dir / "index" / "chunks.jsonl"), threshold, cfg.seed,
                         cfg.judge_model if judge else None, embed_model=cfg.embed_model, gold_hash=sha(gold_file))
+    config["synthetic"] = args.synthetic
     res = run_eval(policy, retriever, gold, args.split, config, judge=judge, repeats=args.repeats,
                    results_dir=cfg.results_dir)
     append_ablation_row(res, args.step or f"{args.policy} {args.retriever}", args.decision, args.notes,
@@ -330,6 +358,8 @@ def _eval_args(p: argparse.ArgumentParser) -> None:
     p.add_argument("--split", choices=["dev", "test"], default="dev")
     p.add_argument("--clean", action="store_true", help="clean emails before retrieval")
     p.add_argument("--judge", action="store_true")
+    p.add_argument("--synthetic", choices=["none", "only", "both"], default="none",
+                   help="none = real questions only (headline); only = synthetic probes; both = labelled supplementary row")
     p.add_argument("--threshold", type=float)
     p.add_argument("--repeats", type=int, default=1)
     p.add_argument("--step", default="")
