@@ -1,11 +1,17 @@
-# USD per 1M tokens. PROVISIONAL: copied from research notes (unverified).
-# Confirm against the OpenAI pricing page and `client.models.list()` on key day (Task 5 smoke test).
+# USD per 1M tokens. Read from https://developers.openai.com/api/docs/pricing on 2026-10-30
+# (standard tier; gpt-5.4 and gpt-5.5 are the <272K-context prices). Re-check before final cost claims.
 [models."gpt-5-mini"]
 input_per_m = 0.25
 output_per_m = 2.00
 [models."gpt-5.4"]
 input_per_m = 2.50
 output_per_m = 15.00
+[models."gpt-5.5"]
+input_per_m = 5.00
+output_per_m = 30.00
+[models."gpt-4.1"]
+input_per_m = 2.00
+output_per_m = 8.00
 [models."text-embedding-3-small"]
 input_per_m = 0.02
 output_per_m = 0.0
