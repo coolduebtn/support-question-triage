@@ -24,6 +24,14 @@ def _smoke(_: argparse.Namespace) -> int:
         print("set OPENAI_API_KEY (cohort key) to run the smoke test", file=sys.stderr)
         return 2
     cfg = load_settings()
+    if not (cfg.system_model and cfg.judge_model and cfg.embed_model):
+        import openai
+
+        ids = sorted(m.id for m in openai.OpenAI().models.list())
+        print("Models visible to this key (chat and embedding):")
+        print("\n".join(i for i in ids if i.startswith(("gpt", "o1", "o3", "o4", "text-embedding"))))
+        print("Set TRIAGE_SYSTEM_MODEL, TRIAGE_JUDGE_MODEL, TRIAGE_EMBED_MODEL and TRIAGE_ANNOTATOR_MODELS in .env", file=sys.stderr)
+        return 2
     wanted = {cfg.system_model, cfg.judge_model, cfg.embed_model, *cfg.annotator_models} - {""}
     import openai
 
@@ -327,6 +335,9 @@ def main(argv: list[str]) -> int:
     import os
 
     os.environ.setdefault("PYDANTIC_AI_NO_BANNER", "1")
+    from triage.config import load_dotenv
+
+    load_dotenv()
     parser = argparse.ArgumentParser(prog="triage")
     sub = parser.add_subparsers(dest="command")
     for name, (help_text, _, add_args) in COMMANDS.items():

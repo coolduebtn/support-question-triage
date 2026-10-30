@@ -73,3 +73,35 @@ def test_label_select_refuses_to_overwrite_existing_split_without_force(tmp_path
     blind.write_text(blind.read_text().replace("owner_label:", "owner_label: answer", 1))
     assert main(["label", "--select", "--force", "--n", "10", "--n-dev", "4", "--blind", "5"]) == 2
     assert "owner labels" in capsys.readouterr().err
+
+
+def test_dotenv_is_loaded_without_overriding_existing_env(tmp_path, monkeypatch):
+    from triage.config import load_dotenv
+    env = tmp_path / ".env"
+    env.write_text('# comment\nOPENAI_API_KEY="sk-test"\nTRIAGE_SYSTEM_MODEL=from-file\nEMPTY=\n')
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.setenv("TRIAGE_SYSTEM_MODEL", "from-shell")
+    load_dotenv(env)
+    import os
+    assert os.environ["OPENAI_API_KEY"] == "sk-test" and os.environ["TRIAGE_SYSTEM_MODEL"] == "from-shell"
+
+
+def test_smoke_lists_available_models_when_none_configured(monkeypatch, capsys):
+    import triage.cli as cli
+
+    class M:
+        def __init__(self, i):
+            self.id = i
+
+    class FakeOpenAI:
+        def __init__(self):
+            self.models = type("X", (), {"list": staticmethod(lambda: [M("gpt-a"), M("text-embedding-b"), M("whisper-1")])})()
+
+    import openai
+    monkeypatch.setattr(openai, "OpenAI", FakeOpenAI)
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    for v in ("TRIAGE_SYSTEM_MODEL", "TRIAGE_JUDGE_MODEL", "TRIAGE_EMBED_MODEL", "TRIAGE_ANNOTATOR_MODELS"):
+        monkeypatch.delenv(v, raising=False)
+    assert cli.main(["smoke"]) == 2
+    out = capsys.readouterr()
+    assert "gpt-a" in out.out and "text-embedding-b" in out.out and "whisper" not in out.out

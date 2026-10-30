@@ -16,6 +16,21 @@ class Settings:
     contact: str
 
 
+def load_dotenv(path: Path = Path(".env")) -> None:
+    """Minimal .env reader. Values already in the environment win. The file is gitignored."""
+    path = Path(path)
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        value = value.strip().strip('"').strip("'")
+        if value:
+            os.environ.setdefault(key.strip(), value)
+
+
 def load_settings() -> Settings:
     root = Path(os.environ.get("TRIAGE_ROOT", Path.cwd()))
     return Settings(
