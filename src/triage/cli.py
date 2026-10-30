@@ -174,8 +174,17 @@ def _label(args: argparse.Namespace) -> int:
     from triage.labelling.models import LabelRecord
 
     records = [LabelRecord.model_validate_json(line) for line in records_file.read_text().splitlines()]
+    prefilled = gold / "blind_prefilled.md"
+    if args.prefill:
+        from triage.schemas import ReviewItem
+
+        by_qid = {r.qid: r for r in records}
+        queue = [ReviewItem(qid=i, annotations=by_qid[i].annotations, reason="owner_blind") for i in rv.read_sheet_qids(blind)]
+        rv.render_review_sheet(queue, records, prefilled)
+        print(f"prefilled review sheet ({len(queue)} items, labels are LLM drafts, NOT blind): {prefilled}")
+        return 0
     blind_labels = rv.read_owner_labels(blind)
-    if len(blind_labels) < 12:
+    if len(blind_labels) < 12 and not args.no_blind:
         print(f"fill the blind sheet first ({len(blind_labels)} of at least 12 labelled): {blind}", file=sys.stderr)
         return 2
     review_file = gold / "review_sheet.md"
@@ -186,13 +195,17 @@ def _label(args: argparse.Namespace) -> int:
         return 0
     if args.apply:
         review_labels = rv.read_owner_labels(review_file) if review_file.exists() else {}
+        if prefilled.exists():
+            review_labels = {**rv.read_owner_labels(prefilled), **review_labels}
         items = rv.apply_review(records, blind_labels, review_labels)
         (gold / "gold.jsonl").write_text("".join(g.model_dump_json() + "\n" for g in items))
         rv.write_gold_public(items, gold / "gold_public.jsonl")
         llm_before = {r.qid: r.final.label.value for r in records}
-        ag = rv.owner_agreement({k: v.value for k, v in blind_labels.items()}, llm_before)
         print(f"gold={len(items)} classes={Counter(g.label.value for g in items)} sources={Counter(g.source for g in items)}")
-        print(f"owner-vs-LLM (blind): {ag}")
+        if blind_labels:
+            print(f"owner-vs-LLM (blind): {rv.owner_agreement({k: v.value for k, v in blind_labels.items()}, llm_before)}")
+        else:
+            print("no blind labels: label quality rests on owner review only; the README must say so")
         return 0
     return 2
 
@@ -201,6 +214,8 @@ def _label_args(p: argparse.ArgumentParser) -> None:
     for flag in ("--select", "--draft", "--review", "--apply"):
         p.add_argument(flag, action="store_true")
     p.add_argument("--force", action="store_true")
+    p.add_argument("--prefill", action="store_true", help="review sheet for the blind-subset questions with LLM drafts (not blind)")
+    p.add_argument("--no-blind", action="store_true", help="proceed without blind owner labels (disclosed in the README)")
     p.add_argument("--n", type=int, default=75)
     p.add_argument("--n-dev", type=int, default=30)
     p.add_argument("--blind", type=int, default=20)

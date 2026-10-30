@@ -19,7 +19,7 @@ class Settings:
 def load_dotenv(path: Path = Path(".env")) -> None:
     """Minimal .env reader. Values already in the environment win. The file is gitignored."""
     path = Path(path)
-    if not path.exists():
+    if os.environ.get("TRIAGE_NO_DOTENV") or not path.exists():
         return
     for line in path.read_text().splitlines():
         line = line.strip()

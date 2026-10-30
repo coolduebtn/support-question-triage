@@ -171,7 +171,7 @@ def owner_agreement(owner_blind: dict[str, str], llm_labels_before_review: dict[
 def render_review_sheet(queue: list[ReviewItem], records: list[LabelRecord], path: Path) -> Path:
     """Shown to the owner only after the blind labels are recorded: includes the LLM label and its evidence."""
     by_qid = {r.qid: r for r in records}
-    parts = ["# Review sheet\n\nFor each item write your own label after the label field, or leave it empty to accept the drafted label.\n"]
+    parts = ["# Review sheet\n\nFor each item, write your own label (answer, clarify or escalate) after the label field: the same word confirms the drafted label, a different word overrides it. An empty field means the item is not reviewed by you and keeps its LLM label.\n"]
     for item in queue:
         r = by_qid[item.qid]
         parts.append(f"\n## {item.qid}\n\nreason: {item.reason}  | flags: {', '.join(r.flags) or 'none'}\n\n{r.text}\n")
@@ -191,3 +191,7 @@ def write_gold_public(items: list[GoldItem], path: Path) -> Path:
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text("".join(g.model_dump_json(exclude={"text_raw"}) + "\n" for g in items))
     return Path(path)
+
+
+def read_sheet_qids(path: Path) -> list[str]:
+    return [line[3:].strip() for line in Path(path).read_text().splitlines() if line.startswith("## ")]

@@ -81,6 +81,7 @@ def test_dotenv_is_loaded_without_overriding_existing_env(tmp_path, monkeypatch)
     env.write_text('# comment\nOPENAI_API_KEY="sk-test"\nTRIAGE_SYSTEM_MODEL=from-file\nEMPTY=\n')
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     monkeypatch.setenv("TRIAGE_SYSTEM_MODEL", "from-shell")
+    monkeypatch.delenv("TRIAGE_NO_DOTENV")
     load_dotenv(env)
     import os
     assert os.environ["OPENAI_API_KEY"] == "sk-test" and os.environ["TRIAGE_SYSTEM_MODEL"] == "from-shell"

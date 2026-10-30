@@ -370,3 +370,11 @@ def test_gold_public_export_has_no_raw_text(tmp_path):
                  missing_detail=None, reference_answer=None, split="dev", source="agree")
     path = write_gold_public([g], tmp_path / "gold_public.jsonl")
     assert "RAW" not in path.read_text() and "clean text" in path.read_text()
+
+
+def test_read_sheet_qids_returns_question_ids_in_order(tmp_path):
+    from triage.labelling.review import read_sheet_qids
+    qs = [q(i, f"Question text {i}") for i in range(4)]
+    path = build_owner_blind_sheet(qs, n=3, seed=1, path=tmp_path / "blind.md")
+    ids = read_sheet_qids(path)
+    assert ids == sorted(ids) and len(ids) == 3 and set(ids) <= {x.qid for x in qs}
