@@ -97,3 +97,35 @@ def test_judge_errors_are_excluded_not_counted_as_failures():
     j = Judge(FakeLLM([RuntimeError("x"), RuntimeError("x"), RuntimeError("x"), RuntimeError("x")]), attempts=2)
     out = j.evaluate(gold, Decision(action=Action.ANSWER, draft="d", citations=["c0"]), [])
     assert out["correct"] is None and out["citation_support"] is None
+
+
+def _gold_item(i, label=Action.ANSWER):
+    return GoldItem(qid=f"q{i}", text=f"question {i}", label=label, evidence=[], missing_detail=None,
+                    reference_answer=f"reference {i}" if label == Action.ANSWER else None, split="dev", source="agree")
+
+
+def test_build_validation_items_uses_real_drafts_and_marks_mismatched_ones_synthetic():
+    from triage.evals.judge_validation import build_validation_items
+    gold = {f"q{i}": _gold_item(i) for i in range(8)}
+    rows = [{"qid": f"q{i}", "pred": "answer", "draft": f"draft {i}", "repeat": 0} for i in range(8)]
+    items = build_validation_items(rows, gold, n_real=5, n_mismatched=2, seed=1)
+    real = [x for x in items if not x["synthetic"]]
+    syn = [x for x in items if x["synthetic"]]
+    assert len(real) == 5 and len(syn) == 2
+    assert all(x["draft"] == f"draft {x['qid'][1:]}" and x["reference"] == f"reference {x['qid'][1:]}" for x in real)
+    for x in syn:  # a real draft written for a different question
+        assert x["draft"] != f"draft {x['qid'][1:]}" and x["draft"].startswith("draft ") and x["human"] is False
+
+
+def test_validation_sheet_roundtrip_and_blank_means_ungraded(tmp_path):
+    from triage.evals.judge_validation import build_validation_items, read_validation_grades, write_validation_sheet
+    gold = {f"q{i}": _gold_item(i) for i in range(6)}
+    rows = [{"qid": f"q{i}", "pred": "answer", "draft": f"draft {i}", "repeat": 0} for i in range(6)]
+    items = build_validation_items(rows, gold, n_real=4, n_mismatched=0, seed=2)
+    path = write_validation_sheet(items, tmp_path / "sheet.md")
+    text = path.read_text()
+    assert "synthetic" not in text.lower() and "mismatch" not in text.lower()
+    assert text.count("owner_verdict:") == 4
+    path.write_text(text.replace("owner_verdict:", "owner_verdict: correct", 2).replace("owner_verdict:\n", "owner_verdict: incorrect\n", 1))
+    grades = read_validation_grades(path)
+    assert sorted(grades.values()).count(True) == 2 and sorted(grades.values()).count(False) == 1 and len(grades) == 3

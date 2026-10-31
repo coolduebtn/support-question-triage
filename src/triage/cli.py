@@ -460,6 +460,53 @@ def _ladder(args: argparse.Namespace) -> int:
 
 register("ladder", "retrieval-only comparison of the ladder steps on dev (no LLM calls)", _ladder,
          lambda p: p.add_argument("--bge", action="store_true"))
+def _judge(args: argparse.Namespace) -> int:
+    import json
+
+    from triage.config import load_settings
+    from triage.evals.judge import Judge, assert_judge_differs
+    from triage.evals.judge_validation import (build_validation_items, read_validation_grades, validate_judge,
+                                               write_validation_sheet)
+    from triage.llm import LLMClient, load_price
+    from triage.schemas import GoldItem
+
+    cfg = load_settings()
+    gdir = cfg.data_dir / "gold"
+    gold = {g.qid: g for g in (GoldItem.model_validate_json(line) for line in (gdir / "gold.jsonl").read_text().splitlines())}
+    items_file, sheet = gdir / "judge_items.json", gdir / "judge_check.md"
+    if args.make_sheet:
+        merged: dict[str, dict] = {}
+        for run_id in reversed(args.runs):  # earlier arguments win
+            for line in (cfg.results_dir / "runs" / run_id / "predictions.jsonl").read_text().splitlines():
+                row = json.loads(line)
+                merged[row["qid"]] = row
+        items = build_validation_items(list(merged.values()), gold, n_real=args.n, n_mismatched=args.mismatched, seed=cfg.seed)
+        items_file.write_text(json.dumps(items))
+        write_validation_sheet(items, sheet)
+        print(f"{sum(not i['synthetic'] for i in items)} real drafts to grade -> {sheet}; "
+              f"{sum(i['synthetic'] for i in items)} mismatched negatives held back")
+        return 0
+    if args.validate:
+        assert_judge_differs(cfg.system_model, cfg.judge_model)
+        items = json.loads(items_file.read_text())
+        grades = read_validation_grades(sheet)
+        graded = [{**i, "human": grades[i["qid"]]} for i in items if not i["synthetic"] and i["qid"] in grades]
+        if args.with_mismatched:
+            graded += [i for i in items if i["synthetic"]]
+        if len(graded) < 5:
+            print(f"only {len(graded)} graded items; grade more in {sheet}", file=sys.stderr)
+            return 2
+        judge = Judge(LLMClient(cfg.judge_model, cfg.data_dir / "cache" / "judge", load_price(cfg.judge_model)))
+        out = validate_judge(judge, graded, rubric="answer_correct", seed=cfg.seed)
+        print(json.dumps(out, indent=1, default=str))
+        return 0
+    return 2
+
+
+register("judge", "build the owner grading sheet / validate the LLM judge against it", _judge,
+         lambda p: (p.add_argument("--make-sheet", action="store_true"), p.add_argument("--validate", action="store_true"),
+                    p.add_argument("--with-mismatched", action="store_true"), p.add_argument("--runs", nargs="+", default=[]),
+                    p.add_argument("--n", type=int, default=15), p.add_argument("--mismatched", type=int, default=5)))
 register("smoke", "check models, embeddings and structured output (key day)", _smoke)
 
 
