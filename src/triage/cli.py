@@ -430,6 +430,36 @@ def _compare(args: argparse.Namespace) -> int:
 
 register("compare", "paired comparison of two runs (b minus a)", _compare,
          lambda p: (p.add_argument("a"), p.add_argument("b")))
+def _ladder(args: argparse.Namespace) -> int:
+    from triage.config import load_settings
+    from triage.evals.analysis import retrieval_ladder
+    from triage.llm import LLMClient, load_price
+    from triage.schemas import GoldItem
+    from triage.wiring import build_retriever
+
+    cfg = load_settings()
+    gold = [GoldItem.model_validate_json(line) for line in (cfg.data_dir / "gold" / "gold.jsonl").read_text().splitlines()]
+    emb = LLMClient(cfg.embed_model, cfg.data_dir / "cache" / "embed", load_price(cfg.embed_model))
+    names = [("vector (raw email)", "vector", False), ("+ email cleaning", "vector", True),
+             ("+ BM25 with RRF", "hybrid", True), ("+ MiniLM reranker", "rerank-minilm", True)]
+    if args.bge:
+        names.append(("bge reranker instead of MiniLM", "rerank-bge", True))
+    steps = [(label, build_retriever(r, cfg, emb.embed), clean) for label, r, clean in names]
+    rows = retrieval_ladder(gold, steps, k=cfg.k, seed=cfg.seed)
+    lines = [f"| step | n | hit@{cfg.k} | recall@{cfg.k} | MRR | recall change vs previous [95% CI] | improves |", "|---|---|---|---|---|---|---|"]
+    for r in rows:
+        v = r["vs_previous"]
+        change = "n/a" if v is None else f"{v['recall']['delta']:+.3f} [{v['recall']['ci'][0]:+.3f}, {v['recall']['ci'][1]:+.3f}]"
+        lines.append(f"| {r['name']} | {r['n']} | {r['hit']:.2f} | {r['recall']:.2f} | {r['mrr']:.2f} | {change} | "
+                     f"{'n/a' if v is None else ('yes' if v['recall']['improves'] else 'no measurable gain')} |")
+    out = cfg.results_dir / "retrieval_ladder.md"
+    out.write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    return 0
+
+
+register("ladder", "retrieval-only comparison of the ladder steps on dev (no LLM calls)", _ladder,
+         lambda p: p.add_argument("--bge", action="store_true"))
 register("smoke", "check models, embeddings and structured output (key day)", _smoke)
 
 

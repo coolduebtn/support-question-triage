@@ -112,3 +112,29 @@ def compare_retrieval(rows_a: list[dict], rows_b: list[dict], gold: dict[str, Go
     judged = (_paired_mean_diff([float(rb[q]["judge"]["correct"]) - float(ra[q]["judge"]["correct"]) for q in both], seed=seed)
               if both else None)
     return {"n": len(qids), "recall": recall_out, "judged": judged}
+
+
+def retrieval_ladder(gold: list[GoldItem], steps: list[tuple], k: int = 5, seed: int = 13) -> list[dict]:
+    """Retrieval-only comparison (no LLM calls): for each (name, retriever, clean_query) step, page-level hit, recall and
+    MRR on the dev gold ANSWER items, plus a paired comparison with the previous step."""
+    from triage.evals.metrics import retrieval_metrics
+
+    items = [g for g in gold if g.split == "dev" and not g.synthetic and g.label.value == "answer" and g.evidence]
+    if not items:
+        raise ValueError("no dev ANSWER items with evidence")
+    by_qid = {g.qid: g for g in gold}
+    out, prev_rows = [], None
+    for name, retriever, clean in steps:
+        rows = []
+        for g in items:
+            retrieved = retriever.retrieve(g.text if clean else (g.text_raw or g.text), k)
+            pages: list[str] = []
+            for r in retrieved:
+                if r.chunk.page_id not in pages:
+                    pages.append(r.chunk.page_id)
+            rows.append({"qid": g.qid, "retrieved_pages": pages, "judge": None})
+        m = retrieval_metrics([{e.page_id for e in g.evidence} for g in items], [r["retrieved_pages"] for r in rows], k)
+        out.append({"name": name, "n": len(items), "hit": m["hit"], "recall": m["recall"], "mrr": m["mrr"],
+                    "vs_previous": compare_retrieval(prev_rows, rows, by_qid, k=k, seed=seed) if prev_rows else None})
+        prev_rows = rows
+    return out

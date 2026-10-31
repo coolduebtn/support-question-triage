@@ -115,3 +115,28 @@ def test_compare_retrieval_no_change_is_not_an_improvement():
     rows = [{"qid": f"q{i}", "retrieved_pages": ["p1"] if i % 2 else ["p9"], "judge": None} for i in range(6)]
     out = compare_retrieval(rows, list(rows), gold, k=5, seed=1)
     assert out["recall"]["delta"] == 0 and out["recall"]["improves"] is False and out["judged"] is None
+
+
+def test_retrieval_ladder_reports_metrics_and_paired_steps():
+    from triage.evals.analysis import retrieval_ladder
+    gold = [GoldItem(qid=f"q{i}", text=f"t{i}", text_raw=f"t{i}", label=Action.ANSWER,
+                     evidence=[Evidence(page_id="p1", heading="h", quote="q" * 40)], missing_detail=None,
+                     reference_answer="r", split="dev", source="agree") for i in range(10)]
+    gold.append(GoldItem(qid="q10", text="t10", text_raw="t10", label=Action.ESCALATE, evidence=[], missing_detail=None,
+                         reference_answer=None, split="dev", source="agree"))
+
+    class R:
+        def __init__(self, hits):
+            self.hits = hits
+
+        def retrieve(self, q, k):
+            from triage.schemas import Chunk, Retrieved
+            page = "p1" if int(q[1:]) < self.hits else "p9"
+            return [Retrieved(chunk=Chunk(id="c", page_id=page, page_title="t", heading_path=["t"], text="x", url="u"),
+                              score=1, score_kind="cosine", vector_cosine=1)]
+
+    out = retrieval_ladder(gold, [("vector", R(3), False), ("hybrid", R(9), False)], k=5, seed=1)
+    assert [r["name"] for r in out] == ["vector", "hybrid"]
+    assert out[0]["recall"] == pytest.approx(0.3) and out[1]["recall"] == pytest.approx(0.9)
+    assert out[0]["vs_previous"] is None and out[1]["vs_previous"]["recall"]["improves"] is True
+    assert out[0]["n"] == 10
