@@ -81,3 +81,34 @@ def risk_coverage(result: RunResult) -> list[tuple[float, float]]:
         if answered:
             curve.append((len(answered) / n, sum(r["gold"] != "answer" for r in answered) / len(answered)))
     return sorted(set(curve))
+
+
+def _paired_mean_diff(diffs: list[float], n: int = 2000, seed: int = 13) -> dict:
+    import numpy as np
+
+    arr = np.array(diffs, dtype=float)
+    rng = np.random.default_rng(seed)
+    means = [float(rng.choice(arr, size=len(arr), replace=True).mean()) for _ in range(n)]
+    lo, hi = float(np.quantile(means, 0.025)), float(np.quantile(means, 0.975))
+    return {"delta": float(arr.mean()), "ci": (lo, hi), "improves": lo > 0, "n": len(arr)}
+
+
+def compare_retrieval(rows_a: list[dict], rows_b: list[dict], gold: dict[str, GoldItem], k: int = 5,
+                      seed: int = 13) -> dict:
+    """Paired comparison (b minus a) of page-level recall on gold ANSWER items, and of judged correctness on
+    items where both runs have a judge verdict. `improves` means the bootstrap interval of the mean difference excludes zero."""
+    ra, rb = {r["qid"]: r for r in rows_a}, {r["qid"]: r for r in rows_b}
+    qids = sorted(q for q in ra if q in rb and gold[q].label.value == "answer" and gold[q].evidence)
+    if not qids:
+        raise ValueError("no gold ANSWER items with evidence to compare")
+
+    def recall(row: dict, q: str) -> float:
+        pages = {e.page_id for e in gold[q].evidence}
+        return len(pages & set(row["retrieved_pages"][:k])) / len(pages)
+
+    recall_out = _paired_mean_diff([recall(rb[q], q) - recall(ra[q], q) for q in qids], seed=seed)
+    both = [q for q in qids if (ra[q].get("judge") or {}).get("correct") is not None
+            and (rb[q].get("judge") or {}).get("correct") is not None]
+    judged = (_paired_mean_diff([float(rb[q]["judge"]["correct"]) - float(ra[q]["judge"]["correct"]) for q in both], seed=seed)
+              if both else None)
+    return {"n": len(qids), "recall": recall_out, "judged": judged}

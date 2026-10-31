@@ -90,3 +90,28 @@ def test_select_final_respects_unsafe_answer_limit():
     always_answers.metrics["unsafe_answer_rate"] = 1.0
     assert select_final({"A": always_answers, "B": safer}, {"unsafe_answer_max": 0.7},
                         complexity={"A": 1, "B": 2}) == "B"
+
+
+def test_compare_retrieval_paired_recall_difference():
+    from triage.evals.analysis import compare_retrieval
+    gold = {f"q{i}": GoldItem(qid=f"q{i}", text="t", label=Action.ANSWER,
+                              evidence=[Evidence(page_id="p1", heading="h", quote="q" * 40)], missing_detail=None,
+                              reference_answer="r", split="dev", source="agree") for i in range(12)}
+    gold["q12"] = GoldItem(qid="q12", text="t", label=Action.ESCALATE, evidence=[], missing_detail=None,
+                           reference_answer=None, split="dev", source="agree")
+    a = [{"qid": f"q{i}", "retrieved_pages": ["p9"], "judge": {"correct": False}} for i in range(13)]
+    b = [{"qid": f"q{i}", "retrieved_pages": ["p1"] if i < 10 else ["p9"], "judge": {"correct": i < 8}} for i in range(13)]
+    out = compare_retrieval(a, b, gold, k=5, seed=1)
+    assert out["n"] == 12 and out["recall"]["delta"] == pytest.approx(10 / 12)
+    assert out["recall"]["improves"] is True
+    assert out["judged"]["n"] == 12 and out["judged"]["delta"] == pytest.approx(8 / 12)
+
+
+def test_compare_retrieval_no_change_is_not_an_improvement():
+    from triage.evals.analysis import compare_retrieval
+    gold = {f"q{i}": GoldItem(qid=f"q{i}", text="t", label=Action.ANSWER,
+                              evidence=[Evidence(page_id="p1", heading="h", quote="q" * 40)], missing_detail=None,
+                              reference_answer="r", split="dev", source="agree") for i in range(6)}
+    rows = [{"qid": f"q{i}", "retrieved_pages": ["p1"] if i % 2 else ["p9"], "judge": None} for i in range(6)]
+    out = compare_retrieval(rows, list(rows), gold, k=5, seed=1)
+    assert out["recall"]["delta"] == 0 and out["recall"]["improves"] is False and out["judged"] is None

@@ -398,6 +398,38 @@ def _report(_: argparse.Namespace) -> int:
 
 
 register("report", "copy results/ablation.md into the README", _report)
+def _compare(args: argparse.Namespace) -> int:
+    import json
+
+    from triage.config import load_settings
+    from triage.evals.analysis import compare_pair, compare_retrieval
+    from triage.schemas import GoldItem, RunResult
+
+    cfg = load_settings()
+    gold = {g.qid: g for g in (GoldItem.model_validate_json(line)
+                               for line in (cfg.data_dir / "gold" / "gold.jsonl").read_text().splitlines())}
+
+    def rows(run_id: str) -> list[dict]:
+        lines = (cfg.results_dir / "runs" / run_id / "predictions.jsonl").read_text().splitlines()
+        return [r for r in map(json.loads, lines) if r["repeat"] == 0]
+
+    ra, rb = rows(args.a), rows(args.b)
+    mk = lambda rs, rid: RunResult(run_id=rid, config_hash="", split="", predictions=rs, metrics={}, n_errors=0,  # noqa: E731
+                                   cost_per_q=0.0, latency_p50=None)
+    pair = compare_pair(mk(ra, args.a), mk(rb, args.b), seed=cfg.seed)
+    print(f"action macro-F1: delta {pair['delta']:+.3f} CI [{pair['ci'][0]:+.3f}, {pair['ci'][1]:+.3f}] "
+          f"McNemar p={pair['mcnemar_p']:.3f} MDE={pair['mde']:.2f} claim={pair['claim']}")
+    ret = compare_retrieval(ra, rb, gold, k=cfg.k, seed=cfg.seed)
+    r = ret["recall"]
+    print(f"recall@{cfg.k} (n={ret['n']}): delta {r['delta']:+.3f} CI [{r['ci'][0]:+.3f}, {r['ci'][1]:+.3f}] improves={r['improves']}")
+    if ret["judged"]:
+        j = ret["judged"]
+        print(f"judged correctness (n={j['n']}): delta {j['delta']:+.3f} CI [{j['ci'][0]:+.3f}, {j['ci'][1]:+.3f}] improves={j['improves']}")
+    return 0
+
+
+register("compare", "paired comparison of two runs (b minus a)", _compare,
+         lambda p: (p.add_argument("a"), p.add_argument("b")))
 register("smoke", "check models, embeddings and structured output (key day)", _smoke)
 
 

@@ -1,0 +1,22 @@
+{
+ "config": {
+  "policy": "B",
+  "retriever": "vector",
+  "clean_query": false,
+  "k": 5,
+  "system_model": "gpt-5-mini",
+  "prompt": "f5bd9702caea3559e9a614a9f357a1a6938232e9bc6960841d01d5abfc9018cf",
+  "snapshot_hash": "7a14c557956971ae2f4223bda01c746f6e1b0d09caca18509886edfdf58c7556",
+  "index_hash": "35c1824785f3d42932460c200b86f4b6f831ce6aa30c28bef539fa283191df1c",
+  "threshold": null,
+  "seed": 13,
+  "judge_model": "gpt-5.5",
+  "embed_model": "text-embedding-3-small",
+  "gold_hash": "b448623479b437218e8f98e07e2201746d7ea2a9320d98e94c3604fbb88eef51",
+  "synthetic": "none"
+ },
+ "config_hash": "352b1dbfbde417d9dc4a1b8bbd5ca88618c3c571926769b6bca2535406f4b591",
+ "git_commit": "16453799c65c4693767394f64381542c7f9d7e89",
+ "split": "dev",
+ "repeats": 1
+}
