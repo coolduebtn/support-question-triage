@@ -16,6 +16,7 @@ dependencies = [
     "scikit-learn>=1.9.1",
     "scipy>=1.17.1",
     "sentence-transformers>=6.2.0",
+    "streamlit>=1.66.1",
     "tiktoken>=0.14.0",
 ]
 

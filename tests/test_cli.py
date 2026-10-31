@@ -106,3 +106,8 @@ def test_smoke_lists_available_models_when_none_configured(monkeypatch, capsys):
     assert cli.main(["smoke"]) == 2
     out = capsys.readouterr()
     assert "gpt-a" in out.out and "text-embedding-b" in out.out and "whisper" not in out.out
+
+
+def test_ui_subcommand_is_registered():
+    from triage.cli import COMMANDS
+    assert "ui" in COMMANDS and "viewer" in COMMANDS["ui"][0]
