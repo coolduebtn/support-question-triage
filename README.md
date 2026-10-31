@@ -20,6 +20,8 @@ uv run triage label --select    # then follow docs/labelling-protocol.md; evalua
 uv run triage ask "The export is failing."
 ```
 
+**Anthropic key is optional.** The only OpenAI key is required. This project's own runs used a Claude judge (`TRIAGE_JUDGE_MODEL=claude-sonnet-5-5` with `ANTHROPIC_API_KEY`), which keeps the judge from the same vendor as the system model. If `ANTHROPIC_API_KEY` is not set, the judge automatically uses the OpenAI model in `TRIAGE_JUDGE_FALLBACK_MODEL` (for example `gpt-5.4`, which must differ from `TRIAGE_SYSTEM_MODEL`) and prints a note. The judge model is recorded in every run's config, so results always say which judge produced them. Judge scores from different judges are not directly comparable.
+
 Tests (no key needed): `uv run pytest`.
 
 ## Results
