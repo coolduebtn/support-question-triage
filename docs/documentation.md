@@ -7,7 +7,7 @@ ANSWER with citations, CLARIFY with one targeted follow-up, or ESCALATE with the
 improves action macro-F1 and lowers unsafe answers without too many unnecessary follow-ups.
 
 ## 2. Data and ingestion
-- Wiki: Apache OFBiz Confluence space `OFBIZ` via the REST API, one crawl, snapshot hash recorded (README).
+- Wiki: Apache OFBiz Confluence space `OFBIZ` via the REST API, one crawl, snapshot hash recorded (README). Docs: 204 asciidoc pages from the apache/ofbiz-framework GitHub repo (the docs site disallows bots).
 - Chunking: split by heading; each chunk keeps its page title and heading path as a breadcrumb prefix; at most 500 tokens, paragraph-aware.
 - Questions: thread openings from the public user list, PII scrubbed, announcements, CVEs, votes and non-support posts removed, near-duplicates removed, email quotes and signatures stripped for the cleaned form.
 
@@ -23,7 +23,7 @@ missing detail) and retries; C (stretch) is a LangGraph checklist flow with a hu
 results or reduces code.
 
 ## 5. Evaluation methodology
-- Gold: about 75 real questions, split by thread before labelling (30 dev, rest test). LLM-drafted labels from two annotators with verbatim
+- Gold: 97 real questions, split by thread before labelling (40 dev, 57 test), plus 20 synthetic CLARIFY probes reported separately. LLM-drafted labels from two annotators with verbatim
   evidence quotes; code verifies every quote against the frozen wiki; disagreements go to an adjudicator; the owner labels a blind subset first
   and reviews flagged items and an audit sample. Agreement statistics and owner-versus-LLM agreement are reported.
 - Primary metric: action macro-F1 with stratified bootstrap confidence intervals. Also unsafe-answer, over-ask and over-escalation rates,
@@ -34,7 +34,15 @@ results or reduces code.
 [Filled from `results/ablation.md` and `results/final.md` after the real runs. Not written before the runs.]
 
 ## 7. Failure analysis
-[Filled from the README failure log and the error table. Not written before the runs.]
+Failures found so far are in the README failure log (12 entries). The main ones, with causes:
+
+- **CLARIFY is too rare to evaluate firmly** (4 real items). Claims about CLARIFY are indicative only; the synthetic probes add coverage but are not real questions.
+- **Baseline A is unsafe by design** (unsafe-answer 1.00); the threshold A+ halves that but cannot ask for detail.
+- **Retrieval additions are not proven.** Cleaning, BM25 and the reranker each move recall by less than the detectable effect on 15 items; the reranker moved it down.
+- **Judge is stricter than the owner** (11 of 15 agree; all disagreements are false "incorrect").
+- **Spend limit** invalidated two generation rows; they are marked and will be re-run.
+
+The error table and risk-coverage analysis are added after the test runs.
 
 ## 8. Decisions and limitations
 See README (Deviations, Limitations) and `docs/decisions.md`.
