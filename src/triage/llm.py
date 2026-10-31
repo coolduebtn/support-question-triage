@@ -72,7 +72,7 @@ class LLMClient:
     @property
     def backend(self):
         if self._backend is None:
-            self._backend = OpenAIBackend()
+            self._backend = backend_for(self.model)
         return self._backend
 
     def _path(self, key: str) -> Path:
@@ -128,6 +128,15 @@ class LLMClient:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({"vectors": vectors}))
         return vectors
+
+
+def backend_for(model: str, client=None):
+    """Claude models go to the Anthropic backend; everything else to OpenAI."""
+    if model.startswith("claude"):
+        from triage.llm_anthropic import AnthropicBackend
+
+        return AnthropicBackend(client=client)
+    return OpenAIBackend()
 
 
 class FakeLLM:

@@ -4702,6 +4702,7 @@ name = "triage"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "anthropic" },
     { name = "beautifulsoup4" },
     { name = "bm25s" },
     { name = "chromadb" },
@@ -4725,6 +4726,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "anthropic", specifier = ">=2.3.0" },
     { name = "beautifulsoup4", specifier = ">=4.15.0" },
     { name = "bm25s", specifier = ">=0.3.16" },
     { name = "chromadb", specifier = ">=1.5.9" },

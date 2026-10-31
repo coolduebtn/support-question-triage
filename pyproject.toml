@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Support question triage: answer, clarify or escalate"
 requires-python = ">=3.11"
 dependencies = [
+    "anthropic>=2.3.0",
     "beautifulsoup4>=4.15.0",
     "bm25s>=0.3.16",
     "chromadb>=1.5.9",

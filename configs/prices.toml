@@ -16,3 +16,10 @@ output_per_m = 8.00
 input_per_m = 0.02
 output_per_m = 0.0
 embed_per_m = 0.02
+# Claude prices: Anthropic first-party rates (claude-api reference, cached 2026-10-06). Re-check before final cost claims.
+[models."claude-opus-5-5"]
+input_per_m = 4.00
+output_per_m = 20.00
+[models."claude-sonnet-5-5"]
+input_per_m = 2.00
+output_per_m = 10.00
