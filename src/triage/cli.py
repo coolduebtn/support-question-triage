@@ -479,7 +479,8 @@ def _judge(args: argparse.Namespace) -> int:
         for run_id in reversed(args.runs):  # earlier arguments win
             for line in (cfg.results_dir / "runs" / run_id / "predictions.jsonl").read_text().splitlines():
                 row = json.loads(line)
-                merged[row["qid"]] = row
+                if row["pred"] == "answer" and row.get("draft"):
+                    merged[row["qid"]] = row
         items = build_validation_items(list(merged.values()), gold, n_real=args.n, n_mismatched=args.mismatched, seed=cfg.seed)
         items_file.write_text(json.dumps(items))
         write_validation_sheet(items, sheet)
