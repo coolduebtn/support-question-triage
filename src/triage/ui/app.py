@@ -187,10 +187,10 @@ def live_tab():
 
 def main():
     st.title("Support Question Triage")
-    st.caption("For each support question: ANSWER with citations, CLARIFY with one question, or ESCALATE to a human.\n\n"
-               "**A** is plain RAG.\n\n"
-               "**A+** adds a similarity threshold.\n\n"
-               "**B** is a typed LLM decision.\n\n"
+    st.caption("For each support question: ANSWER with citations, CLARIFY with one question, or ESCALATE to a human.  \n"
+               "**A** is plain RAG.  \n"
+               "**A+** adds a similarity threshold.  \n"
+               "**B** is a typed LLM decision.  \n"
                "Everything below is replayed from saved runs.")
     split = st.sidebar.selectbox("Question set", ["dev", "test"])
     b = bundle(str(ROOT), split)
