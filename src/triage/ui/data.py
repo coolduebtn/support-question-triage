@@ -5,7 +5,7 @@ from pathlib import Path
 
 from triage.clean import clean_email
 from triage.evals.analysis import cause_hint, risk_coverage
-from triage.schemas import GoldItem, RunResult
+from triage.schemas import GoldItem, RunResult, canonical_page_id
 
 APPROACHES = {
     ("A", "vector", False): "A",
@@ -56,7 +56,7 @@ class Bundle:
         return clean_email(self._text.get(qid) or self._gold.get(qid, {}).get("text_raw", ""))
 
     def expected_pages(self, qid: str) -> list[str]:
-        return list(dict.fromkeys(e["page_id"] for e in self._gold.get(qid, {}).get("evidence", [])))
+        return list(dict.fromkeys(canonical_page_id(e["page_id"]) for e in self._gold.get(qid, {}).get("evidence", [])))
 
     def reference_answer(self, qid: str) -> str | None:
         return self._gold.get(qid, {}).get("reference_answer")
@@ -64,7 +64,7 @@ class Bundle:
     def retrieval_rows(self) -> list[dict]:
         """Page-level hit, recall and MRR of each retrieval variant (policy A) on the answerable questions."""
         order = ["A", "A + cleaning", "A + hybrid", "A + reranker"]
-        items = {q: [e["page_id"] for e in g["evidence"]] for q, g in self._gold.items()
+        items = {q: [canonical_page_id(e["page_id"]) for e in g["evidence"]] for q, g in self._gold.items()
                  if g["label"] == "answer" and g.get("evidence")}
         out = []
         for label in order:

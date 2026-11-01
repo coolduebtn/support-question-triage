@@ -35,3 +35,12 @@ def test_load_settings_reads_env(monkeypatch):
     assert s.system_model == "x"
     assert s.contact == "me@example.org"
     assert s.k == 5 and s.seed == 13
+
+
+def test_evidence_page_id_is_canonical_even_when_a_chunk_id_was_stored():
+    from triage.schemas import Evidence
+
+    assert Evidence(page_id="184617942-7", heading="h", quote="q").page_id == "184617942"
+    assert Evidence(page_id="doc:framework/x/y.adoc-0", heading="h", quote="q").page_id == "doc:framework/x/y.adoc"
+    assert Evidence(page_id="184617942", heading="h", quote="q").page_id == "184617942"
+    assert Evidence(page_id="doc:framework/x/y.adoc", heading="h", quote="q").page_id == "doc:framework/x/y.adoc"

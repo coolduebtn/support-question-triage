@@ -1,7 +1,8 @@
+import re
 from enum import StrEnum
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class Action(StrEnum):
@@ -68,10 +69,21 @@ class Decision(BaseModel):
     cached: bool = False
 
 
+def canonical_page_id(page_id: str) -> str:
+    """Annotators sometimes cited a chunk id (`<page_id>-<n>`) where a page id was expected. Page ids never end in
+    `-<digits>` (wiki ids are numeric, doc ids end in `.adoc`), so a trailing `-<digits>` is a chunk suffix."""
+    return re.sub(r"-\d+$", "", page_id)
+
+
 class Evidence(BaseModel):
     page_id: str
     heading: str
     quote: str
+
+    @field_validator("page_id")
+    @classmethod
+    def _page_not_chunk(cls, v: str) -> str:
+        return canonical_page_id(v)
 
 
 class Annotation(BaseModel):

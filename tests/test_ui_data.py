@@ -119,3 +119,11 @@ def test_explain_failure_gives_a_plain_reason(stderr, expected):
     from triage.ui.data import explain_failure
 
     assert expected in explain_failure(stderr)
+
+
+def test_ui_scores_retrieval_with_canonical_page_ids_when_gold_stored_a_chunk_id(tree):
+    res, data = tree
+    write_run(res, "20261031-140000-hhhh-dev", "A", preds=[pred("q1", "answer", "answer", retrieved_pages=["p1"])])
+    (data / "gold" / "gold.jsonl").write_text(json.dumps(_gold_row("q1", "answer", ["p1-3"])) + "\n")
+    b = load_bundle(res, data, "dev")
+    assert b.retrieval_rows()[0]["recall"] == 1.0 and b.expected_pages("q1") == ["p1"]
