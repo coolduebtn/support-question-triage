@@ -201,7 +201,7 @@ def main():
         st.info("The test set is scored once per approach. Where an approach was run several times (B, three repeats), "
                 "only the first repeat is shown here.")
     st.sidebar.markdown("Runs shown (latest per approach)")
-    st.sidebar.caption("\n".join(f"{a}: {r}" for a, r in b.run_ids.items()))
+    st.sidebar.caption("  \n".join(f"**{a}**: {r}" for a, r in b.run_ids.items()))
     t1, t2, t3, t4 = st.tabs(["Compare on a question", "Scoreboard", "Where it fails", "Try your own"])
     with t1:
         compare_tab(b)
