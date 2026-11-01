@@ -234,8 +234,9 @@ def method_tab():
                 "**Selection rule.** Written down before the test run. The best dev macro-F1 wins among approaches "
                 "inside the limits for over-asking, over-escalation, unsafe answers and cost. "
                 "Ties inside the minimum detectable effect go to the simpler system.  \n"
-                "**LLM judge.** Scores answer correctness and citation support. It agreed with 10 of 15 owner grades, "
-                "so it is a rough signal, not ground truth.")
+                "**LLM judge.** Scores answer correctness and citation support. It is a Claude model, while the system "
+                "that writes the answers is an OpenAI model, so the judge does not grade its own family. "
+                "It agreed with 10 of 15 owner grades, so it is a rough signal, not ground truth.")
 
 
 def live_tab():
