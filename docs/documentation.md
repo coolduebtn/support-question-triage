@@ -217,7 +217,7 @@ answers (answered an ESCALATE item), 4 missed ambiguities (answered a CLARIFY it
 **Why hybrid search and the reranker showed no gain.** Plain vector search with cleaning already has a gold page in its top 5 for 14 of 15 answerable dev
 questions (ranked first for 12), and hybrid raises that to 15 of 15, a single question, which leaves little room to improve. Hybrid's recall gain over cleaning (+0.067) is two questions improving and one getting worse. The
 gold evidence was found by annotators using the union of vector and BM25 top results plus a keyword search, which favours pages those retrievers
-already surface. The reranker (MiniLM) was trained on short web queries, while these questions are long emails, and it pushed gold pages out of the top 5 on three questions (hit@5 fell from 1.00 to 0.87).
+already surface. The reranker (MiniLM) was trained on short web queries, while these questions are long emails, and it pushed the gold pages out of the top 5 on two questions (hit@5 fell from 1.00 to 0.87).
 That explanation fits the numbers but was not tested separately. Nothing was tuned to force a gain.
 
 ## 9. Limitations and threats to validity
