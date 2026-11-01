@@ -46,3 +46,24 @@ def test_test_split_notes_that_only_the_first_repeat_is_shown(tree, monkeypatch)
     at = AppTest.from_file(APP, default_timeout=30).run()
     at.sidebar.selectbox[0].select("test").run()
     assert not at.exception and any("first repeat" in i.value for i in at.info)
+
+
+def test_try_your_own_runs_ask_and_shows_its_output(tree, monkeypatch):
+    import subprocess
+    from types import SimpleNamespace
+
+    seen = {}
+
+    def fake_run(cmd, **kw):
+        seen["cmd"] = cmd
+        return SimpleNamespace(stdout="ACTION: ESCALATE\nREASON: test", stderr="")
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+    res, data = tree
+    monkeypatch.chdir(res.parent)
+    at = AppTest.from_file(APP, default_timeout=30).run()
+    at.text_area[0].input("The export is failing.").run()
+    at.button[0].click().run()
+    assert not at.exception
+    assert seen["cmd"][-3:-1] == ["triage.cli", "ask"] and seen["cmd"][-1] == "The export is failing."
+    assert any("ACTION: ESCALATE" in c.value for c in at.code)

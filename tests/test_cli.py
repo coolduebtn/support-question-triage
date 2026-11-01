@@ -122,3 +122,12 @@ def test_eval_accepts_an_explicit_test_rerun_flag():
     _eval_args(p)
     assert p.parse_args(["--policy", "A"]).allow_test_rerun is False
     assert p.parse_args(["--policy", "A", "--allow-test-rerun"]).allow_test_rerun is True
+
+
+def test_python_dash_m_cli_actually_runs_the_command():
+    """The Streamlit 'Try your own' tab calls `python -m triage.cli ask ...`; it must not be a silent no-op."""
+    import subprocess
+    import sys
+
+    r = subprocess.run([sys.executable, "-m", "triage.cli", "ask", "   "], capture_output=True, text=True, timeout=60)
+    assert r.returncode == 0 and r.stdout.strip()

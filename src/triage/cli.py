@@ -546,3 +546,7 @@ def _ui(args: argparse.Namespace) -> int:
 
 register("ui", "open the Streamlit viewer of saved runs (no API key needed)", _ui,
          lambda p: p.add_argument("--port", type=int, default=8501))
+
+
+if __name__ == "__main__":
+    entry()
