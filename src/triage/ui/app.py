@@ -174,6 +174,46 @@ def failures_tab(b):
             st.markdown("**Why it chose that:** " + (r["reason"] or r.get("error") or "-"))
 
 
+METHOD_DIAGRAM = """
+digraph G {
+  rankdir=LR; bgcolor="transparent"; nodesep=0.25; ranksep=0.4;
+  node [shape=box, style="rounded,filled", fillcolor="#eef2f7", color="#8a97a8", fontname="Helvetica", fontsize=11, margin="0.12,0.07"];
+  edge [color="#8a97a8", arrowsize=0.7];
+  data [label="Data\\n5,397 chunks (wiki + docs)\\n259 mailing-list threads"];
+  gold [label="Gold set: 117 questions\\nANSWER / CLARIFY / ESCALATE\\n(LLM-drafted, mechanically checked,\\nowner-graded blind subset)"];
+  dev [label="Dev: 52\\ntune thresholds,\\nchoose approach", fillcolor="#e3f1e6"];
+  test [label="Test: 65\\nheld out, run once\\n(B three times)", fillcolor="#fbe9d5"];
+  ladder [label="Retrieval ladder (dev)\\nvector, + cleaning, + BM25, + reranker\\nkeep a step only if the paired\\nbootstrap interval excludes zero"];
+  appr [label="Approaches\\nA plain RAG\\nA+ similarity threshold\\nB typed LLM decision"];
+  sel [label="Selection rule\\nfixed before the test run:\\nmacro-F1, unsafe-answer, cost cap,\\nties go to the simpler system"];
+  final [label="Selected: B\\nscored on test", fillcolor="#fbe9d5"];
+  data -> gold -> dev; gold -> test;
+  dev -> ladder -> appr -> sel -> final; test -> final;
+}
+"""
+
+
+def method_tab():
+    st.markdown("### How it was tested")
+    st.graphviz_chart(METHOD_DIAGRAM, width="stretch")
+    st.markdown("**Gold set.** 117 questions, each labelled ANSWER, CLARIFY or ESCALATE. Two LLMs drafted the labels, "
+                "a script checked them against the source pages, and a third model adjudicated disagreements. "
+                "The owner graded a blind subset. 20 CLARIFY questions are constructed, because real ones are rare "
+                "(4 of 97), and they are flagged in the data.  \n"
+                "**Dev and test.** Thresholds and the choice of approach come from the 52 dev questions. "
+                "The 65 test questions are scored once per approach, and B three times.  \n"
+                "**Approaches.** A always answers from retrieved pages. A+ escalates when the best similarity is below "
+                "a dev-tuned threshold. B makes a typed decision (answer with citations, one follow-up, or escalate) "
+                "and its output is validated.  \n"
+                "**Retrieval ladder.** Email cleaning, BM25 hybrid search and a reranker were each added and scored. "
+                "None passed the keep rule, so every approach uses plain vector search.  \n"
+                "**Selection rule.** Written down before the test run. The best dev macro-F1 wins among approaches "
+                "inside the limits for over-asking, over-escalation, unsafe answers and cost. "
+                "Ties inside the minimum detectable effect go to the simpler system.  \n"
+                "**LLM judge.** Scores answer correctness and citation support. It agreed with 10 of 15 owner grades, "
+                "so it is a rough signal, not ground truth.")
+
+
 def live_tab():
     st.write("Triage a new question with approach B. This calls the model API, so it needs an OpenAI key and a built "
              "search index. About $0.003 per question and 10 to 15 seconds.")
@@ -210,7 +250,10 @@ def main():
                 "only the first repeat is shown here.")
     st.sidebar.markdown("Runs shown (latest per approach)")
     st.sidebar.caption("  \n".join(f"**{a}**: {r}" for a, r in b.run_ids.items()))
-    t1, t2, t3, t4 = st.tabs(["Compare on a question", "Scoreboard", "Where it fails", "Try your own"])
+    t0, t1, t2, t3, t4 = st.tabs(["How it was tested", "Compare on a question", "Scoreboard", "Where it fails",
+                                   "Try your own"])
+    with t0:
+        method_tab()
     with t1:
         compare_tab(b)
     with t2:
