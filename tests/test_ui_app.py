@@ -48,6 +48,12 @@ def test_test_split_notes_that_only_the_first_repeat_is_shown(tree, monkeypatch)
     assert not at.exception and any("first repeat" in i.value for i in at.info)
 
 
+def _ready_for_live(monkeypatch, res):
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    (res.parent / "data" / "index" / "chroma").mkdir(parents=True)
+    monkeypatch.chdir(res.parent)
+
+
 def test_try_your_own_runs_ask_and_shows_its_output(tree, monkeypatch):
     import subprocess
     from types import SimpleNamespace
@@ -60,10 +66,36 @@ def test_try_your_own_runs_ask_and_shows_its_output(tree, monkeypatch):
 
     monkeypatch.setattr(subprocess, "run", fake_run)
     res, data = tree
-    monkeypatch.chdir(res.parent)
+    _ready_for_live(monkeypatch, res)
     at = AppTest.from_file(APP, default_timeout=30).run()
     at.text_area[0].input("The export is failing.").run()
     at.button[0].click().run()
     assert not at.exception
     assert seen["cmd"][-3:-1] == ["triage.cli", "ask"] and seen["cmd"][-1] == "The export is failing."
     assert any("ACTION: ESCALATE" in c.value for c in at.code)
+
+
+def test_try_your_own_explains_a_missing_key_and_disables_the_button(tree, monkeypatch):
+    res, data = tree
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.chdir(res.parent)
+    at = AppTest.from_file(APP, default_timeout=30).run()
+    at.text_area[0].input("The export is failing.").run()
+    assert not at.exception
+    assert any("OPENAI_API_KEY" in w.value and "none was found" in w.value for w in at.warning)
+    assert at.button[0].disabled
+
+
+def test_try_your_own_explains_a_failed_call_in_plain_words(tree, monkeypatch):
+    import subprocess
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(subprocess, "run", lambda cmd, **kw: SimpleNamespace(
+        returncode=1, stdout="", stderr="openai.RateLimitError: Error code: 429 insufficient_quota"))
+    res, data = tree
+    _ready_for_live(monkeypatch, res)
+    at = AppTest.from_file(APP, default_timeout=30).run()
+    at.text_area[0].input("The export is failing.").run()
+    at.button[0].click().run()
+    assert not at.exception
+    assert any("spend limit" in e.value for e in at.error)

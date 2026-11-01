@@ -83,3 +83,39 @@ def test_cause_hint_names_why_a_prediction_is_wrong(tree):
         + json.dumps({**_gold_row("q2", "clarify"), "text": "t", "split": "dev", "source": "agree", "reference_answer": None, "missing_detail": None}) + "\n")
     b = load_bundle(res, data, "dev")
     assert b.cause("B", "q1") == "retrieval_miss" and b.cause("B", "q2") == "missed_ambiguity"
+
+
+def test_live_problem_names_the_missing_key_then_the_missing_index(tmp_path, monkeypatch):
+    from triage.ui.data import live_problem
+
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.setenv("TRIAGE_NO_DOTENV", "1")
+    assert "OPENAI_API_KEY" in live_problem(tmp_path)
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    assert "triage ingest --index" in live_problem(tmp_path)
+    (tmp_path / "data" / "index" / "chroma").mkdir(parents=True)
+    assert live_problem(tmp_path) is None
+
+
+def test_live_problem_accepts_a_key_that_is_only_in_the_env_file(tmp_path, monkeypatch):
+    from triage.ui.data import live_problem
+
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("TRIAGE_NO_DOTENV", raising=False)
+    (tmp_path / "data" / "index" / "chroma").mkdir(parents=True)
+    (tmp_path / ".env").write_text("OPENAI_API_KEY=\n")                      # empty value does not count
+    assert "OPENAI_API_KEY" in live_problem(tmp_path)
+    (tmp_path / ".env").write_text("# note\nOPENAI_API_KEY=sk-from-file\n")
+    assert live_problem(tmp_path) is None
+
+
+@pytest.mark.parametrize("stderr,expected", [
+    ("openai.RateLimitError: Error code: 429 insufficient_quota", "spend limit"),
+    ("openai.AuthenticationError: 401 Incorrect API key provided", "rejected the API key"),
+    ("set OPENAI_API_KEY (cohort key) for this command", "OPENAI_API_KEY"),
+    ("Traceback ... something odd", "Details below"),
+])
+def test_explain_failure_gives_a_plain_reason(stderr, expected):
+    from triage.ui.data import explain_failure
+
+    assert expected in explain_failure(stderr)

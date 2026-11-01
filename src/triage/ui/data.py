@@ -1,4 +1,5 @@
 import json
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -115,3 +116,40 @@ def load_bundle(results_dir: Path, data_dir: Path, split: str = "dev") -> Bundle
     b._pages = {c["page_id"]: (c["page_title"], c["url"]) for c in _jsonl(Path(data_dir) / "index" / "chunks.jsonl")}
     b._gold = {g["qid"]: g for g in _jsonl(Path(data_dir) / "gold" / "gold.jsonl")}
     return b
+
+
+def _key_in_env_file(path: Path) -> bool:
+    if not path.exists():
+        return False
+    for line in path.read_text().splitlines():
+        name, _, value = line.partition("=")
+        if name.strip() == "OPENAI_API_KEY" and value.strip().strip("\"'"):
+            return True
+    return False
+
+
+def live_problem(root: Path) -> str | None:
+    """Why the 'Try your own' tab cannot run yet, in words a reviewer can act on; None when it can."""
+    root = Path(root)
+    has_key = bool(os.environ.get("OPENAI_API_KEY")) or (
+        not os.environ.get("TRIAGE_NO_DOTENV") and _key_in_env_file(root / ".env"))
+    if not has_key:
+        return ("This tab needs an OpenAI API key, and none was found. Add a line `OPENAI_API_KEY=...` to a `.env` file "
+                "in the project folder (keep it private and never commit it), then reload the page. "
+                "Every other tab works without a key.")
+    if not (root / "data" / "index" / "chroma").exists():
+        return ("The documentation search index has not been built yet. Run `uv run triage ingest --index` "
+                "(it needs the documentation snapshot), then reload the page.")
+    return None
+
+
+def explain_failure(stderr: str) -> str:
+    """A plain-language reason for a failed `triage ask`, from its error output."""
+    low = (stderr or "").lower()
+    if "429" in low or "ratelimit" in low or "insufficient_quota" in low or "spend limit" in low:
+        return "OpenAI refused the request because the key's rate or spend limit was reached. Wait a moment or raise the limit, then try again."
+    if "401" in low or "incorrect api key" in low or "authentication" in low:
+        return "OpenAI rejected the API key. Check the value of OPENAI_API_KEY in your .env file."
+    if "openai_api_key" in low:
+        return "No OpenAI API key was available to the command. Add OPENAI_API_KEY to your .env file."
+    return "The triage command failed. Details below."

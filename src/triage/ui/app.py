@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from triage.ui.data import load_bundle, verdict
+from triage.ui.data import explain_failure, live_problem, load_bundle, verdict
 
 ROOT = Path.cwd()
 CORE = ["A", "A+", "B"]
@@ -175,14 +175,22 @@ def failures_tab(b):
 
 
 def live_tab():
-    st.write("Triage a new question with approach B. This calls the model API, so it needs a working key "
-             "and a built index (`triage ingest --index`).")
+    st.write("Triage a new question with approach B. This calls the model API, so it needs an OpenAI key and a built "
+             "search index. About $0.003 per question and 10 to 15 seconds.")
+    problem = live_problem(ROOT)
+    if problem:
+        st.warning(problem)
     text = st.text_area("Support question", height=140)
-    if st.button("Triage it", disabled=not text.strip()):
+    if st.button("Triage it", disabled=bool(problem) or not text.strip()):
         with st.spinner("Retrieving and deciding..."):
             r = subprocess.run([sys.executable, "-m", "triage.cli", "ask", text], capture_output=True, text=True,
                                cwd=ROOT)
-        st.code(r.stdout or r.stderr or "(no output)")
+        if getattr(r, "returncode", 0) != 0:
+            st.error(explain_failure(r.stderr))
+            with st.expander("Details"):
+                st.code(r.stderr or "(no output)")
+        else:
+            st.code(r.stdout or r.stderr or "(no output)")
 
 
 def main():
