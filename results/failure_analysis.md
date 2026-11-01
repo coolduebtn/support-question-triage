@@ -1,71 +1,75 @@
-# Failure analysis (dev split, saved runs, no API calls)
+# Failure analysis (test split, saved runs, no API calls)
 
-Runs: A `20261101-162652-caa31fb7-dev`, A+ `20261101-162655-dbb65c21-dev`, B `20261101-163031-a0ce2387-dev`
+Runs: A `20261101-172648-caa31fb7-test`, A+ `20261101-172650-dbb65c21-test`, B `20261101-181034-a0ce2387-test`
 
 
 ## A: what it predicted for each correct action
 
 | correct \ predicted | answer | clarify | escalate | error |
 |---|---|---|---|---|
-| answer | 15 | 0 | 0 | 0 |
-| clarify | 13 | 0 | 0 | 0 |
-| escalate | 24 | 0 | 0 | 0 |
+| answer | 13 | 0 | 0 | 0 |
+| clarify | 11 | 0 | 0 | 0 |
+| escalate | 41 | 0 | 0 | 0 |
 
 ## A+: what it predicted for each correct action
 
 | correct \ predicted | answer | clarify | escalate | error |
 |---|---|---|---|---|
-| answer | 9 | 0 | 6 | 0 |
-| clarify | 4 | 0 | 9 | 0 |
-| escalate | 13 | 0 | 11 | 0 |
+| answer | 5 | 0 | 8 | 0 |
+| clarify | 2 | 0 | 9 | 0 |
+| escalate | 11 | 0 | 30 | 0 |
 
 ## B: what it predicted for each correct action
 
 | correct \ predicted | answer | clarify | escalate | error |
 |---|---|---|---|---|
-| answer | 12 | 0 | 3 | 0 |
-| clarify | 7 | 5 | 1 | 0 |
-| escalate | 4 | 1 | 19 | 0 |
+| answer | 8 | 2 | 3 | 0 |
+| clarify | 4 | 6 | 1 | 0 |
+| escalate | 6 | 4 | 31 | 0 |
 
 ## Per-class recall (share of items of that class the approach got right)
 
 | approach | answer | escalate | clarify (all) | clarify, real | clarify, constructed |
 |---|---|---|---|---|---|
-| A | 15 of 15 | 0 of 24 | 0 of 13 | 0 of 1 | 0 of 12 |
-| A+ | 9 of 15 | 11 of 24 | 0 of 13 | 0 of 1 | 0 of 12 |
-| B | 12 of 15 | 19 of 24 | 5 of 13 | 1 of 1 | 4 of 12 |
+| A | 13 of 13 | 0 of 41 | 0 of 11 | 0 of 3 | 0 of 8 |
+| A+ | 5 of 13 | 30 of 41 | 0 of 11 | 0 of 3 | 0 of 8 |
+| B | 8 of 13 | 31 of 41 | 6 of 11 | 2 of 3 | 4 of 8 |
 
-## B: 16 wrong of 52, by automatic cause hint
+## B: 20 wrong of 65, by automatic cause hint
 
 | cause hint | count |
 |---|---|
-| missed_ambiguity | 7 |
-| unsafe_answer | 4 |
-| class_boundary | 3 |
-| retrieval_miss | 2 |
+| class_boundary | 7 |
+| unsafe_answer | 6 |
+| missed_ambiguity | 4 |
+| retrieval_miss | 3 |
 
 Hints are automatic (retrieval_miss = no gold page in the retrieved pages; missed_ambiguity = answered a CLARIFY item; unsafe_answer = answered an ESCALATE item; class_boundary = any other mismatch). Confirm or correct them by reading the rows.
 
 | qid | correct | predicted | hint | question | why B chose that |
 |---|---|---|---|---|---|
-| q_4rlrf487n0 | answer | escalate | class_boundary | OFBiz Sanity Test Documentation for Order Entry and Fulfillment  Hello Devs,  I am currently working on creati | The provided excerpts are high-level checklist entries and do not contain the detailed steps, expected results, field names, or business rul |
-| q_60ochoozmt | escalate | answer | unsafe_answer | security issue: democustomer can edit login info of admin  hi ofbiz users,  I can repeatedly reproduce the iss | Documentation contains guidance showing this is expected with demo data and how to secure/mitigate (change or disable demo accounts, use Par |
-| q_cxzozcvz1n-probe | clarify | answer | missed_ambiguity | Sanity check: OFBiz as a 3PL WMS  Hi all,  I've configured OFBiz as the WMS for a 3PL:  To stop OFBiz from bil | Documentation excerpts contain guidance on both suppressing order-to-cash and the tenancy model for 3PL use. |
-| q_d8nv7zb2s2 | escalate | answer | unsafe_answer | Core Apache OFBiz Manufacturing Workflow Diagrams  Hello everyone,  I'd like to highlight a valuable contribut | Excerpts include wiki pages that document manufacturing workflows, diagrams, and related demo data and tools. |
-| q_drjvjlxn5c | answer | escalate | retrieval_miss | 回复：Re: ofibz causes system extremely slow after one night  hi [name],  You mean framework\base\config\cache.pr | The provided excerpts do not document cache.properties or how to comment/increase cache settings; they therefore don't cover whether to edit |
-| q_hg8vzp02nh | escalate | answer | unsafe_answer | 回复：Re: how to enable login account  hi [name],  Thanks for your reply, again.  Yes, I have read various docs,  | The excerpts explain how to enable a user by assigning security groups via the Party application and describe demo/seed data and default dem |
-| q_hhbljjy6mb | escalate | answer | unsafe_answer | Request for Guidance: Importing Aggregated POS Sales and Financial Transactions into OFBiz  Dear OFBiz Communi | Excerpts provide relevant guidance for inventory issuance and for importing/handling financial transactions (FinAccount / bank statement app |
-| q_mffxrrfxtr-probe | clarify | answer | missed_ambiguity | Hi,      I am new to ofbiz. Can someone please point to the resources that would be helpful in migrating ofbiz | Excerpts contain links and pages relevant to migrating/upgrading OFBiz (Getting Started, tutorials for versions, and Technical Documentation |
-| q_nhl71rlpt0 | escalate | clarify | class_boundary | Maximum concurent users in real OFBiz production system  Hi all, Are there any measurements, how many users ca | Documentation indicates performance depends on customizations and hardware and gives page‑hits rule‑of‑thumb, but does not state a maximum c |
-| q_o5yxnf1txb | answer | escalate | retrieval_miss | Use of the grid widget  Good morning everyone  I've been trying to use the grid widget and have some questions | The provided excerpts do not include documentation or examples explaining how to configure or use the grid widget, the significance of list- |
-| q_o5yxnf1txb-probe | clarify | escalate | class_boundary | Use of the grid widget  Good morning everyone  I've been trying to use the grid widget and have some questions | The provided excerpts do not document the OFBiz grid widget attributes (e.g. paginate-target, list-name) or how pagination is wired to the s |
-| q_oo7p41fj1x-probe | clarify | answer | missed_ambiguity | Hello Team,  Greetings!  I knew how to enable webservices. Does Ofbiz exposes API ootb? If yes, Can you share  | Provided excerpts show OFBiz exposes services and includes a REST API component with Swagger docs. |
-| q_rqgw8xtl5z-probe | clarify | answer | missed_ambiguity | Hello Community,  Would you please share a data example if you have one or point to where in the code I can un | Documentation excerpts include example data files and where to find code that loads/displays them. |
-| q_rwmckbb73n-probe | clarify | answer | missed_ambiguity | I have a few questions about executing services in async mode.  1. Is there a thread pool that limits number o | The provided excerpts describe the job scheduler's thread pool and its configurable attributes, which answer both questions. |
-| q_vxf0nt2czh-probe | clarify | answer | missed_ambiguity | How to manage a project  Hi,  I would like to use OFBiz for project management.  If a kind of project exists,  | Documentation excerpts include the Project Management application description and where to find its code and development resources. |
-| q_ykg9fnkg3z-probe | clarify | answer | missed_ambiguity | Custom component does not show up on the menu on a multi tenant setup  Hi All  I am very new to Ofbiz. I have  | The excerpts show how components must be assigned/loaded per-tenant and how seed/security data must be installed; they contain the steps nee |
+| q_17pwk6swl9 | escalate | clarify | class_boundary | Proof of Concept: Modern Angular/Flutter Frontends & REST API Plugin for OFBiz  Hi everyone,  For anyone looki | The provided excerpts discuss modern UIs, REST services and demo/seed data, but they do not state which OFBiz version or environment you are |
+| q_2vhtsxh077 | answer | clarify | retrieval_miss | Invoice Date  Hello Community,  Why does the user interface not allow editing the invoice due date? | Documentation shows the Invoice Header screen can update the Due Date, but the reports/screens also mention possible bugs; the excerpts do n |
+| q_2vhtsxh077-probe | clarify | answer | missed_ambiguity | Hello Community,  Why does the user interface not allow editing the invoice ? | The provided excerpts explain which invoice/header/item fields are editable, that some item fields cannot be changed and must be removed/rec |
+| q_5sq19gm80v | answer | clarify | class_boundary | how to upgrade ofbiz  Hi,  How does one upgrade OFBiz from one release to the other?  Do you clone the repo an | Docs show different update steps and tips for SVN vs Git and mention repository-update commands; I need to know which VCS you use to give th |
+| q_7y2tgjclf9 | escalate | answer | unsafe_answer | Issue in OFBiz Demo – "User Authorization Required for executeMrp"  Dear OFBiz Development Team,  I hope you a | Excerpts provide general troubleshooting steps to fix missing permission errors and how to edit user security groups/permissions in OFBiz de |
+| q_bxqrcfdtvd | answer | escalate | class_boundary | Invoice status to Paid without actual paymet  Hello Community,  Creating a sales order with COD payment method | The provided excerpts do not explain how an invoice can be marked 'paid' while its associated payment remains 'not paid' (no description of  |
+| q_fy79lk14np-probe | clarify | escalate | class_boundary | Confused about service  Hello Community,  In the subject service, there's the following comment and line of co | The provided excerpts do not document the mini-language <set> element or the specific mapping/semantics you’re asking about (why a value is  |
+| q_g92sgt6j3m-probe | clarify | answer | missed_ambiguity | What is the difference between and  Hello Community,  Would you please shed some light on this? | Excerpts contain a direct comparison of services vs events. |
+| q_hjx80n7kb9 | escalate | clarify | class_boundary | Build failure at test task on Apache Ofbiz 18.12.16 setup  Hi,  I am using JDK 17, with gradle wrapper gradle- | The provided docs indicate tests require test data/delegator setup (must run 'gradlew loadDefault' before running integration tests) and men |
+| q_hz0ohskd9k | escalate | clarify | class_boundary | Subject: Help Needed: Unable to Create Commission Run in Accounting Module (OFBiz 18.12.19)  Dear OFBiz Commun | The provided excerpts hint that billing/commission processing is gated on sales types and reference 'find sales invoice for commission run', |
+| q_k0hc0j41cs | escalate | answer | unsafe_answer | Performance scale up Thread  Dear All, related to performance scale up thread wanted to share one observation  | Excerpts provide profiling guidance and heap/GC tuning recommendations sufficient to answer both questions. |
+| q_k6jyqq3y6s | escalate | clarify | class_boundary | Demos down  Hi,  I don't know why and don't have time to check, sorry  [name] | The provided excerpts cover demo setup and demo data but to apply them I need to know which environment is affected (public demo servers vs  |
+| q_l3fdh8zwy5 | escalate | answer | unsafe_answer | Sender Party and Receiver Party bank details in entity Payment  Hi all, I want to understand how entities: pay | Excerpts show where bank details are stored and how payment method maps to company account. |
+| q_m7g9qjsjz5 | clarify | answer | missed_ambiguity | Unable to Complete Order  Hello Comunity, I want to complete an order in the store I created.  In the existing | Excerpts describe QuickShip prerequisites and the Warehouse Fulfillment path which explain the likely causes and next steps. |
+| q_pfp4odqbyb | escalate | answer | unsafe_answer | Problem in running the projest for the first time  Hi Community,  I downloaded 24.09.01 and running "gradle cl | OFBiz documentation instructs to use the project Gradle wrapper (gradlew) rather than a system-installed Gradle; that directly addresses the |
+| q_rfbj6762c9 | answer | escalate | retrieval_miss | Request for Guidance on Upgrading Customized Apache OFBiz 16 to 18.12.12  Dear Apache OFBiz Team,  Hope this e | The provided excerpts are high-level overviews and release tutorial introductions; they do not include any upgrade or migration procedures,  |
+| q_sl8j4qzttd | answer | escalate | retrieval_miss | Negative stock caused by transfer entry errors - root cause and fixes?  Hi all,  We're seeing negative stock b | The provided excerpts do not contain procedural details or documented services to correct negative stock, nor do they describe transfer-entr |
+| q_sl8j4qzttd-probe | clarify | answer | missed_ambiguity | Negative stock caused by transfer entry errors - root cause and fixes?  Hi all,  We're seeing negative stock b | Excerpts cover variance/adjustment mechanism, inventory mover/cycle counts, and warehouse stock-move controls needed to answer. |
+| q_t8p3f9dgxw | escalate | answer | unsafe_answer | GOing to FOSDEM - any OFBiz devs/users that would like to meet?  Hello,  I'm going to FOSDEM. I would like to  | Documentation shows community meetup practice and gives channels to reach OFBiz users/devs. |
+| q_z54voxyz1x | escalate | answer | unsafe_answer | Cost Centers functionality  Hi all,In the system (e.g., the demo trunk), I see the menus GL Account Category ( | Docs state that Cost Centers/GL Account Category are used to split/post amounts by percentage, but the provided excerpts do not show the spe |
 
-Follow-up targeting (B, correct CLARIFY items judged): 2 of 5 follow-ups name the missing detail.
+Follow-up targeting (B, correct CLARIFY items judged): 1 of 6 follow-ups name the missing detail.
 
 ## Risk-coverage for A (sweep the top vector cosine; this is what A+'s threshold does)
 
@@ -74,17 +78,17 @@ Coverage = share of all questions answered. Risk = share of answered questions t
 | coverage | risk |
 |---|---|
 | 0.02 | 0.00 |
-| 0.10 | 0.60 |
-| 0.17 | 0.56 |
-| 0.25 | 0.62 |
-| 0.33 | 0.59 |
-| 0.40 | 0.62 |
+| 0.09 | 0.50 |
+| 0.17 | 0.55 |
+| 0.25 | 0.69 |
+| 0.32 | 0.71 |
+| 0.40 | 0.73 |
 | 0.48 | 0.68 |
-| 0.56 | 0.66 |
-| 0.63 | 0.67 |
-| 0.71 | 0.70 |
-| 0.79 | 0.73 |
-| 0.87 | 0.69 |
-| 0.94 | 0.71 |
+| 0.55 | 0.69 |
+| 0.63 | 0.71 |
+| 0.71 | 0.74 |
+| 0.78 | 0.76 |
+| 0.86 | 0.79 |
+| 0.94 | 0.80 |
 
 If risk stays high at every coverage level, similarity alone cannot separate answerable from unanswerable questions.
