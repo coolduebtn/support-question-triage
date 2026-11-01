@@ -233,7 +233,8 @@ That explanation fits the numbers but was not tested separately. Nothing was tun
   bias. The judge is stricter than the owner and was validated on only 15 items.
 - **One system model and one prompt.** B uses its first prompt version; no prompt search was done. Results are for `gpt-5-mini` and may differ with other models.
 - **Gold evidence ids.** Some evidence entries had stored a chunk id instead of a page id, which understated page-level retrieval scores (25 of 85 entries on
-  answerable questions). `Evidence` now canonicalises ids; dev retrieval figures above are corrected (recall@5 rose by about 0.05 to 0.07 per row), and no keep/drop decision or action metric changed.
+  answerable questions). `Evidence` now canonicalises ids; dev retrieval figures above are corrected (recall@5 rose by about 0.05 to 0.07 per row), and no keep/drop decision or action metric changed. The test rows were refreshed once more, fully cached,
+  so their retrieval figures are corrected too (recall@5 0.36 to 0.76, hit@5 0.46 to 0.92) while every action metric is identical; this is a third run of the test configs and a disclosed exception to the test-once rule.
 - **Test used once.** Each finalist was run once on test (B three times). No decision was changed after seeing test.
 - **Approximate-search fix after the test runs.** The vector index (HNSW) was found to drop a true top-5 chunk for a few questions at its default search width
   (3 of 117 questions differed from exact cosine). The width was raised from 100 to 400, after which none differ, and the dev rows were re-run (macro-F1 and the selection did not
