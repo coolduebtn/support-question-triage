@@ -174,26 +174,53 @@ def failures_tab(b):
             st.markdown("**Why it chose that:** " + (r["reason"] or r.get("error") or "-"))
 
 
-METHOD_DIAGRAM = """
-digraph G {
+STYLE = """
   rankdir=LR; bgcolor="transparent"; nodesep=0.25; ranksep=0.4;
   node [shape=box, style="rounded,filled", fillcolor="#eef2f7", color="#8a97a8", fontname="Helvetica", fontsize=11, margin="0.12,0.07"];
-  edge [color="#8a97a8", arrowsize=0.7];
+  edge [color="#8a97a8", arrowsize=0.7, fontname="Helvetica", fontsize=10];
+"""
+
+ARCH_DIAGRAM = "digraph G {" + STYLE + """
+  q [label="Support question"];
+  r [label="Retrieve\\nOpenAI embeddings + Chroma vector index\\n(top 5 chunks of wiki and docs)"];
+  a [label="A: always answer\\nLLM drafts from the chunks"];
+  g [label="A+: similarity gate\\nbest cosine below 0.6 ?", shape=diamond, style=filled];
+  b [label="B: typed LLM decision\\nvalidated output, up to 2 retries", fillcolor="#e3f1e6"];
+  ans [label="ANSWER\\ncited draft", fillcolor="#e3f1e6"];
+  cl [label="CLARIFY\\none follow-up question", fillcolor="#e3ecf9"];
+  es [label="ESCALATE\\nhand to a human", fillcolor="#fbe9d5"];
+  q -> r; r -> a; r -> g; r -> b;
+  a -> ans;
+  g -> es [label="yes"]; g -> ans [label="no (same draft as A)"];
+  b -> ans; b -> cl; b -> es;
+}"""
+
+METHOD_DIAGRAM = "digraph G {" + STYLE + """
   data [label="Data\\n5,397 chunks (wiki + docs)\\n259 mailing-list threads"];
   gold [label="Gold set: 117 questions\\nANSWER / CLARIFY / ESCALATE\\n(LLM-drafted, mechanically checked,\\nowner-graded blind subset)"];
   dev [label="Dev: 52\\ntune thresholds,\\nchoose approach", fillcolor="#e3f1e6"];
   test [label="Test: 65\\nheld out, run once\\n(B three times)", fillcolor="#fbe9d5"];
   ladder [label="Retrieval ladder (dev)\\nvector, + cleaning, + BM25, + reranker\\nkeep a step only if the paired\\nbootstrap interval excludes zero"];
-  appr [label="Approaches\\nA plain RAG\\nA+ similarity threshold\\nB typed LLM decision"];
+  appr [label="Approaches\\nA, A+, B"];
   sel [label="Selection rule\\nfixed before the test run:\\nmacro-F1, unsafe-answer, cost cap,\\nties go to the simpler system"];
   final [label="Selected: B\\nscored on test", fillcolor="#fbe9d5"];
   data -> gold -> dev; gold -> test;
   dev -> ladder -> appr -> sel -> final; test -> final;
-}
-"""
+}"""
 
 
 def method_tab():
+    st.markdown("### Architecture and approaches")
+    st.graphviz_chart(ARCH_DIAGRAM, width="stretch")
+    st.markdown("All three approaches share the same retrieval, so any difference between them comes from the decision "
+                "step.  \n"
+                "**A** is plain RAG: it always answers.  \n"
+                "**A+** adds a similarity threshold (0.6, tuned on dev): if the best match is weak it escalates, "
+                "otherwise it answers exactly like A.  \n"
+                "**B** makes one typed decision: ANSWER with citations, CLARIFY with one follow-up, or ESCALATE. "
+                "Validators require that an answer cites a chunk it was given and that a clarify names the missing "
+                "detail; a failed check triggers up to two retries.  \n"
+                "A LangGraph checklist flow (C) was planned as a stretch and not built.")
     st.markdown("### How it was tested")
     st.graphviz_chart(METHOD_DIAGRAM, width="stretch")
     st.markdown("**Gold set.** 117 questions, each labelled ANSWER, CLARIFY or ESCALATE. Two LLMs drafted the labels, "
@@ -202,9 +229,6 @@ def method_tab():
                 "(4 of 97), and they are flagged in the data.  \n"
                 "**Dev and test.** Thresholds and the choice of approach come from the 52 dev questions. "
                 "The 65 test questions are scored once per approach, and B three times.  \n"
-                "**Approaches.** A always answers from retrieved pages. A+ escalates when the best similarity is below "
-                "a dev-tuned threshold. B makes a typed decision (answer with citations, one follow-up, or escalate) "
-                "and its output is validated.  \n"
                 "**Retrieval ladder.** Email cleaning, BM25 hybrid search and a reranker were each added and scored. "
                 "None passed the keep rule, so every approach uses plain vector search.  \n"
                 "**Selection rule.** Written down before the test run. The best dev macro-F1 wins among approaches "
@@ -250,7 +274,7 @@ def main():
                 "only the first repeat is shown here.")
     st.sidebar.markdown("Runs shown (latest per approach)")
     st.sidebar.caption("  \n".join(f"**{a}**: {r}" for a, r in b.run_ids.items()))
-    t0, t1, t2, t3, t4 = st.tabs(["How it was tested", "Compare on a question", "Scoreboard", "Where it fails",
+    t0, t1, t2, t3, t4 = st.tabs(["Methodology", "Compare on a question", "Scoreboard", "Where it fails",
                                    "Try your own"])
     with t0:
         method_tab()

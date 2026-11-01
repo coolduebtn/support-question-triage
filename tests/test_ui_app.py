@@ -15,7 +15,7 @@ def test_app_renders_compare_and_scoreboard_from_saved_runs(tree, monkeypatch):
     monkeypatch.chdir(res.parent)
     at = AppTest.from_file(APP, default_timeout=30).run()
     assert not at.exception
-    assert [t.label for t in at.tabs][0] == "How it was tested" and len(at.tabs) == 5
+    assert [t.label for t in at.tabs][0] == "Methodology" and len(at.tabs) == 5
     assert any("Question" in s.value for s in at.selectbox) or at.selectbox
 
 
@@ -101,12 +101,13 @@ def test_try_your_own_explains_a_failed_call_in_plain_words(tree, monkeypatch):
     assert any("spend limit" in e.value for e in at.error)
 
 
-def test_method_tab_explains_the_process_with_a_diagram(tree, monkeypatch):
+def test_methodology_tab_shows_architecture_then_process(tree, monkeypatch):
     res, data = tree
     write_run(res, "20261031-130000-dddd-dev", "A+", preds=[pred("q1", "answer", "answer")])
     monkeypatch.chdir(res.parent)
     at = AppTest.from_file(APP, default_timeout=30).run()
     text = " ".join(m.value for m in at.markdown)
-    assert not at.exception and len(at.get("graphviz_chart")) == 1
-    for phrase in ("Gold set", "Retrieval ladder", "Selection rule", "LLM judge"):
+    assert not at.exception and len(at.get("graphviz_chart")) == 2
+    assert text.index("Architecture and approaches") < text.index("How it was tested")
+    for phrase in ("A+", "Gold set", "Retrieval ladder", "Selection rule", "LLM judge"):
         assert phrase in text

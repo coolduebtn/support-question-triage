@@ -10,7 +10,7 @@ Avoid `q_rfbj6762c9` (its text contains a map link with a place name and coordin
 "Support teams get questions that should not all be answered the same way. Some have an answer in the docs, some need one follow-up question, some need a human. Plain RAG always answers. My hypothesis: an explicit decision step (ANSWER, CLARIFY or ESCALATE) beats that. I tested it on the Apache OFBiz wiki, docs and mailing list."
 
 **0:15 Methodology: how I tested it (45 s)**
-Open the **How it was tested** tab (the first tab). Point along the diagram, left to right, while you say:
+Open the **Methodology** tab (the first tab). It has two diagrams: architecture and approaches on top, how it was tested below. Spend about 10 seconds on the architecture (retrieve once, then A answers, A+ gates, B decides), then scroll to the second diagram and point along it, left to right, while you say:
 1. "Data: 5,397 chunks from the OFBiz wiki and docs, plus 259 mailing-list threads as the questions."
 2. "Gold set: 117 questions, each labelled ANSWER, CLARIFY or ESCALATE. Labels were drafted by two LLMs, checked mechanically, and adjudicated. I graded a blind subset myself. 20 CLARIFY questions are constructed, because real ones are rare, and they are flagged."
 3. "Split: 52 dev questions to tune, 65 test questions held out. Thresholds were tuned on dev only. Test was run once per approach, and B three times."
