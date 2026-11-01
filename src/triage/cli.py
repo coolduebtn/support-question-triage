@@ -1,5 +1,6 @@
 import argparse
 import sys
+from pathlib import Path
 from collections.abc import Callable
 
 Handler = Callable[[argparse.Namespace], int]
@@ -269,6 +270,18 @@ def _label_args(p: argparse.ArgumentParser) -> None:
 
 
 register("label", "select questions, draft labels, build review sheets, apply review", _label, _label_args)
+def gold_file(cfg) -> Path | None:
+    """The full gold file if present, else the committed public one (97 real questions, cleaned text), else None."""
+    full, public = cfg.data_dir / "gold" / "gold.jsonl", cfg.data_dir / "gold" / "gold_public.jsonl"
+    if full.exists():
+        return full
+    if public.exists():
+        print("note: using the public gold file (97 real questions; the constructed CLARIFY items are not in it), "
+              "so numbers will differ from the README tables", file=sys.stderr)
+        return public
+    return None
+
+
 def _need_key() -> bool:
     import os
 
@@ -315,11 +328,11 @@ def _eval(args: argparse.Namespace) -> int:
     if not _need_key():
         return 2
     cfg = load_settings()
-    gold_file = cfg.data_dir / "gold" / "gold.jsonl"
-    if not gold_file.exists():
-        print(f"no gold set at {gold_file}; finish `triage label` first", file=sys.stderr)
+    gold_path = gold_file(cfg)
+    if gold_path is None:
+        print(f"no gold set in {cfg.data_dir / 'gold'}; finish `triage label` first", file=sys.stderr)
         return 2
-    gold = [GoldItem.model_validate_json(line) for line in gold_file.read_text().splitlines()]
+    gold = [GoldItem.model_validate_json(line) for line in gold_path.read_text().splitlines()]
     emb, retriever, base, policy, prompt, sys_llm, run_config, sha, Threshold = _build(args, cfg)
     threshold = args.threshold
     if args.policy == "A+":
@@ -336,7 +349,7 @@ def _eval(args: argparse.Namespace) -> int:
     config = run_config(args.policy, args.retriever, args.clean, cfg.k, cfg.system_model,
                         hashlib.sha256(prompt.encode()).hexdigest(), sha(cfg.data_dir / "snapshot" / "wiki.jsonl"),
                         sha(cfg.data_dir / "index" / "chunks.jsonl"), threshold, cfg.seed,
-                        cfg.judge_model if judge else None, embed_model=cfg.embed_model, gold_hash=sha(gold_file))
+                        cfg.judge_model if judge else None, embed_model=cfg.embed_model, gold_hash=sha(gold_path))
     config["synthetic"] = args.synthetic
     res = run_eval(policy, retriever, gold, args.split, config, judge=judge, repeats=args.repeats,
                    results_dir=cfg.results_dir, allow_test_rerun=args.allow_test_rerun)
@@ -403,8 +416,7 @@ def _compare(args: argparse.Namespace) -> int:
     from triage.schemas import GoldItem, RunResult
 
     cfg = load_settings()
-    gold = {g.qid: g for g in (GoldItem.model_validate_json(line)
-                               for line in (cfg.data_dir / "gold" / "gold.jsonl").read_text().splitlines())}
+    gold = {g.qid: g for g in (GoldItem.model_validate_json(line) for line in gold_file(cfg).read_text().splitlines())}
 
     def rows(run_id: str) -> list[dict]:
         lines = (cfg.results_dir / "runs" / run_id / "predictions.jsonl").read_text().splitlines()
@@ -435,8 +447,8 @@ def _ladder(args: argparse.Namespace) -> int:
     from triage.wiring import build_retriever
 
     cfg = load_settings()
-    gold = [g for g in (GoldItem.model_validate_json(line)
-                        for line in (cfg.data_dir / "gold" / "gold.jsonl").read_text().splitlines()) if not g.synthetic]
+    gold = [g for g in (GoldItem.model_validate_json(line) for line in gold_file(cfg).read_text().splitlines())
+            if not g.synthetic]
     emb = LLMClient(cfg.embed_model, cfg.data_dir / "cache" / "embed", load_price(cfg.embed_model))
     names = [("vector (raw email)", "vector", False), ("+ email cleaning", "vector", True),
              ("+ BM25 with RRF", "hybrid", True), ("+ MiniLM reranker", "rerank-minilm", True)]

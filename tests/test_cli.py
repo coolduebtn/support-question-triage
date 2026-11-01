@@ -131,3 +131,18 @@ def test_python_dash_m_cli_actually_runs_the_command():
 
     r = subprocess.run([sys.executable, "-m", "triage.cli", "ask", "   "], capture_output=True, text=True, timeout=60)
     assert r.returncode == 0 and r.stdout.strip()
+
+
+def test_gold_file_falls_back_to_the_public_one_with_a_note(tmp_path, capsys):
+    from triage.cli import gold_file
+    from triage.config import Settings
+
+    cfg = Settings(k=5, seed=1, data_dir=tmp_path / "data", results_dir=tmp_path, system_model="", judge_model="",
+                   annotator_models=[], embed_model="", contact="")
+    gold = cfg.data_dir / "gold"
+    gold.mkdir(parents=True)
+    assert gold_file(cfg) is None
+    (gold / "gold_public.jsonl").write_text("{}\n")
+    assert gold_file(cfg) == gold / "gold_public.jsonl" and "public gold file" in capsys.readouterr().err
+    (gold / "gold.jsonl").write_text("{}\n")
+    assert gold_file(cfg) == gold / "gold.jsonl" and capsys.readouterr().err == ""
