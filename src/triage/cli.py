@@ -165,17 +165,18 @@ def _label(args: argparse.Namespace) -> int:
         from triage.llm import LLMClient, load_price
         from triage.schemas import GoldItem
 
-        real = [GoldItem.model_validate_json(line) for line in (gold / "gold.jsonl").read_text().splitlines()]
+        real = [g for g in (GoldItem.model_validate_json(line) for line in (gold / "gold.jsonl").read_text().splitlines())
+                if not g.synthetic]
         llm = LLMClient(cfg.annotator_models[0], cfg.data_dir / "cache" / "probes", load_price(cfg.annotator_models[0]))
         probes = probes_from_gold(real, llm, args.probes, cfg.seed)
-        (gold / "probes.jsonl").write_text("".join(p.model_dump_json() + "\n" for p in probes))
+        (gold / "gold.jsonl").write_text("".join(g.model_dump_json() + "\n" for g in [*real, *probes]))
         by = {g.qid: g for g in real}
         trace = ["# Synthetic CLARIFY probes (derived by deleting words from real ANSWER questions)\n"]
         for p in probes:
             trace.append(f"\n## {p.qid} (from {p.derived_from}, {p.split})\n\nORIGINAL:\n{by[p.derived_from].text}\n\n"
                          f"PROBE:\n{p.text}\n\nremoved detail: {p.missing_detail}\n")
         (gold / "probes_trace.md").write_text("".join(trace))
-        print(f"probes={len(probes)} dev={sum(p.split == 'dev' for p in probes)} -> {gold / 'probes.jsonl'} (trace: probes_trace.md)")
+        print(f"probes={len(probes)} dev={sum(p.split == 'dev' for p in probes)} merged into {gold / 'gold.jsonl'} (trace: probes_trace.md)")
         return 0
     if args.extend:
         from triage.labelling.select import extend_candidates, extend_split
@@ -319,12 +320,6 @@ def _eval(args: argparse.Namespace) -> int:
         print(f"no gold set at {gold_file}; finish `triage label` first", file=sys.stderr)
         return 2
     gold = [GoldItem.model_validate_json(line) for line in gold_file.read_text().splitlines()]
-    probes_file = cfg.data_dir / "gold" / "probes.jsonl"
-    if args.synthetic != "none":
-        if not probes_file.exists():
-            print("no probes yet; run `triage label --probes N` first", file=sys.stderr)
-            return 2
-        gold += [GoldItem.model_validate_json(line) for line in probes_file.read_text().splitlines()]
     emb, retriever, base, policy, prompt, sys_llm, run_config, sha, Threshold = _build(args, cfg)
     threshold = args.threshold
     if args.policy == "A+":
@@ -358,8 +353,8 @@ def _eval_args(p: argparse.ArgumentParser) -> None:
     p.add_argument("--split", choices=["dev", "test"], default="dev")
     p.add_argument("--clean", action="store_true", help="clean emails before retrieval")
     p.add_argument("--judge", action="store_true")
-    p.add_argument("--synthetic", choices=["none", "only", "both"], default="none",
-                   help="none = real questions only (headline); only = synthetic probes; both = labelled supplementary row")
+    p.add_argument("--synthetic", choices=["none", "only", "both"], default="both",
+                   help="both = the whole gold set (default); none = real questions only; only = the invented CLARIFY items")
     p.add_argument("--threshold", type=float)
     p.add_argument("--repeats", type=int, default=1)
     p.add_argument("--step", default="")
@@ -438,7 +433,8 @@ def _ladder(args: argparse.Namespace) -> int:
     from triage.wiring import build_retriever
 
     cfg = load_settings()
-    gold = [GoldItem.model_validate_json(line) for line in (cfg.data_dir / "gold" / "gold.jsonl").read_text().splitlines()]
+    gold = [g for g in (GoldItem.model_validate_json(line)
+                        for line in (cfg.data_dir / "gold" / "gold.jsonl").read_text().splitlines()) if not g.synthetic]
     emb = LLMClient(cfg.embed_model, cfg.data_dir / "cache" / "embed", load_price(cfg.embed_model))
     names = [("vector (raw email)", "vector", False), ("+ email cleaning", "vector", True),
              ("+ BM25 with RRF", "hybrid", True), ("+ MiniLM reranker", "rerank-minilm", True)]

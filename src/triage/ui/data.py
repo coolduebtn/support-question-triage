@@ -50,7 +50,7 @@ class Bundle:
         return None
 
     def question_text(self, qid: str) -> str:
-        return clean_email(self._text.get(qid, ""))
+        return clean_email(self._text.get(qid) or self._gold.get(qid, {}).get("text_raw", ""))
 
     def expected_pages(self, qid: str) -> list[str]:
         return list(dict.fromkeys(e["page_id"] for e in self._gold.get(qid, {}).get("evidence", [])))
@@ -67,7 +67,7 @@ def load_bundle(results_dir: Path, data_dir: Path, split: str = "dev") -> Bundle
     for run in sorted((Path(results_dir) / "runs").glob(f"*-{split}")):      # run ids sort by time, newest last
         cfg = json.loads((run / "config.json").read_text())["config"]
         label = label_for(cfg["policy"], cfg["retriever"], bool(cfg.get("clean_query")))
-        if cfg.get("synthetic", "none") != "none":
+        if cfg.get("synthetic", "none") == "only":
             continue
         rows = {}
         for p in _jsonl(run / "predictions.jsonl"):

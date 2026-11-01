@@ -36,8 +36,7 @@ _No runs yet._
 
 - Labels are LLM-drafted and mechanically checked, with an owner-labelled blind subset, not hand-labelled in full (see Labelling disclosure).
 - BM25 and the MiniLM reranker are part of the core ladder (added one at a time with a scored row each), not stretch.
-- 97 questions (40 dev / 57 test, split by thread before labelling) from the mailing list, with a second document source (the OFBiz asciidoc docs from GitHub, 204 pages) added to fix the class mix.
-- 20 extra synthetic CLARIFY probes (deletion-only edits of real answerable questions) are reported separately and never used for tuning or in the headline numbers.
+- 117 questions (52 dev / 65 test, split by thread before labelling), with a second document source (the OFBiz asciidoc docs from GitHub, 204 pages) added to fix the class mix. 97 are real mailing-list questions. The other 20 are CLARIFY items made by deleting key details from real answerable questions (24 CLARIFY in all, 4 of them real); they are never used for tuning, and `--synthetic none` gives the real-only row.
 - Extra metrics: unsafe-answer rate, over-ask and over-escalation rates, judged correctness / citation support / follow-up targeting.
 
 ## Limitations
@@ -90,4 +89,4 @@ Labels are **not hand-labelled in full**. Process: two blind LLM annotators (`gp
 - Owner blind versus final labels: 17 of 20 agree (85%, Wilson 95% CI 0.64 to 0.95, kappa 0.44).
 - Annotator agreement: kappa 0.46 (raw 0.70) on 97 questions.
 - Owner review confirmed 43 of 43; this is an upper bound because the owner saw the drafts.
-- **Synthetic probes:** 20 CLARIFY questions made by deleting words from real answerable questions. They are flagged `synthetic`, reported separately, and excluded from tuning and from the headline table.
+- **Invented CLARIFY items:** 20 of the 24 CLARIFY questions are real questions with key details removed, so CLARIFY results rest mostly on constructed cases. They are flagged `synthetic` in the data and excluded from threshold tuning.
