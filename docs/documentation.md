@@ -177,8 +177,8 @@ Paired comparisons on test:
 | A+ vs A | +0.22 [+0.14, +0.31] | 0.0005 | yes |
 | B vs A+ | +0.28 [+0.12, +0.44] | 0.087 | yes on macro-F1, weaker on accuracy |
 
-**B is not fully stable.** Over its three runs on test, macro-F1 was 0.62, 0.50 and 0.57 (mean 0.56, spread 0.12), and B gave the same action in
-all three runs for 43 of 65 questions. The single-run figure of 0.62 is therefore the best of the three, and the mean is the more honest summary.
+**B is not fully stable.** Over its three runs on test, macro-F1 was 0.62, 0.49 and 0.57 (mean 0.56, spread 0.13), and B gave the same action in
+all three runs for 44 of 65 questions. The single-run figure of 0.62 is therefore the best of the three, and the mean is the more honest summary.
 The drop from dev (0.66) to test is real and about 0.04 to 0.10 depending on which figure is used.
 
 **What the results support.**
@@ -234,7 +234,9 @@ That explanation fits the numbers but was not tested separately. Nothing was tun
 - **Test used once.** Each finalist was run once on test (B three times). No decision was changed after seeing test.
 - **Approximate-search fix after the test runs.** The vector index (HNSW) was found to drop a true top-5 chunk for a few questions at its default search width
   (3 of 117 questions differed from exact cosine). The width was raised from 100 to 400, after which none differ, and the dev rows were re-run (macro-F1 and the selection did not
-  change; recall moved by up to 0.03). The test runs used the pre-fix retriever. The fix changes retrieval for 1 of 65 test questions.
+  change; recall moved by up to 0.03). The test runs were repeated once with the corrected retriever, as a disclosed exception to the test-once rule. Only 1 of 65 test questions had different retrieval
+  (`q_hz0ohskd9k`); A's and A+'s predictions were unchanged and B's changed on that question in one repeat. The tables in section 7 are from the re-run, and the
+  first run's rows are kept in `results/ablation.md` (the headline figures were identical).
 - **Not built:** approach C (LangGraph) and the bge reranker row, both planned as stretch items.
 
 ## 10. Reproduction and decisions

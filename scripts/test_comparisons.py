@@ -3,7 +3,7 @@ from pathlib import Path
 from triage.evals.metrics import macro_f1
 from triage.evals.analysis import compare_pair
 from triage.schemas import RunResult
-ids={"A":"20261101-172648-caa31fb7-test","A+":"20261101-172650-dbb65c21-test","B":"20261101-181034-a0ce2387-test"}
+ids={"A":"20261101-194635-caa31fb7-test","A+":"20261101-194638-dbb65c21-test","B":"20261101-194740-a0ce2387-test"}
 P={}
 for k,v in ids.items():
     P[k]=[json.loads(l) for l in (Path("results/runs")/v/"predictions.jsonl").read_text().splitlines() if l.strip()]

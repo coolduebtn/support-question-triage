@@ -339,7 +339,7 @@ def _eval(args: argparse.Namespace) -> int:
                         cfg.judge_model if judge else None, embed_model=cfg.embed_model, gold_hash=sha(gold_file))
     config["synthetic"] = args.synthetic
     res = run_eval(policy, retriever, gold, args.split, config, judge=judge, repeats=args.repeats,
-                   results_dir=cfg.results_dir)
+                   results_dir=cfg.results_dir, allow_test_rerun=args.allow_test_rerun)
     append_ablation_row(res, args.step or f"{args.policy} {args.retriever}", args.decision, args.notes,
                         path=cfg.results_dir / "ablation.md")
     print(json.dumps({k: v for k, v in res.metrics.items() if k != "per_class"}, indent=1, default=str))
@@ -357,6 +357,8 @@ def _eval_args(p: argparse.ArgumentParser) -> None:
                    help="both = the whole gold set (default); none = real questions only; only = the invented CLARIFY items")
     p.add_argument("--threshold", type=float)
     p.add_argument("--repeats", type=int, default=1)
+    p.add_argument("--allow-test-rerun", action="store_true",
+                   help="run a config on test again; a disclosed exception to the test-once rule")
     p.add_argument("--step", default="")
     p.add_argument("--decision", default="baseline")
     p.add_argument("--notes", default="")

@@ -111,3 +111,14 @@ def test_smoke_lists_available_models_when_none_configured(monkeypatch, capsys):
 def test_ui_subcommand_is_registered():
     from triage.cli import COMMANDS
     assert "ui" in COMMANDS and "viewer" in COMMANDS["ui"][0]
+
+
+def test_eval_accepts_an_explicit_test_rerun_flag():
+    import argparse
+
+    from triage.cli import _eval_args
+
+    p = argparse.ArgumentParser()
+    _eval_args(p)
+    assert p.parse_args(["--policy", "A"]).allow_test_rerun is False
+    assert p.parse_args(["--policy", "A", "--allow-test-rerun"]).allow_test_rerun is True
