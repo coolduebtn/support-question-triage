@@ -96,9 +96,9 @@ Retrieval-only results on the 15 answerable dev questions (page-level, k = 5):
 
 | Step | hit@5 | recall@5 | MRR | Change in recall vs previous [95% interval] | Improves |
 |---|---|---|---|---|---|
-| Vector, raw email | 0.80 | 0.66 | 0.71 | n/a | n/a |
-| + email cleaning | 0.87 | 0.73 | 0.78 | +0.067 [+0.000, +0.200] | no measurable gain |
-| + BM25 with RRF | 0.87 | 0.81 | 0.74 | +0.083 [-0.067, +0.267] | no measurable gain |
+| Vector, raw email | 0.80 | 0.69 | 0.71 | n/a | n/a |
+| + email cleaning | 0.87 | 0.76 | 0.78 | +0.067 [+0.000, +0.200] | no measurable gain |
+| + BM25 with RRF | 0.87 | 0.81 | 0.77 | +0.050 [-0.083, +0.217] | no measurable gain |
 | + MiniLM reranker | 0.73 | 0.70 | 0.63 | -0.111 [-0.333, +0.067] | no measurable gain |
 
 **None of the three components passed the rule**, so retrieval stays as plain vector search for A+ and B. This is a finding about this
@@ -147,11 +147,11 @@ Errors count as wrong predictions.
 
 | Row | Macro-F1 [95% interval] | Unsafe-answer | Over-escalation | recall@5 | Judged correct | Citation support | Cost/q |
 |---|---|---|---|---|---|---|---|
-| A, vector baseline | 0.15 [0.15, 0.15] | 1.00 | 0.00 | 0.66 | 0.47 | 0.70 | $0.0027 |
+| A, vector baseline | 0.15 [0.15, 0.15] | 1.00 | 0.00 | 0.69 | 0.47 | 0.70 | $0.0026 |
 | A+, threshold 0.6 | 0.29 [0.20, 0.38] | 0.46 | 0.40 | 0.69 | 0.44 | 0.70 | $0.0014 |
 | **B, typed decision** | **0.66 [0.51, 0.78]** | **0.30** | 0.20 | 0.69 | 0.50 | 0.78 | $0.0025 |
-| A + email cleaning | 0.15 | 1.00 | 0.00 | 0.73 | 0.67 | 0.73 | $0.0026 |
-| A + BM25 with RRF | 0.15 | 1.00 | 0.00 | 0.81 | 0.60 | 0.69 | $0.0028 |
+| A + email cleaning | 0.15 | 1.00 | 0.00 | 0.76 | 0.67 | 0.73 | $0.0026 |
+| A + BM25 with RRF | 0.15 | 1.00 | 0.00 | 0.81 | 0.60 | 0.68 | $0.0028 |
 | A + MiniLM reranker | 0.15 | 1.00 | 0.00 | 0.70 | 0.47 | 0.71 | $0.0027 |
 
 All rows ran with 0 errors. The retrieval rows (A + ...) always answer, so their macro-F1 is the same as A's. They are compared on retrieval
@@ -214,8 +214,8 @@ answers (answered an ESCALATE item), 4 missed ambiguities (answered a CLARIFY it
    cover the question. The error is in retrieval, not in the decision.
 5. **B is noisy** between runs (section 7).
 
-**Why hybrid search and the reranker showed no gain.** Plain vector search already puts a gold page first on 12 of 15 answerable dev
-questions, which leaves little room to improve. Hybrid's recall gain comes from a few questions moving both ways (three gained, two lost), and its MRR did not improve. The
+**Why hybrid search and the reranker showed no gain.** Plain vector search with cleaning already has a gold page in its top 5 for 13 of 15 answerable dev
+questions (ranked first for 11), which leaves little room to improve. Hybrid's recall gain comes from a few questions moving both ways (two gained, two lost), and its MRR did not improve. The
 gold evidence was found by annotators using the union of vector and BM25 top results plus a keyword search, which favours pages those retrievers
 already surface. The reranker (MiniLM) was trained on short web queries, while these questions are long emails, and it moved gold pages out of the top 5 (hit@5 fell from 0.87 to 0.73).
 That explanation fits the numbers but was not tested separately. Nothing was tuned to force a gain.
@@ -232,6 +232,9 @@ That explanation fits the numbers but was not tested separately. Nothing was tun
   bias. The judge is stricter than the owner and was validated on only 15 items.
 - **One system model and one prompt.** B uses its first prompt version; no prompt search was done. Results are for `gpt-5-mini` and may differ with other models.
 - **Test used once.** Each finalist was run once on test (B three times). No decision was changed after seeing test.
+- **Approximate-search fix after the test runs.** The vector index (HNSW) was found to drop a true top-5 chunk for a few questions at its default search width
+  (3 of 117 questions differed from exact cosine). The width was raised from 100 to 400, after which none differ, and the dev rows were re-run (macro-F1 and the selection did not
+  change; recall moved by up to 0.03). The test runs used the pre-fix retriever. The fix changes retrieval for 1 of 65 test questions.
 - **Not built:** approach C (LangGraph) and the bge reranker row, both planned as stretch items.
 
 ## 10. Reproduction and decisions
