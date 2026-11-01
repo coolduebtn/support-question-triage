@@ -21,6 +21,7 @@ Open the **Methodology** tab. Spend about 10 seconds on the top diagram: retriev
 6. "I wrote the selection rule before the test run. An AI judge scores the answers. It is a Claude model, and the system is an OpenAI model, so the judge does not grade its own family. I checked it against 15 of my grades. It agreed on 10, so I treat it as a rough guide."
 
 **1:00 ANSWER (20 s)**
+First, in the sidebar, switch **Question set** from dev to **test**, and open **Compare on a question**. Say once: "These examples are from the held-out test set."
 Question `q_g92sgt6j3m`, "What is the difference between Agreement and Term". Say the gold label first: "The right action is answer."
 Show B's badge, the draft and "Pages it saw".
 "B answers and cites the right accounting pages. A does too. This is the easy case. The decision step costs nothing when the answer exists."
