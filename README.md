@@ -9,20 +9,75 @@ unnecessary follow-ups. Approaches compared: **A** vanilla RAG (always answers),
 decision (Pydantic AI), **C** required-detail checklist (LangGraph, stretch). Retrieval is improved one component at a time
 (email cleaning, BM25 + RRF, cross-encoder reranker), each with its own scored row.
 
-## Setup
+## Setup and reproduction
+
+Requirements: Python 3.11 or newer, [uv](https://docs.astral.sh/uv/), and `git` (the docs snapshot is a sparse clone of the OFBiz repository).
+
+### 1. Look at the results (no key, no data download)
 
 ```bash
 uv sync
-export OPENAI_API_KEY=... TRIAGE_CONTACT="you@example.org" TRIAGE_SYSTEM_MODEL=... TRIAGE_JUDGE_MODEL=... \
-       TRIAGE_ANNOTATOR_MODELS=modelA,modelB TRIAGE_EMBED_MODEL=...
-uv run triage ingest --fetch-only && uv run triage collect && uv run triage ingest --index
-uv run triage label --select    # then follow docs/labelling-protocol.md; evaluate with `triage eval`, publish with `triage report`
-uv run triage ask "The export is failing."
+uv run pytest                                  # 252 tests
+uv run triage ui                               # viewer at http://localhost:8501 (Methodology, Compare, Scoreboard, Where it fails)
+uv run triage report                           # rebuilds the table in this README from results/ablation.md
+uv run python scripts/test_comparisons.py      # paired comparisons and B's repeat stability on test, from saved runs
 ```
 
-**Anthropic key is optional.** Only the OpenAI key is required. This project's own runs used a Claude judge (`TRIAGE_JUDGE_MODEL=claude-sonnet-5-5` with `ANTHROPIC_API_KEY`), which keeps the judge from the same vendor as the system model. If `ANTHROPIC_API_KEY` is not set, the judge automatically uses the OpenAI model in `TRIAGE_JUDGE_FALLBACK_MODEL` (for example `gpt-5.4`, which must differ from `TRIAGE_SYSTEM_MODEL`) and prints a note. The judge model is recorded in every run's config, so results always say which judge produced them. Judge scores from different judges are not directly comparable.
+All of this works on a fresh clone. It reads the committed runs in `results/runs/`, the cleaned public gold file `data/gold/gold_public.jsonl` and `data/page_titles.json`. Two limits of the public files: the 20 constructed CLARIFY questions have no text in them, so the viewer shows a placeholder for those, and the "Try your own" tab needs a key and the index (steps 2 and 3). `scripts/failure_analysis.py` and `scripts/ui_audit.py` need the private full gold file, which is not in the repository (it holds raw question text). The output of the first is committed as `results/failure_analysis.md`.
 
-Tests (no key needed): `uv run pytest`. Viewer over the saved runs (no key needed): `uv run triage ui`.
+### 2. Configure keys
+
+Put these in a `.env` file in the project root (gitignored; never commit it or paste a key into the chat or into code). Values already in the environment win.
+
+```bash
+OPENAI_API_KEY=...                      # required for indexing, eval and ask
+ANTHROPIC_API_KEY=...                   # optional: only for the Claude judge
+TRIAGE_CONTACT=you@example.org          # used in the crawler User-Agent; use an address you are happy to expose to Apache
+TRIAGE_SYSTEM_MODEL=gpt-5-mini          # answers and decisions (A, A+, B)
+TRIAGE_EMBED_MODEL=text-embedding-3-small
+TRIAGE_JUDGE_MODEL=claude-sonnet-5-5    # must differ from the system model
+TRIAGE_JUDGE_FALLBACK_MODEL=gpt-5.4     # used when there is no ANTHROPIC_API_KEY
+TRIAGE_ANNOTATOR_MODELS=gpt-5.4,gpt-4.1 # only for `triage label`
+```
+
+**The Anthropic key is optional.** This project's own runs used a Claude judge (`claude-sonnet-5-5`), which keeps the judge from a different vendor than the system model. Without `ANTHROPIC_API_KEY` the judge automatically uses `TRIAGE_JUDGE_FALLBACK_MODEL` (it must differ from `TRIAGE_SYSTEM_MODEL`) and prints a note. The judge model is recorded in every run's config. Scores from different judges are not directly comparable.
+
+### 3. Build the corpus and the index
+
+```bash
+uv run triage ingest --fetch-only    # wiki snapshot, 705 pages (polite crawl, about one request a second)
+uv run triage ingest --fetch-docs    # OFBiz asciidoc docs, 204 pages (sparse git clone)
+uv run triage collect                # mailing-list threads, PII-scrubbed, into data/snapshot/ (gitignored)
+uv run triage ingest --index         # chunk and embed (5,397 chunks), writes data/index/ and data/page_titles.json
+```
+
+The wiki and the list keep changing, so a fresh crawl will not be byte-identical to the snapshot behind the reported numbers (hashes are in "Data and terms" below). Expect small differences.
+
+### 4. Ask a question, re-run the experiments
+
+```bash
+uv run triage ask "The export is failing."                  # approach B on one question; prints action, reason, citations, draft
+
+# dev ladder (each command appends a scored row to results/ablation.md)
+uv run triage eval --policy A  --split dev --judge --step "A (dev)"
+uv run triage eval --policy A+ --split dev --judge --step "A+ (dev)"          # tunes the threshold on dev
+uv run triage eval --policy B  --split dev --judge --step "B (dev)"
+uv run triage eval --policy A  --split dev --judge --clean --step "A + cleaning (dev)"
+uv run triage eval --policy A  --retriever hybrid --split dev --judge --clean --step "A + BM25/RRF (dev)"
+uv run triage eval --policy A  --retriever rerank-minilm --split dev --judge --clean --step "A + reranker (dev)"
+uv run triage ladder                                        # retrieval-only ladder with paired intervals (no LLM calls)
+uv run triage compare RUN_ID_A RUN_ID_B                     # paired comparison of two runs
+
+# test: once per finalist (the runner refuses to repeat a test config unless --allow-test-rerun)
+uv run triage eval --policy A  --split test --judge --decision final
+uv run triage eval --policy A+ --split test --judge --decision final
+uv run triage eval --policy B  --split test --judge --repeats 3 --decision final
+uv run triage report
+```
+
+`triage eval` uses the full gold file if you have it and otherwise the public one, printing a note. On the public file (97 real questions, no constructed CLARIFY items) the numbers will differ from the tables below. Each eval run is saved under `results/runs/<run id>/` (config, predictions, metrics) and the answering step costs about $0.003 per question with `gpt-5-mini` (the judge adds some). Identical calls are cached on disk, so repeating a run is nearly free. Run `--synthetic none` to score the real questions only.
+
+Labelling (`triage label ...`, then `triage judge --make-sheet / --validate`) is a hand-in-the-loop process that needs the owner's blind grades; the steps are in `docs/labelling-protocol.md` and the owner's decisions are in "Labelling disclosure" below. It is not meant to be re-run by a reviewer.
 
 ## Results
 
@@ -109,6 +164,8 @@ Things that went wrong, what I found, and what changed. Numbers are from the run
 ## Data and terms
 
 _Public Apache OFBiz wiki and user mailing list; research use; sources cited; no redistribution of raw dumps._
+
+Sources: [OFBiz Confluence wiki](https://cwiki.apache.org/confluence/display/OFBIZ) (space `OFBIZ`), [OFBiz documentation sources](https://github.com/apache/ofbiz-framework) (apache/ofbiz-framework), [`user@ofbiz.apache.org` archive](https://lists.apache.org/list.html?user@ofbiz.apache.org).
 
 - Wiki snapshot (OFBIZ space, fetched 2026-10-29): 705 pages, sha256 `7a14c557956971ae2f4223bda01c746f6e1b0d09caca18509886edfdf58c7556`. The snapshot file is gitignored; rerun `triage ingest --fetch-only` (the wiki may have changed since).
 - Docs snapshot (OFBiz asciidoc sources from the apache/ofbiz-framework GitHub repository, via sparse clone, no crawling): 204 pages. The docs site itself was not crawled because its robots rules disallow bots.

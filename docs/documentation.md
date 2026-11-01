@@ -17,8 +17,9 @@ Nothing is ever sent. Replies are drafts for a person to review.
 **Hypothesis.** An explicit decision step handles more questions correctly (higher action macro-F1) and gives fewer unsafe answers
 than plain RAG, without asking unnecessary follow-ups.
 
-The public stand-in for a private support desk is the Apache OFBiz Confluence wiki and docs, with questions taken from the
-`user@ofbiz.apache.org` mailing list.
+The public stand-in for a private support desk is the [Apache OFBiz Confluence wiki](https://cwiki.apache.org/confluence/display/OFBIZ)
+and the [OFBiz documentation sources](https://github.com/apache/ofbiz-framework), with questions taken from the
+[`user@ofbiz.apache.org` mailing list](https://lists.apache.org/list.html?user@ofbiz.apache.org).
 
 **How the evidence is built.** The question set, the metrics, the selection rule and the keep/drop rule for retrieval changes were written
 down before any system was run (`docs/decisions.md`, `configs/limits.toml`). Settings are tuned on a dev set only. The test set is run once
@@ -42,12 +43,12 @@ available, the judge falls back to an OpenAI model (`gpt-5.4`) and the run recor
 
 ## 3. Data and ingestion
 
-- **Wiki:** the Apache OFBiz Confluence space, 705 pages from one crawl through the REST API. The snapshot hash is recorded in the README.
-- **Docs:** 204 asciidoc pages from the apache/ofbiz-framework GitHub repository. The docs website disallows bots, so the sources
+- **Wiki:** the [Apache OFBiz Confluence space](https://cwiki.apache.org/confluence/display/OFBIZ) (key `OFBIZ`), 705 pages from one crawl through the REST API. The snapshot hash is recorded in the README.
+- **Docs:** 204 asciidoc pages from the [apache/ofbiz-framework](https://github.com/apache/ofbiz-framework) GitHub repository. The docs website disallows bots, so the sources
   were taken from the repository instead.
 - **Chunking:** split by heading. Each chunk keeps its page title and heading path as a prefix, and holds at most 500 tokens, split by paragraph.
   The index has 5,397 chunks over 845 pages (63 wiki pages and 1 docs page had no text, so they produced no chunks). The median chunk is 529 characters, because pages are split by many headings.
-- **Questions:** 259 mailing-list threads. Personal details (emails, phone numbers, links, IP addresses, known names) were scrubbed.
+- **Questions:** 259 threads from the [`user@ofbiz.apache.org` list archive](https://lists.apache.org/list.html?user@ofbiz.apache.org). Personal details (emails, phone numbers, links, IP addresses, known names) were scrubbed.
   Announcements, CVEs, votes and non-support posts were removed, and near-duplicates were removed. Quoted text and signatures are stripped for the cleaned form
   of each question. Raw question text stays in a gitignored folder.
 
@@ -245,6 +246,6 @@ That explanation fits the numbers but was not tested separately. Nothing was tun
 
 ## 10. Reproduction and decisions
 
-`uv sync`, set the API keys in a local `.env` (never committed), then `triage ingest`, `triage collect`, `triage eval --policy ... --split dev|test`,
+The README's "Setup and reproduction" section has the exact commands, the `.env` variables, and what works without a key. In short: `uv sync`, set the API keys in a local `.env` (never committed), then `triage ingest`, `triage collect`, `triage eval --policy ... --split dev|test`,
 `triage report`, and `triage ui` for the viewer. `uv run pytest` runs the tests without any key. Rules and decisions are in `docs/decisions.md`;
 deviations from the submitted one-pager (LLM-drafted labels, a second document source, constructed CLARIFY items, extra metrics) are in the README.

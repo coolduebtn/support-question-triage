@@ -12,6 +12,8 @@ from triage.evals.metrics import macro_f1
 from triage.ui.data import live_problem, load_bundle, verdict
 
 ROOT = Path.cwd()
+if not (ROOT / "data" / "gold" / "gold.jsonl").exists():
+    raise SystemExit("needs the full gold file data/gold/gold.jsonl (not in the repository); owner-side audit only")
 issues: list[str] = []
 
 
@@ -96,7 +98,7 @@ for split in ("dev", "test"):
         flag(f"{split}: app raised on load: {[e.value[:100] for e in at.exception]}"); continue
     tabs = [t.label for t in at.tabs]
     print(f"[{split}] tabs: {tabs}; info boxes: {[i.value[:50] for i in at.info]}; sidebar: {[c.value[:40] for c in at.sidebar.caption][:1]}")
-    if tabs != ["Compare on a question", "Scoreboard", "Where it fails", "Try your own"]:
+    if tabs != ["Methodology", "Compare on a question", "Scoreboard", "Where it fails", "Try your own"]:
         flag(f"{split}: unexpected tabs {tabs}")
     sel = next(s for s in at.selectbox if s.label.startswith("Question"))
     qids = load_bundle(ROOT / "results", ROOT / "data", split).qids()
