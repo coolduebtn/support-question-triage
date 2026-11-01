@@ -111,3 +111,26 @@ run=20261101-163033-9544a29b-dev errors=0 cost/q=$0.0026
 run=20261101-164310-b0ddb1bb-dev errors=0 cost/q=$0.0028
 W1101 16:43:15.207000 55902 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
 Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 7395.00it/s]
+{
+ "n_items": 52,
+ "macro_f1": 0.1492537313432836,
+ "macro_f1_ci": [
+  0.1492537313432836,
+  0.1492537313432836
+ ],
+ "unsafe_answer_rate": 1.0,
+ "over_ask_rate": 0.0,
+ "over_escalation_rate": 0.0,
+ "n_retrieval_items": 15,
+ "hit@5": 0.7333333333333333,
+ "recall@5": 0.7,
+ "mrr": 0.6333333333333333,
+ "judged_correctness": 0.4666666666666667,
+ "judged_correctness_n": 15,
+ "citation_support": 0.7139183450410826,
+ "citation_support_n": 52,
+ "followup_targeting": null,
+ "followup_targeting_n": 0
+}
+run=20261101-170249-f122adb7-dev errors=0 cost/q=$0.0027
+LADDER_DONE
