@@ -1,6 +1,8 @@
 # Design Doc: Support Question Triage (Answer / Clarify / Escalate)
 
-Status: Revision 3, after two independent reviews. Awaiting owner approval; nothing is implemented yet. (The 1-2 page course design doc is the condensed version of sections 1-4; the rest is working detail.)
+**Status update (2026-11-01):** this is the design as approved on 2026-10-29, kept as written. The build followed it with the changes listed in the README ("Deviations from the submitted one-pager") and `docs/decisions.md`; final results are in `docs/documentation.md`. Approach C (LangGraph) and the bge reranker were not built.
+
+Original status: Revision 3, after two independent reviews. Awaiting owner approval; nothing is implemented yet. (The 1-2 page course design doc is the condensed version of sections 1-4; the rest is working detail.)
 Author: Chandan Agarwal. Date: 2026-10-29.
 Items marked **[my call]** are the assistant's proposals, not decisions the owner has made.
 

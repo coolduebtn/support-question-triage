@@ -46,7 +46,7 @@ available, the judge falls back to an OpenAI model (`gpt-5.4`) and the run recor
 - **Docs:** 204 asciidoc pages from the apache/ofbiz-framework GitHub repository. The docs website disallows bots, so the sources
   were taken from the repository instead.
 - **Chunking:** split by heading. Each chunk keeps its page title and heading path as a prefix, and holds at most 500 tokens, split by paragraph.
-  The index has 5,397 chunks over 845 pages. The median chunk is 529 characters, because pages are split by many headings.
+  The index has 5,397 chunks over 845 pages (63 wiki pages and 1 docs page had no text, so they produced no chunks). The median chunk is 529 characters, because pages are split by many headings.
 - **Questions:** 259 mailing-list threads. Personal details (emails, phone numbers, links, IP addresses, known names) were scrubbed.
   Announcements, CVEs, votes and non-support posts were removed, and near-duplicates were removed. Quoted text and signatures are stripped for the cleaned form
   of each question. Raw question text stays in a gitignored folder.
@@ -210,7 +210,7 @@ is a retrieval miss, so the remaining errors are decision errors. The hints are 
    B often asks "which part do you mean?" where the question needed a concrete detail such as an error message.
 3. **A+ cannot ask and over-escalates.** It never predicted CLARIFY (0 of 11 on test). On dev it turned 9 of 13 CLARIFY items into escalations and escalated 6 of 15
    answerable questions. The risk-coverage curve for A shows that the share of answered questions that should not have been answered stays between
-   56% and 73% at every coverage level on dev, so no better threshold could separate the classes.
+   56% and 73% once coverage reaches 10% on dev, so no better threshold could separate the classes.
 4. **Some "failures" are correct refusals.** On two dev questions the right page was not retrieved, and B correctly said the excerpts did not
    cover the question. The error is in retrieval, not in the decision.
 5. **B is noisy** between runs (section 7).
