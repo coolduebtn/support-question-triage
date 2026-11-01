@@ -127,3 +127,28 @@ def test_ui_scores_retrieval_with_canonical_page_ids_when_gold_stored_a_chunk_id
     (data / "gold" / "gold.jsonl").write_text(json.dumps(_gold_row("q1", "answer", ["p1-3"])) + "\n")
     b = load_bundle(res, data, "dev")
     assert b.retrieval_rows()[0]["recall"] == 1.0 and b.expected_pages("q1") == ["p1"]
+
+
+@pytest.fixture
+def public_tree(tree):
+    """What a reviewer has after cloning: saved runs, gold_public.jsonl and page_titles.json, but no raw data or index."""
+    res, data = tree
+    (data / "gold" / "questions.jsonl").unlink()
+    (data / "index" / "chunks.jsonl").unlink()
+    g = {"qid": "q1", "text": "How do I reset the thing in ofbiz?", "label": "answer", "synthetic": False, "split": "dev",
+         "source": "agree", "reference_answer": "Use the reset page.", "missing_detail": None,
+         "evidence": [{"page_id": "p1", "heading": "h", "quote": "q" * 50}]}
+    (data / "gold" / "gold_public.jsonl").write_text(json.dumps(g) + "\n")
+    (data / "page_titles.json").write_text(json.dumps({"p1": ["Reset guide", "https://x/p1"]}))
+    return res, data
+
+
+def test_public_files_are_enough_for_text_evidence_and_page_titles(public_tree):
+    b = load_bundle(*public_tree, split="dev")
+    assert "reset the thing" in b.question_text("q1")
+    assert b.expected_pages("q1") == ["p1"] and b.reference_answer("q1") == "Use the reset page."
+    assert b.page("p1") == ("Reset guide", "https://x/p1")
+
+
+def test_question_missing_from_public_files_has_empty_text_not_an_error(public_tree):
+    assert load_bundle(*public_tree, split="dev").question_text("q2") == ""

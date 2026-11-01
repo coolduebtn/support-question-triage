@@ -81,7 +81,7 @@ def compare_tab(b):
         qid = st.selectbox(f"Question ({len(shown)} shown)", shown,
                            format_func=lambda q: f"[{b.gold(q)}] " + b.question_text(q).split("\n")[0][:80])
     st.markdown("### Question")
-    st.text(b.question_text(qid)[:1500])
+    st.text(b.question_text(qid)[:1500] or "(question text is not part of the public data)")
     g1, g2 = st.columns(2)
     with g1:
         st.markdown("**Correct action (gold):**")

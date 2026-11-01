@@ -11,6 +11,9 @@ from triage.schemas import GoldItem, RunResult
 split = sys.argv[1] if len(sys.argv) > 1 else "dev"
 APPROACHES = {("A", "vector", False): "A", ("A+", "vector", False): "A+", ("B", "vector", False): "B"}
 LABELS = ["answer", "clarify", "escalate"]
+if not Path("data/gold/gold.jsonl").exists():
+    sys.exit("needs the full gold file data/gold/gold.jsonl, which is not in the repository (raw question text). "
+             "The generated output is committed as results/failure_analysis.md.")
 gold = {g.qid: g for g in (GoldItem.model_validate_json(l) for l in Path("data/gold/gold.jsonl").read_text().splitlines())}
 
 

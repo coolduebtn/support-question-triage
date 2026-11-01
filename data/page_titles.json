@@ -1,0 +1,3382 @@
+{
+"100828046": [
+"Marketplace (In-Progress)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/100828046/Marketplace+In-Progress"
+],
+"103090367": [
+"Data Synchronisation between an OFBiz-Main and an OFBiz-Secondary",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/103090367/Data+Synchronisation+between+an+OFBiz-Main+and+an+OFBiz-Secondary"
+],
+"10387973": [
+"Using XMLRPC as an alternative to SOAP",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/10387973/Using+XMLRPC+as+an+alternative+to+SOAP"
+],
+"11173897": [
+"REST Service Implementation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/11173897/REST+Service+Implementation"
+],
+"113708351": [
+"Getting Started with Apache OFBiz Manufacturing and MRP in 5 Easy Steps",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/113708351/Getting+Started+with+Apache+OFBiz+Manufacturing+and+MRP+in+5+Easy+Steps"
+],
+"113708894": [
+"Migration from Subversion (SVN) to Git",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/113708894/Migration+from+Subversion+SVN+to+Git"
+],
+"11469109": [
+"Third Party Payment and Shipment Configuration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/11469109/Third+Party+Payment+and+Shipment+Configuration"
+],
+"11469111": [
+"Developing Portlets",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/11469111/Developing+Portlets"
+],
+"11469116": [
+"Addressing Custom Requirements In OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/11469116/Addressing+Custom+Requirements+In+OFBiz"
+],
+"11469118": [
+"OFBiz Content Management How to",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/11469118/OFBiz+Content+Management+How+to"
+],
+"11469163": [
+"Execution Context Implementation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/11469163/Execution+Context+Implementation"
+],
+"115508299": [
+"OFBiz Community Days Dates",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115508299/OFBiz+Community+Days+Dates"
+],
+"115511393": [
+"Business Intelligence",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511393/Business+Intelligence"
+],
+"115511399": [
+"Dimensions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511399/Dimensions"
+],
+"115511402": [
+"Facts",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511402/Facts"
+],
+"115511596": [
+"Carrier Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511596/Carrier+Dimension"
+],
+"115511598": [
+"Customer Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511598/Customer+Dimension"
+],
+"115511603": [
+"Date Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511603/Date+Dimension"
+],
+"115511607": [
+"Country Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511607/Country+Dimension"
+],
+"115511609": [
+"Catalog Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511609/Catalog+Dimension"
+],
+"115511611": [
+"Facility Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511611/Facility+Dimension"
+],
+"115511625": [
+"SalesChannel Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511625/SalesChannel+Dimension"
+],
+"115511627": [
+"Store Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511627/Store+Dimension"
+],
+"115511629": [
+"Supplier Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511629/Supplier+Dimension"
+],
+"115511631": [
+"Time Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511631/Time+Dimension"
+],
+"115511644": [
+"SalesOrderItemFact",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511644/SalesOrderItemFact"
+],
+"115511646": [
+"SalesInvoiceItem Fact",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511646/SalesInvoiceItem+Fact"
+],
+"115511648": [
+"InventoryItemFact",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511648/InventoryItemFact"
+],
+"115511653": [
+"Stars",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511653/Stars"
+],
+"115511663": [
+"Account Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511663/Account+Dimension"
+],
+"115511674": [
+"Product Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511674/Product+Dimension"
+],
+"115511676": [
+"Organisation Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115511676/Organisation+Dimension"
+],
+"115526452": [
+"Project Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115526452/Project+Dimension"
+],
+"115526767": [
+"PosTerminal Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115526767/PosTerminal+Dimension"
+],
+"115529085": [
+"ProjectTask Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115529085/ProjectTask+Dimension"
+],
+"115529402": [
+"SalesPromo Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/115529402/SalesPromo+Dimension"
+],
+"118164896": [
+"May 2019 - Community Day Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/118164896/May+2019+-+Community+Day+Survey"
+],
+"118166642": [
+"Asset Dimension",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/118166642/Asset+Dimension"
+],
+"118166778": [
+"AssetUtilisation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/118166778/AssetUtilisation"
+],
+"125310228": [
+"Translation dictionnaries",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/125310228/Translation+dictionnaries"
+],
+"127405677": [
+"Load new gradle wrapper version on bintray",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/127405677/Load+new+gradle+wrapper+version+on+bintray"
+],
+"12845376": [
+"Using XMLRPC with Flex client",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/12845376/Using+XMLRPC+with+Flex+client"
+],
+"128651300": [
+"August 2019 - Community Day Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/128651300/August+2019+-+Community+Day+Survey"
+],
+"128652703": [
+"OFBiz track @ ApacheCon US 2019 in Las Vegas, Nevada - September 9-12, 2019",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/128652703/OFBiz+track+ApacheCon+US+2019+in+Las+Vegas+Nevada+-+September+9-12+2019"
+],
+"13271445": [
+"Downloading",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/13271445/Downloading"
+],
+"13271447": [
+"System Requirements",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/13271447/System+Requirements"
+],
+"13271467": [
+"OFBiz Versions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/13271467/OFBiz+Versions"
+],
+"13271792": [
+"Data Model Diagrams",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/13271792/Data+Model+Diagrams"
+],
+"135860403": [
+"How to renew the letsencrytp  demos certificates",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/135860403/How+to+renew+the+letsencrytp+demos+certificates"
+],
+"139627912": [
+"November 2019 - Community Day Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/139627912/November+2019+-+Community+Day+Survey"
+],
+"14058653": [
+"Ofbiz as a development framework - release 10.04",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14058653/Ofbiz+as+a+development+framework+-+release+10.04"
+],
+"145724011": [
+"Contributing via Git and Github",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/145724011/Contributing+via+Git+and+Github"
+],
+"14811266": [
+"OFBiz and Oracle",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14811266/OFBiz+and+Oracle"
+],
+"14811341": [
+"Running a standalone entity engine",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14811341/Running+a+standalone+entity+engine"
+],
+"14811662": [
+"ASF Board Report 2010-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14811662/ASF+Board+Report+2010-03"
+],
+"14811955": [
+"Manufacturing Process Stories and Diagrams",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14811955/Manufacturing+Process+Stories+and+Diagrams"
+],
+"14812077": [
+"Export service using REST",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14812077/Export+service+using+REST"
+],
+"14812547": [
+"ASF Board Report 2010-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14812547/ASF+Board+Report+2010-06"
+],
+"14813468": [
+"Using sonar with OFBiz for code quality analysis",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14813468/Using+sonar+with+OFBiz+for+code+quality+analysis"
+],
+"14813720": [
+"OFBiz and GWT integration - part 1",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14813720/OFBiz+and+GWT+integration+-+part+1"
+],
+"14814279": [
+"Multitenancy support",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14814279/Multitenancy+support"
+],
+"14814291": [
+"Main New Features in 2009",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/14814291/Main+New+Features+in+2009"
+],
+"148641649": [
+"Question: GitHub or Jira or both",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/148641649/Question+GitHub+or+Jira+or+both"
+],
+"148642739": [
+"SalesInvoiceItemStarSchema",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/148642739/SalesInvoiceItemStarSchema"
+],
+"152112864": [
+"February 2020 - Community Day Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/152112864/February+2020+-+Community+Day+Survey"
+],
+"152113761": [
+"PurchaseInvoiceItemFact",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/152113761/PurchaseInvoiceItemFact"
+],
+"152113765": [
+"PurchaseInvoiceItemStarSchema",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/152113765/PurchaseInvoiceItemStarSchema"
+],
+"152113767": [
+"PurchaseOrderItemStarSchema",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/152113767/PurchaseOrderItemStarSchema"
+],
+"152113770": [
+"SalesOrderItemStarSchema",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/152113770/SalesOrderItemStarSchema"
+],
+"152113772": [
+"InventoryItemStarSchema",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/152113772/InventoryItemStarSchema"
+],
+"152113776": [
+"PurchaseOrderItemFact",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/152113776/PurchaseOrderItemFact"
+],
+"158865328": [
+"May 2020 - Community Day Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/158865328/May+2020+-+Community+Day+Survey"
+],
+"158873357": [
+"OFBiz as Open Source Order Management System",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/158873357/OFBiz+as+Open+Source+Order+Management+System"
+],
+"158874922": [
+"Headless Commerce",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/158874922/Headless+Commerce"
+],
+"158874924": [
+"WIP: Headless Commerce Requirement Specification",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/158874924/WIP+Headless+Commerce+Requirement+Specification"
+],
+"158874927": [
+"WIP: Headless Commerce (OFBiz) - API Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/158874927/WIP+Headless+Commerce+OFBiz+-+API+Roadmap"
+],
+"158876749": [
+"August 2020 - Community Day Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/158876749/August+2020+-+Community+Day+Survey"
+],
+"158877148": [
+"WIP: OOTB OFBiz eCommerce Feature Set",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/158877148/WIP+OOTB+OFBiz+eCommerce+Feature+Set"
+],
+"16416944": [
+"In The News",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/16416944/In+The+News"
+],
+"165220738": [
+"Schedule: Sessions on OFBiz as Open Source OMS",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/165220738/Schedule+Sessions+on+OFBiz+as+Open+Source+OMS"
+],
+"165223099": [
+"Install OFBiz with MariaDB, Apache2 Proxy and SSL",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/165223099/Install+OFBiz+with+MariaDB+Apache2+Proxy+and+SSL"
+],
+"170266058": [
+"OFBiz Tutorial \u2013 Introduction for Developers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/170266058/OFBiz+Tutorial+%E2%80%93+Introduction+for+Developers"
+],
+"17268863": [
+"Screenshots",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/17268863/Screenshots"
+],
+"177047849": [
+"Compare versions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/177047849/Compare+versions"
+],
+"184617942": [
+"OFBiz Tutorial - A Beginners Development Guide for Release 18.12 and Release 22.01 and Release 24.09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/184617942/OFBiz+Tutorial+-+A+Beginners+Development+Guide+for+Release+18.12+and+Release+22.01+and+Release+24.09"
+],
+"195726881": [
+"EntityNameRole",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/195726881/EntityNameRole"
+],
+"199533364": [
+"OFBiz localisation - aka translations",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/199533364/OFBiz+localisation+-+aka+translations"
+],
+"20644238": [
+"Field Description tooltip help",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/20644238/Field+Description+tooltip+help"
+],
+"211884188": [
+"OFBiz New Committer's first steps",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/211884188/OFBiz+New+Committer+s+first+steps"
+],
+"21790805": [
+"Deploying OFBiz 9.04 on JBoss 5.1.0",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/21790805/Deploying+OFBiz+9.04+on+JBoss+5.1.0"
+],
+"23332343": [
+"Contributors Branch proposal",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23332343/Contributors+Branch+proposal"
+],
+"23333058": [
+"Chinese - What is OFBiz?",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23333058/Chinese+-+What+is+OFBiz"
+],
+"23333060": [
+"Chinese - Main New Features",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23333060/Chinese+-+Main+New+Features"
+],
+"23333062": [
+"Chinese - Is OFBiz for Me?",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23333062/Chinese+-+Is+OFBiz+for+Me"
+],
+"23335370": [
+"AS-IS 9.04 Contact List How To",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23335370/AS-IS+9.04+Contact+List+How+To"
+],
+"23335441": [
+"Calling OFBiz services from Liferay using SOAP",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23335441/Calling+OFBiz+services+from+Liferay+using+SOAP"
+],
+"23335915": [
+"As Is Communication Event Process Flow",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23335915/As+Is+Communication+Event+Process+Flow"
+],
+"23337487": [
+"ASF Board Report 2010-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23337487/ASF+Board+Report+2010-09"
+],
+"23338738": [
+"Possible improvements from Netsuite",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/23338738/Possible+improvements+from+Netsuite"
+],
+"240880710": [
+"Implementing a Permission Service",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/240880710/Implementing+a+Permission+Service"
+],
+"240882363": [
+"Codenarc integration review tracker",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/240882363/Codenarc+integration+review+tracker"
+],
+"24183946": [
+"Using BIRT with OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/24183946/Using+BIRT+with+OFBiz"
+],
+"24184037": [
+"Chinese - Apache OFBiz Getting Started",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/24184037/Chinese+-+Apache+OFBiz+Getting+Started"
+],
+"24184543": [
+"Chinese - Apache OFBiz Project Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/24184543/Chinese+-+Apache+OFBiz+Project+Overview"
+],
+"24185036": [
+"Simple-methods examples using Groovy",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/24185036/Simple-methods+examples+using+Groovy"
+],
+"24189519": [
+"ASF Board Report 2010-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/24189519/ASF+Board+Report+2010-12"
+],
+"24192262": [
+"ASF Board Report 2011-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/24192262/ASF+Board+Report+2011-03"
+],
+"25199300": [
+"Announcement for new release Apache OFBiz 10.04",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/25199300/Announcement+for+new+release+Apache+OFBiz+10.04"
+],
+"25199771": [
+"Announcement for new release Apache OFBiz 09.04.01",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/25199771/Announcement+for+new+release+Apache+OFBiz+09.04.01"
+],
+"25203488": [
+"Main New Features in 2010",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/25203488/Main+New+Features+in+2010"
+],
+"25204085": [
+"Jackrabbit Branch Development",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/25204085/Jackrabbit+Branch+Development"
+],
+"25204424": [
+"ASF Board Report 2011-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/25204424/ASF+Board+Report+2011-06"
+],
+"26119042": [
+"Code and test separation for Apache OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/26119042/Code+and+test+separation+for+Apache+OFBiz"
+],
+"26119044": [
+"Pure webdriver implementation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/26119044/Pure+webdriver+implementation"
+],
+"26119268": [
+"Another Framework Vision",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/26119268/Another+Framework+Vision"
+],
+"26120061": [
+"Distributed Entity Cache Clear (DCC) Mechanism",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/26120061/Distributed+Entity+Cache+Clear+DCC+Mechanism"
+],
+"27820427": [
+"Request Flow to tomcatofbiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27820427/Request+Flow+to+tomcatofbiz"
+],
+"27825755": [
+"Implementation of PartyRelationship",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27825755/Implementation+of+PartyRelationship"
+],
+"27826612": [
+"SECAs and Error and Failure Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27826612/SECAs+and+Error+and+Failure+Management"
+],
+"27828712": [
+"ASF Board Report 2011-10",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27828712/ASF+Board+Report+2011-10"
+],
+"27828789": [
+"Chinese - Revisions Requiring Data Migration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27828789/Chinese+-+Revisions+Requiring+Data+Migration"
+],
+"27828852": [
+"Chinese - OFBiz Contributors Best Practices",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27828852/Chinese+-+OFBiz+Contributors+Best+Practices"
+],
+"27830283": [
+"OFBiz Profiling - A short tutorial of how to setup a profiler for local and remote machines",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27830283/OFBiz+Profiling+-+A+short+tutorial+of+how+to+setup+a+profiler+for+local+and+remote+machines"
+],
+"27832770": [
+"ASF Board Report 2011-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27832770/ASF+Board+Report+2011-12"
+],
+"27839433": [
+"Initial integration of the Jackrabbit repository - features and architecture description",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27839433/Initial+integration+of+the+Jackrabbit+repository+-+features+and+architecture+description"
+],
+"27839441": [
+"Requirements and Ideas",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27839441/Requirements+and+Ideas"
+],
+"27840279": [
+"A New Application Framework Design",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27840279/A+New+Application+Framework+Design"
+],
+"27840333": [
+"Mini Language - minilang - simple-method - Reference",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27840333/Mini+Language+-+minilang+-+simple-method+-+Reference"
+],
+"27840504": [
+"Groovy DSL for OFBiz business logic",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27840504/Groovy+DSL+for+OFBiz+business+logic"
+],
+"27840779": [
+"make OFBiz social (Apache Shindig integration)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27840779/make+OFBiz+social+Apache+Shindig+integration"
+],
+"27841314": [
+"ASF Board Report 2012-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27841314/ASF+Board+Report+2012-03"
+],
+"27841316": [
+"OFBiz Attic",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27841316/OFBiz+Attic"
+],
+"27843038": [
+"Main New Features in 2011",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27843038/Main+New+Features+in+2011"
+],
+"27844117": [
+"ASF Board Report 2012-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27844117/ASF+Board+Report+2012-06"
+],
+"27844897": [
+"Configuration document",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27844897/Configuration+document"
+],
+"27845063": [
+"How to migrate OFBiz from Derby/H2 to MySQL database",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27845063/How+to+migrate+OFBiz+from+Derby+H2+to+MySQL+database"
+],
+"27846614": [
+"Functional testing in the OFBiz - Implementation using pure Java WebDriver",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27846614/Functional+testing+in+the+OFBiz+-+Implementation+using+pure+Java+WebDriver"
+],
+"27848153": [
+"How to upgrade the embedded Tomcat",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27848153/How+to+upgrade+the+embedded+Tomcat"
+],
+"27848600": [
+"Testing scope for pages",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27848600/Testing+scope+for+pages"
+],
+"27849139": [
+"ASF Board Report 2012-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27849139/ASF+Board+Report+2012-09"
+],
+"27850262": [
+"Notes startup settings",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/27850262/Notes+startup+settings"
+],
+"298781207": [
+"Freemarker tutorial in context of Apache OFBiz project",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/298781207/Freemarker+tutorial+in+context+of+Apache+OFBiz+project"
+],
+"298781219": [
+"OFBIZ ENTITY QUERY API SIMPLIFIES QUERY PROCESS",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/298781219/OFBIZ+ENTITY+QUERY+API+SIMPLIFIES+QUERY+PROCESS"
+],
+"30150779": [
+"ASF Board Report 2012-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/30150779/ASF+Board+Report+2012-12"
+],
+"306153902": [
+"Release 26.xx Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/306153902/Release+26.xx+Roadmap"
+],
+"30743919": [
+"Webdriver based Functional tests for OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/30743919/Webdriver+based+Functional+tests+for+OFBiz"
+],
+"30744660": [
+"Main New Features in Branch 2012-04",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/30744660/Main+New+Features+in+Branch+2012-04"
+],
+"30745422": [
+"Securing user password - Make it pattern driven.",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/30745422/Securing+user+password+-+Make+it+pattern+driven."
+],
+"30748622": [
+"ASF Board Report 2013-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/30748622/ASF+Board+Report+2013-03"
+],
+"30751324": [
+"Main New Features in 2012",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/30751324/Main+New+Features+in+2012"
+],
+"30757347": [
+"ASF Board Report 2013-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/30757347/ASF+Board+Report+2013-06"
+],
+"31824380": [
+"Configuration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/31824380/Configuration"
+],
+"31824596": [
+"Security",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/31824596/Security"
+],
+"31824834": [
+"Metrics",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/31824834/Metrics"
+],
+"325421700": [
+"eInvoicing",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/325421700/eInvoicing"
+],
+"340037428": [
+"How to implement RESTful APIs using the OFBiz rest-api component",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/340037428/How+to+implement+RESTful+APIs+using+the+OFBiz+rest-api+component"
+],
+"340037431": [
+"Demo Data for Skateboard Manufacturing",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/340037431/Demo+Data+for+Skateboard+Manufacturing"
+],
+"34019405": [
+"ASF Board Report 2013-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/34019405/ASF+Board+Report+2013-09"
+],
+"34842642": [
+"ASF Board Report 2013-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/34842642/ASF+Board+Report+2013-12"
+],
+"349637018": [
+"How to Migrate from Embedded Solr to Standalone Solr",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/349637018/How+to+Migrate+from+Embedded+Solr+to+Standalone+Solr"
+],
+"38568960": [
+"Apache OFBiz Contributors",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38568960/Apache+OFBiz+Contributors"
+],
+"38569602": [
+"Multi-Server Configuration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38569602/Multi-Server+Configuration"
+],
+"38569604": [
+"Scheduled Jobs in a multi-server configuration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38569604/Scheduled+Jobs+in+a+multi-server+configuration"
+],
+"38570003": [
+"Expense Declaration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38570003/Expense+Declaration"
+],
+"38570034": [
+"Lang Package",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38570034/Lang+Package"
+],
+"38570302": [
+"Use Cases",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38570302/Use+Cases"
+],
+"38570317": [
+"View Expense Declaration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38570317/View+Expense+Declaration"
+],
+"38570319": [
+"Add Expense Item",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38570319/Add+Expense+Item"
+],
+"38570322": [
+"Remove Expense Item",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38570322/Remove+Expense+Item"
+],
+"38570328": [
+"Create Expense Declaration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38570328/Create+Expense+Declaration"
+],
+"38571777": [
+"Improvement(s) to Manufacturing",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/38571777/Improvement+s+to+Manufacturing"
+],
+"387647964": [
+"OpenAI Codex Set-up Guide for Apache OFBiz Development",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/387647964/OpenAI+Codex+Set-up+Guide+for+Apache+OFBiz+Development"
+],
+"387648210": [
+"Case Study of AI-Driven Development for Jira Ticket OFBIZ-13269",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/387648210/Case+Study+of+AI-Driven+Development+for+Jira+Ticket+OFBIZ-13269"
+],
+"39622575": [
+"ASF Board Report 2014-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/39622575/ASF+Board+Report+2014-03"
+],
+"421957019": [
+"REST API Specifications - Order",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/421957019/REST+API+Specifications+-+Order"
+],
+"42566016": [
+"ASF Board Report 2014-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/42566016/ASF+Board+Report+2014-06"
+],
+"430407963": [
+"AI Plugin \u2014 Agent Framework for LLM Integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430407963/AI+Plugin+%E2%80%94+Agent+Framework+for+LLM+Integration"
+],
+"430408379": [
+"AI Framework for ERP \u2014 Architecture Decision Record",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408379/AI+Framework+for+ERP+%E2%80%94+Architecture+Decision+Record"
+],
+"430408382": [
+"Context-Window Management for AI Agents",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408382/Context-Window+Management+for+AI+Agents"
+],
+"430408503": [
+"The Composer Assistant",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408503/The+Composer+Assistant"
+],
+"430408535": [
+"AI in Enterprise ERP \u2014 Setting the Stage",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408535/AI+in+Enterprise+ERP+%E2%80%94+Setting+the+Stage"
+],
+"430408537": [
+"Defending AI Adoption: The Questions You Will Be Asked",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408537/Defending+AI+Adoption+The+Questions+You+Will+Be+Asked"
+],
+"430408654": [
+"Embedder: Semantic Search for the OFBiz AI Framework",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408654/Embedder+Semantic+Search+for+the+OFBiz+AI+Framework"
+],
+"430408658": [
+"Vector Search Storage: Choosing a Pluggable Strategy",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408658/Vector+Search+Storage+Choosing+a+Pluggable+Strategy"
+],
+"430408954": [
+"Fulfillment API \u2014 a merchant-facing fulfillment REST API plugin for Apache OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408954/Fulfillment+API+%E2%80%94+a+merchant-facing+fulfillment+REST+API+plugin+for+Apache+OFBiz"
+],
+"430408956": [
+"fulfillment-api \u2014 Architecture",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430408956/fulfillment-api+%E2%80%94+Architecture"
+],
+"430409055": [
+"How to Run Apache OFBiz as a 3PL WMS",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430409055/How+to+Run+Apache+OFBiz+as+a+3PL+WMS"
+],
+"430409440": [
+"XML Import - Numeric Field Format Requirements",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/430409440/XML+Import+-+Numeric+Field+Format+Requirements"
+],
+"446071424": [
+"DKIM Signing Setup Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/446071424/DKIM+Signing+Setup+Guide"
+],
+"446071472": [
+"Load Balancing and Clustering Multiple OFBiz Instances",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/446071472/Load+Balancing+and+Clustering+Multiple+OFBiz+Instances"
+],
+"44994623": [
+"OFBiz Proposed Archive",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/44994623/OFBiz+Proposed+Archive"
+],
+"44994703": [
+"Technical Documentation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/44994703/Technical+Documentation"
+],
+"44994717": [
+"OFBTECH Page Review (Completed)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/44994717/OFBTECH+Page+Review+Completed"
+],
+"44994759": [
+"OFBiz track @ Apachecon EU 2014 in Budapest, Hungary Nov 17th - Nov 19th 2014",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/44994759/OFBiz+track+Apachecon+EU+2014+in+Budapest+Hungary+Nov+17th+-+Nov+19th+2014"
+],
+"451974256": [
+"Inventory Cycle Count - Requirements",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/451974256/Inventory+Cycle+Count+-+Requirements"
+],
+"45875561": [
+"Sharan - Documentation WIP",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/45875561/Sharan+-+Documentation+WIP"
+],
+"45877478": [
+"ASF Board Report 2014-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/45877478/ASF+Board+Report+2014-09"
+],
+"45877718": [
+"Business Process Reference Book",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/45877718/Business+Process+Reference+Book"
+],
+"462815530": [
+"Configuring Read-Only Datasource Access for Reporting",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/462815530/Configuring+Read-Only+Datasource+Access+for+Reporting"
+],
+"46631778": [
+"E-commerce",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46631778/E-commerce"
+],
+"46631780": [
+"Sales Order Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46631780/Sales+Order+Management"
+],
+"46631782": [
+"Product Information Management (PIM)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46631782/Product+Information+Management+PIM"
+],
+"46631785": [
+"Warehouse Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46631785/Warehouse+Management"
+],
+"46632560": [
+"Bug Crush Testing Report - September 2014",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46632560/Bug+Crush+Testing+Report+-+September+2014"
+],
+"46632562": [
+"Bug Crush Testing Report - August 2014",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46632562/Bug+Crush+Testing+Report+-+August+2014"
+],
+"46632635": [
+"Manufacturing",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46632635/Manufacturing"
+],
+"46632637": [
+"Human Resources Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/46632637/Human+Resources+Management"
+],
+"47383011": [
+"September 2014: OFBiz Documentation Survey Results",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/47383011/September+2014+OFBiz+Documentation+Survey+Results"
+],
+"47383748": [
+"OFBiz Community Surveys",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/47383748/OFBiz+Community+Surveys"
+],
+"47383856": [
+"Bug Crush Testing Report - October 2014",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/47383856/Bug+Crush+Testing+Report+-+October+2014"
+],
+"48201940": [
+"Entity Engine Configuration Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48201940/Entity+Engine+Configuration+Guide"
+],
+"48201960": [
+"Service Engine Configuration Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48201960/Service+Engine+Configuration+Guide"
+],
+"48201990": [
+"Entity Engine Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48201990/Entity+Engine+Guide"
+],
+"48202125": [
+"Security Administration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48202125/Security+Administration"
+],
+"48202553": [
+"ApacheCon EU 2014 - Introduction to a Recommender System for Apache OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48202553/ApacheCon+EU+2014+-+Introduction+to+a+Recommender+System+for+Apache+OFBiz"
+],
+"48203381": [
+"Release Management Guide for OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48203381/Release+Management+Guide+for+OFBiz"
+],
+"48203586": [
+"Bug Crush Testing Report - November 2014",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48203586/Bug+Crush+Testing+Report+-+November+2014"
+],
+"48792043": [
+"Brewing with OFBiz at a small or medium sized brewery",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48792043/Brewing+with+OFBiz+at+a+small+or+medium+sized+brewery"
+],
+"48792051": [
+"OFBiz track @ Apachecon US 2015 in Texas, Austin -  April 13-17, 2015",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48792051/OFBiz+track+Apachecon+US+2015+in+Texas+Austin+-+April+13-17+2015"
+],
+"48792295": [
+"Apachecon Workshop: 19th November 2014",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/48792295/Apachecon+Workshop+19th+November+2014"
+],
+"49578759": [
+"Communication Templates",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/49578759/Communication+Templates"
+],
+"49578763": [
+"Project Vision and Direction",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/49578763/Project+Vision+and+Direction"
+],
+"49579254": [
+"Extension in Multitenancy support",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/49579254/Extension+in+Multitenancy+support"
+],
+"49579295": [
+"Draft OFBiz Kernel Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/49579295/Draft+OFBiz+Kernel+Roadmap"
+],
+"49579299": [
+"Draft Documentation Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/49579299/Draft+Documentation+Roadmap"
+],
+"50233383": [
+"ASF Board Report 2014-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233383/ASF+Board+Report+2014-12"
+],
+"50233535": [
+"Regions Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233535/Regions+Guide"
+],
+"50233547": [
+"Control Servlet Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233547/Control+Servlet+Guide"
+],
+"50233669": [
+"Framework Configuration Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233669/Framework+Configuration+Guide"
+],
+"50233678": [
+"Data File Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233678/Data+File+Guide"
+],
+"50233682": [
+"Core Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233682/Core+Overview"
+],
+"50233686": [
+"JSP Tag Library Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233686/JSP+Tag+Library+Guide"
+],
+"50233697": [
+"Mini-Language Guide (Version 1 - Deprecated)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50233697/Mini-Language+Guide+Version+1+-+Deprecated"
+],
+"50234166": [
+"Project Roadmaps",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50234166/Project+Roadmaps"
+],
+"50234181": [
+"Draft Framework Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50234181/Draft+Framework+Roadmap"
+],
+"50234186": [
+"Draft Applications Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50234186/Draft+Applications+Roadmap"
+],
+"50234189": [
+"Draft Special Purpose Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50234189/Draft+Special+Purpose+Roadmap"
+],
+"50234210": [
+"Draft Marketing and Communication Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50234210/Draft+Marketing+and+Communication+Roadmap"
+],
+"50234215": [
+"Draft General Maintenance and Housekeeping",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50234215/Draft+General+Maintenance+and+Housekeeping"
+],
+"50234294": [
+"Draft Release Management Roadmap",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50234294/Draft+Release+Management+Roadmap"
+],
+"50856439": [
+"References",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50856439/References"
+],
+"50858698": [
+"Load Legacy Data by Connecting to the Legacy Database",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50858698/Load+Legacy+Data+by+Connecting+to+the+Legacy+Database"
+],
+"50858705": [
+"Use an Extract Program to extract Legacy data and load it with XML-RPC",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50858705/Use+an+Extract+Program+to+extract+Legacy+data+and+load+it+with+XML-RPC"
+],
+"50859445": [
+"Drawing Source",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/50859445/Drawing+Source"
+],
+"51806432": [
+"OFBiz Community Days",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/51806432/OFBiz+Community+Days"
+],
+"51806440": [
+"Wiki access",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/51806440/Wiki+access"
+],
+"51810651": [
+"Search Engine Optimisation, SEO in ecommerce",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/51810651/Search+Engine+Optimisation+SEO+in+ecommerce"
+],
+"53740220": [
+"ASF Board Report 2015-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/53740220/ASF+Board+Report+2015-03"
+],
+"55152364": [
+"March 2015 - Community Day Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/55152364/March+2015+-+Community+Day+Survey"
+],
+"55154316": [
+"Project Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/55154316/Project+Management"
+],
+"55154338": [
+"Plugins stack",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/55154338/Plugins+stack"
+],
+"55154351": [
+"Framework stack",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/55154351/Framework+stack"
+],
+"55154378": [
+"Scrum Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/55154378/Scrum+Management"
+],
+"55154648": [
+"Asset Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/55154648/Asset+Management"
+],
+"55155268": [
+"Guidelines for Use of Social Media",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/55155268/Guidelines+for+Use+of+Social+Media"
+],
+"56068215": [
+"Twitter",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/56068215/Twitter"
+],
+"56068639": [
+"OFBiz Track @ Apachecon Core EU 2015 Budapest",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/56068639/OFBiz+Track+Apachecon+Core+EU+2015+Budapest"
+],
+"57904574": [
+"Draft Community Day Task Planning",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/57904574/Draft+Community+Day+Task+Planning"
+],
+"57905462": [
+"Information on translated languages in OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/57905462/Information+on+translated+languages+in+OFBiz"
+],
+"57905634": [
+"New OFBiz Website Requirements",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/57905634/New+OFBiz+Website+Requirements"
+],
+"57905685": [
+"ASF Board Report 2015-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/57905685/ASF+Board+Report+2015-06"
+],
+"61317052": [
+"New OFBiz Website",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61317052/New+OFBiz+Website"
+],
+"61317083": [
+"Draft Website Structure Option B - Work in Progress",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61317083/Draft+Website+Structure+Option+B+-+Work+in+Progress"
+],
+"61317437": [
+"Draft Website Structure - Option A",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61317437/Draft+Website+Structure+-+Option+A"
+],
+"61317619": [
+"Sticky session load balancing with Apache and mod_balancer",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61317619/Sticky+session+load+balancing+with+Apache+and+mod_balancer"
+],
+"61318268": [
+"ASF Board Report 2015-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61318268/ASF+Board+Report+2015-09"
+],
+"61323187": [
+"OFBiz Workshop : 2nd October 2015",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61323187/OFBiz+Workshop+2nd+October+2015"
+],
+"61324503": [
+"Potential Framework Project for the Foundation Sub Component (See Framework Re-Factor)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61324503/Potential+Framework+Project+for+the+Foundation+Sub+Component+See+Framework+Re-Factor"
+],
+"61324751": [
+"Actor Management",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61324751/Actor+Management"
+],
+"61325034": [
+"Services",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61325034/Services"
+],
+"61325653": [
+"Logging",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61325653/Logging"
+],
+"61330563": [
+"OFBiz Youtube Channel",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61330563/OFBiz+Youtube+Channel"
+],
+"61330741": [
+"OFBiz Presentations @ Apachecon NA 2016 Vancouver",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61330741/OFBiz+Presentations+Apachecon+NA+2016+Vancouver"
+],
+"61330745": [
+"Keeping OFBiz secure",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61330745/Keeping+OFBiz+secure"
+],
+"61331040": [
+"About OWASP Dependency Check",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61331040/About+OWASP+Dependency+Check"
+],
+"61331675": [
+"About retire.js",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61331675/About+retire.js"
+],
+"61331856": [
+"ASF Board Report 2015-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61331856/ASF+Board+Report+2015-12"
+],
+"61332194": [
+"How to Secure HTTP Headers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61332194/How+to+Secure+HTTP+Headers"
+],
+"61338649": [
+"Memorial - Adrian Crum",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61338649/Memorial+-+Adrian+Crum"
+],
+"61339197": [
+"Memorial - Tom Burns",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61339197/Memorial+-+Tom+Burns"
+],
+"61339429": [
+"Framework Re-factor",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61339429/Framework+Re-factor"
+],
+"61340024": [
+"The infamous Java serialization vulnerability",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/61340024/The+infamous+Java+serialization+vulnerability"
+],
+"62687961": [
+"Skype Re-Factor Group Call: 15th March 2016",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/62687961/Skype+Re-Factor+Group+Call+15th+March+2016"
+],
+"62688026": [
+"Framework Components",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/62688026/Framework+Components"
+],
+"62688028": [
+"Project Approach",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/62688028/Project+Approach"
+],
+"62688037": [
+"Current Refactoring Team",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/62688037/Current+Refactoring+Team"
+],
+"62688054": [
+"Coding Practices",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/62688054/Coding+Practices"
+],
+"62689847": [
+"Re-Factor To-Do List",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/62689847/Re-Factor+To-Do+List"
+],
+"63406622": [
+"OFBiz Track @ Apachecon EU 2016",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/63406622/OFBiz+Track+Apachecon+EU+2016"
+],
+"63406655": [
+"May 2016 - Committers Survey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/63406655/May+2016+-+Committers+Survey"
+],
+"63407167": [
+"New Website - Sample Draft Pages",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/63407167/New+Website+-+Sample+Draft+Pages"
+],
+"64553348": [
+"ASF Board Report 2016-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/64553348/ASF+Board+Report+2016-06"
+],
+"64553663": [
+"OFBiz Mentors",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/64553663/OFBiz+Mentors"
+],
+"64553975": [
+"Community Statistics",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/64553975/Community+Statistics"
+],
+"64554381": [
+"General Project Frequently Asked Questions (FAQs)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/64554381/General+Project+Frequently+Asked+Questions+FAQs"
+],
+"65147578": [
+"From Ant to Gradle - trunk version",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/65147578/From+Ant+to+Gradle+-+trunk+version"
+],
+"65147580": [
+"July 2016 - OFBiz Logo Survey Results",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/65147580/July+2016+-+OFBiz+Logo+Survey+Results"
+],
+"6553724": [
+"Tips for UI labels translation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553724/Tips+for+UI+labels+translation"
+],
+"6553725": [
+"POS System",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553725/POS+System"
+],
+"6553727": [
+"Address Schema Change Proposal",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553727/Address+Schema+Change+Proposal"
+],
+"6553736": [
+"Using Website and Productstore for External sites.",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553736/Using+Website+and+Productstore+for+External+sites."
+],
+"6553737": [
+"4.x Proposed Roadmap Items",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553737/4.x+Proposed+Roadmap+Items"
+],
+"6553738": [
+"Plugin search tools for Firefox using Nabble or Mark Mail",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553738/Plugin+search+tools+for+Firefox+using+Nabble+or+Mark+Mail"
+],
+"6553743": [
+"Apache OFBiz Service Providers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553743/Apache+OFBiz+Service+Providers"
+],
+"6553745": [
+"JavaPOS USB For EPSON TM-U220D Printer Device Service",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553745/JavaPOS+USB+For+EPSON+TM-U220D+Printer+Device+Service"
+],
+"6553746": [
+"Why do I have to login when there is a externalLoginKey",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553746/Why+do+I+have+to+login+when+there+is+a+externalLoginKey"
+],
+"6553748": [
+"How to localize Product and Categories descriptions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553748/How+to+localize+Product+and+Categories+descriptions"
+],
+"6553749": [
+"Reports for Project Management component",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553749/Reports+for+Project+Management+component"
+],
+"6553750": [
+"Content Associations",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553750/Content+Associations"
+],
+"6553751": [
+"Data Model Packages",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553751/Data+Model+Packages"
+],
+"6553752": [
+"How to process bank statements",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553752/How+to+process+bank+statements"
+],
+"6553757": [
+"Variables always available in screen context",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553757/Variables+always+available+in+screen+context"
+],
+"6553758": [
+"Communications Events UI refactored",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553758/Communications+Events+UI+refactored"
+],
+"6553759": [
+"OAGIS",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553759/OAGIS"
+],
+"6553770": [
+"Google Checkout Integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553770/Google+Checkout+Integration"
+],
+"6553773": [
+"Notes on XSL-FO in OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553773/Notes+on+XSL-FO+in+OFBiz"
+],
+"6553775": [
+"Implementation of extended Postal Addressing Phase III",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553775/Implementation+of+extended+Postal+Addressing+Phase+III"
+],
+"6553779": [
+"Dictionary for Dutch translations",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553779/Dictionary+for+Dutch+translations"
+],
+"6553780": [
+"eCommerce Enhancements",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553780/eCommerce+Enhancements"
+],
+"6553781": [
+"SVN Tips - svn_load_dirs Vendor Branch",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553781/SVN+Tips+-+svn_load_dirs+Vendor+Branch"
+],
+"6553782": [
+"Credit Card 3D Secure  Authentication Integration with ofbiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553782/Credit+Card+3D+Secure+Authentication+Integration+with+ofbiz"
+],
+"6553784": [
+"Home",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553784/Home"
+],
+"6553786": [
+"Party Relationship",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553786/Party+Relationship"
+],
+"6553789": [
+"Open Source Projects and Standards",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553789/Open+Source+Projects+and+Standards"
+],
+"6553790": [
+"Complete the implementation of the ProjectMgr component.",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553790/Complete+the+implementation+of+the+ProjectMgr+component."
+],
+"6553794": [
+"Add Start-Stop stop-watch on Task summary page",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553794/Add+Start-Stop+stop-watch+on+Task+summary+page"
+],
+"6553795": [
+"Communication Events",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553795/Communication+Events"
+],
+"6553801": [
+"Orders, Taxes, Billing, Payment",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553801/Orders+Taxes+Billing+Payment"
+],
+"6553802": [
+"How to use SVK for creating local SVN repositories",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553802/How+to+use+SVK+for+creating+local+SVN+repositories"
+],
+"6553803": [
+"Webtools Wishlist",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553803/Webtools+Wishlist"
+],
+"6553804": [
+"Using excel to build vars and map methods for a class from services page.",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553804/Using+excel+to+build+vars+and+map+methods+for+a+class+from+services+page."
+],
+"6553810": [
+"Proposal for Plane, Bus, Restaurant and Cinema Seats",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553810/Proposal+for+Plane+Bus+Restaurant+and+Cinema+Seats"
+],
+"6553813": [
+"Authroize.net Configuration in Ofbiz Application",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553813/Authroize.net+Configuration+in+Ofbiz+Application"
+],
+"6553814": [
+"MySQL Issues",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553814/MySQL+Issues"
+],
+"6553816": [
+"Direction Lines Entity",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553816/Direction+Lines+Entity"
+],
+"6553817": [
+"Export Ofbiz Services that use complex type parameters via SOAP using AXIS2",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553817/Export+Ofbiz+Services+that+use+complex+type+parameters+via+SOAP+using+AXIS2"
+],
+"6553818": [
+"Dictionary for French translations",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553818/Dictionary+for+French+translations"
+],
+"6553820": [
+"Premises Entity related to Postal Address",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553820/Premises+Entity+related+to+Postal+Address"
+],
+"6553827": [
+"OFBiz Features",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553827/OFBiz+Features"
+],
+"6553828": [
+"Visual Themes Gallery",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553828/Visual+Themes+Gallery"
+],
+"6553829": [
+"Framework Indepence Changes OSS Patches",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553829/Framework+Indepence+Changes+OSS+Patches"
+],
+"6553832": [
+"How to Run OFBiz as Windows Service with Java Service Wrapper",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553832/How+to+Run+OFBiz+as+Windows+Service+with+Java+Service+Wrapper"
+],
+"6553833": [
+"Dictionary for translations to German",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553833/Dictionary+for+translations+to+German"
+],
+"6553835": [
+"Demo Data that is loaded at install.",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553835/Demo+Data+that+is+loaded+at+install."
+],
+"6553836": [
+"Placing Order Through GoogleCheckout",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553836/Placing+Order+Through+GoogleCheckout"
+],
+"6553840": [
+"ZK Rich Client - integration tutorial",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553840/ZK+Rich+Client+-+integration+tutorial"
+],
+"6553842": [
+"Running and Debugging OFBiz in Eclipse",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553842/Running+and+Debugging+OFBiz+in+Eclipse"
+],
+"6553844": [
+"FAQ - Tips - Tricks - Cookbook - HowTo",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553844/FAQ+-+Tips+-+Tricks+-+Cookbook+-+HowTo"
+],
+"6553846": [
+"Add a WAR file",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553846/Add+a+WAR+file"
+],
+"6553849": [
+"OFBiz 4.X and next...",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553849/OFBiz+4.X+and+next..."
+],
+"6553850": [
+"Tips and Tricks while working with Groovy",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553850/Tips+and+Tricks+while+working+with+Groovy"
+],
+"6553851": [
+"Fedex Integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553851/Fedex+Integration"
+],
+"6553853": [
+"Load OpenI (Mondrian Implementation) under OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553853/Load+OpenI+Mondrian+Implementation+under+OFBiz"
+],
+"6553855": [
+"Asterisk PBX Server Integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553855/Asterisk+PBX+Server+Integration"
+],
+"6553857": [
+"Apache Software Foundation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553857/Apache+Software+Foundation"
+],
+"6553861": [
+"Requirements gathering",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553861/Requirements+gathering"
+],
+"6553862": [
+"Magnolia CMS Integration Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553862/Magnolia+CMS+Integration+Guide"
+],
+"6553863": [
+"Party",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553863/Party"
+],
+"6553866": [
+"Customer Store Relationship",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553866/Customer+Store+Relationship"
+],
+"6553867": [
+"Mini-Language Guide (Version 2 - Deprecated)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553867/Mini-Language+Guide+Version+2+-+Deprecated"
+],
+"6553868": [
+"Main New Features",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553868/Main+New+Features"
+],
+"6553870": [
+"user friendly XLS, CSV import and export integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553870/user+friendly+XLS+CSV+import+and+export+integration"
+],
+"6553871": [
+"How to run OFBiz as a Service",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553871/How+to+run+OFBiz+as+a+Service"
+],
+"6553874": [
+"Key-Work Ofbiz Contribution Proposal",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553874/Key-Work+Ofbiz+Contribution+Proposal"
+],
+"6553875": [
+"Marketing Campaign",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553875/Marketing+Campaign"
+],
+"6553877": [
+"Proposed Implementation of extended Postal Addressing",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553877/Proposed+Implementation+of+extended+Postal+Addressing"
+],
+"6553878": [
+"OFBIZ in Netbeans 6",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553878/OFBIZ+in+Netbeans+6"
+],
+"6553879": [
+"Complete implementation of Asset Management application",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553879/Complete+implementation+of+Asset+Management+application"
+],
+"6553880": [
+"How to display all information of a single party",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553880/How+to+display+all+information+of+a+single+party"
+],
+"6553881": [
+"Implementation of extended Postal Addressing Phase II",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553881/Implementation+of+extended+Postal+Addressing+Phase+II"
+],
+"6553882": [
+"Customizing the Dashboard",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553882/Customizing+the+Dashboard"
+],
+"6553883": [
+"Dictionary for Danish translations",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553883/Dictionary+for+Danish+translations"
+],
+"6553889": [
+"Apache OFBiz User List",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553889/Apache+OFBiz+User+List"
+],
+"6553892": [
+"Star Schema - Party Dimension Source",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553892/Star+Schema+-+Party+Dimension+Source"
+],
+"6553893": [
+"Pre-Canned Solution for IT Services company",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553893/Pre-Canned+Solution+for+IT+Services+company"
+],
+"6553895": [
+"Sandbox",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553895/Sandbox"
+],
+"6553900": [
+"How to Setup a Company",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553900/How+to+Setup+a+Company"
+],
+"6553901": [
+"Star Schema - Order Fact Source",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553901/Star+Schema+-+Order+Fact+Source"
+],
+"6553902": [
+"Entity Engine DB2 Express-C integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553902/Entity+Engine+DB2+Express-C+integration"
+],
+"6553904": [
+"MySQL JDBC Timeout and AutoReconnect",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553904/MySQL+JDBC+Timeout+and+AutoReconnect"
+],
+"6553907": [
+"VAT",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553907/VAT"
+],
+"6553908": [
+"Subscription",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553908/Subscription"
+],
+"6553909": [
+"Extending PostalAddress Information",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553909/Extending+PostalAddress+Information"
+],
+"6553911": [
+"Recruitment application",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553911/Recruitment+application"
+],
+"6553912": [
+"Enhancing Display Widget to use Ajax.InPlaceEditor",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553912/Enhancing+Display+Widget+to+use+Ajax.InPlaceEditor"
+],
+"6553920": [
+"Address line entity",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553920/Address+line+entity"
+],
+"6553921": [
+"Beginner's Guide to the Manufacturing Process",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553921/Beginner+s+Guide+to+the+Manufacturing+Process"
+],
+"6553923": [
+"Complete implementation of HR application",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553923/Complete+implementation+of+HR+application"
+],
+"6553924": [
+"Import Data Using Apache POI api",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553924/Import+Data+Using+Apache+POI+api"
+],
+"6553925": [
+"Implementation of extended Postal Addressing Phase I",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553925/Implementation+of+extended+Postal+Addressing+Phase+I"
+],
+"6553926": [
+"Financial requirements",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553926/Financial+requirements"
+],
+"6553928": [
+"Product Pricing",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553928/Product+Pricing"
+],
+"6553929": [
+"Entity Engine LDAP Integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553929/Entity+Engine+LDAP+Integration"
+],
+"6553930": [
+"How to setup the Epson JavaPOS",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553930/How+to+setup+the+Epson+JavaPOS"
+],
+"6553934": [
+"Guide to OFBiz-i18n,  Internationalisation of OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553934/Guide+to+OFBiz-i18n+Internationalisation+of+OFBiz"
+],
+"6553936": [
+"eBay Integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553936/eBay+Integration"
+],
+"6553938": [
+"Is OFBiz for Me",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553938/Is+OFBiz+for+Me"
+],
+"6553940": [
+"Promotions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553940/Promotions"
+],
+"6553945": [
+"Load balance across multiple instances of OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553945/Load+balance+across+multiple+instances+of+OFBiz"
+],
+"6553950": [
+"Inventory Variance",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553950/Inventory+Variance"
+],
+"6553954": [
+"Visual Themes - How to",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553954/Visual+Themes+-+How+to"
+],
+"6553955": [
+"Main New Features in 2008",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553955/Main+New+Features+in+2008"
+],
+"6553957": [
+"Export to Excel",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553957/Export+to+Excel"
+],
+"6553963": [
+"Configurable Dashboard",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553963/Configurable+Dashboard"
+],
+"6553966": [
+"Sync Setup Notes and Example",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553966/Sync+Setup+Notes+and+Example"
+],
+"6553967": [
+"Apache OFBiz User Stories",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553967/Apache+OFBiz+User+Stories"
+],
+"6553969": [
+"OFBiz Tutorial - A Beginners Development Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553969/OFBiz+Tutorial+-+A+Beginners+Development+Guide"
+],
+"6553972": [
+"Process Order Path",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553972/Process+Order+Path"
+],
+"6553973": [
+"ofbiz.apache.org New Site Plan",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553973/ofbiz.apache.org+New+Site+Plan"
+],
+"6553975": [
+"Chart of Accounts for Services Company",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553975/Chart+of+Accounts+for+Services+Company"
+],
+"6553976": [
+"Handling of External data",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553976/Handling+of+External+data"
+],
+"6553979": [
+"Geo Location",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553979/Geo+Location"
+],
+"6553980": [
+"Main New Features in 2007",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553980/Main+New+Features+in+2007"
+],
+"6553987": [
+"UML Diagrams",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553987/UML+Diagrams"
+],
+"6553989": [
+"Eclipse Tips",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553989/Eclipse+Tips"
+],
+"6553992": [
+"Understanding the OFBiz Widget Toolkit",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553992/Understanding+the+OFBiz+Widget+Toolkit"
+],
+"6553994": [
+"Connecting OFBiz to PostGIS spatially-enabled database",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553994/Connecting+OFBiz+to+PostGIS+spatially-enabled+database"
+],
+"6553995": [
+"Menu Widget Refactor Guidelines",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553995/Menu+Widget+Refactor+Guidelines"
+],
+"6553998": [
+"Notes on New Security Model",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6553998/Notes+on+New+Security+Model"
+],
+"6554002": [
+"Misc UI Refactor Guidelines 3",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554002/Misc+UI+Refactor+Guidelines+3"
+],
+"6554005": [
+"OFBiz HTML Element Collection Styles",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554005/OFBiz+HTML+Element+Collection+Styles"
+],
+"6554006": [
+"Asset Maintenance Setup",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554006/Asset+Maintenance+Setup"
+],
+"6554007": [
+"Browsers and other Statistics",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554007/Browsers+and+other+Statistics"
+],
+"6554009": [
+"Code Snippets",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554009/Code+Snippets"
+],
+"6554011": [
+"How to configure authorize.net certificates",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554011/How+to+configure+authorize.net+certificates"
+],
+"6554012": [
+"Java Mail Refactor",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554012/Java+Mail+Refactor"
+],
+"6554013": [
+"Ant Script to build new ofbiz self cert",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554013/Ant+Script+to+build+new+ofbiz+self+cert"
+],
+"6554014": [
+"SVN Tips - MS Vendor Branch",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554014/SVN+Tips+-+MS+Vendor+Branch"
+],
+"6554015": [
+"Copy of Complete implementation of Asset Management application",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554015/Copy+of+Complete+implementation+of+Asset+Management+application"
+],
+"6554017": [
+"Misc UI Refactor Guidelines 2",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554017/Misc+UI+Refactor+Guidelines+2"
+],
+"6554018": [
+"The horizontal menu in the right column is causing the HTML elements below it to drop down to the bottom of the screen",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554018/The+horizontal+menu+in+the+right+column+is+causing+the+HTML+elements+below+it+to+drop+down+to+the+bottom+of+the+screen"
+],
+"6554021": [
+"Accounts, Transactions, Payments",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554021/Accounts+Transactions+Payments"
+],
+"6554022": [
+"Amazon Interface notes.",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/6554022/Amazon+Interface+notes."
+],
+"65865705": [
+"Browsing Derby Database in Eclipse",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/65865705/Browsing+Derby+Database+in+Eclipse"
+],
+"65867807": [
+"Rainbowstone",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/65867807/Rainbowstone"
+],
+"65868700": [
+"Guidelines for Using JIRA Draft Proposal 1",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/65868700/Guidelines+for+Using+JIRA+Draft+Proposal+1"
+],
+"65869903": [
+"OFBiz commit message template",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/65869903/OFBiz+commit+message+template"
+],
+"66853951": [
+"Apachecon NA 2017",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/66853951/Apachecon+NA+2017"
+],
+"66853974": [
+"OFBiz Apachecon Brainstorming Session : 16th November 2016",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/66853974/OFBiz+Apachecon+Brainstorming+Session+16th+November+2016"
+],
+"67633202": [
+"UI Improvement",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67633202/UI+Improvement"
+],
+"67633312": [
+"Guidelines for Using JIRA Draft Proposal 2",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67633312/Guidelines+for+Using+JIRA+Draft+Proposal+2"
+],
+"67633492": [
+"Guidelines For Using JIRA",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67633492/Guidelines+For+Using+JIRA"
+],
+"67634939": [
+"E-commerce 16.11",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67634939/E-commerce+16.11"
+],
+"67634953": [
+"PIM User Stories, Use Cases, and Test Cases",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67634953/PIM+User+Stories+Use+Cases+and+Test+Cases"
+],
+"67635008": [
+"Sales Order Management User Stories, Use Cases, and Test Cases",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67635008/Sales+Order+Management+User+Stories+Use+Cases+and+Test+Cases"
+],
+"67635016": [
+"Warehouse Management 16.11",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67635016/Warehouse+Management+16.11"
+],
+"67635031": [
+"Financial Accounting and Reporting",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67635031/Financial+Accounting+and+Reporting"
+],
+"67635034": [
+"Financial Accounting and Reporting 14.12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67635034/Financial+Accounting+and+Reporting+14.12"
+],
+"67636339": [
+"Mailing lists and moderators",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67636339/Mailing+lists+and+moderators"
+],
+"67636775": [
+"Directions to Limit Unfair Marketing Messages on the OFBiz Mailing Lists",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67636775/Directions+to+Limit+Unfair+Marketing+Messages+on+the+OFBiz+Mailing+Lists"
+],
+"67638560": [
+"What is the \"Apache OFBiz\" product",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67638560/What+is+the+Apache+OFBiz+product"
+],
+"67638609": [
+"The official demos and how to maintain them",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/67638609/The+official+demos+and+how+to+maintain+them"
+],
+"68718393": [
+"Setup Intellij IDEA IDE for OFBiz Framework",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/68718393/Setup+Intellij+IDEA+IDE+for+OFBiz+Framework"
+],
+"68718605": [
+"Apache OFBiz - How and where to start?",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/68718605/Apache+OFBiz+-+How+and+where+to+start"
+],
+"68719913": [
+"Tune your PostgreSQL installation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/68719913/Tune+your+PostgreSQL+installation"
+],
+"68720496": [
+"Flexible Reports",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/68720496/Flexible+Reports"
+],
+"69406219": [
+"OFBiz Tutorial - A Beginners Development Guide for Release 13.07, Release 14.12 and Release 15.12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/69406219/OFBiz+Tutorial+-+A+Beginners+Development+Guide+for+Release+13.07+Release+14.12+and+Release+15.12"
+],
+"69406248": [
+"OFBiz Tutorial - A Beginners Development Guide for 16.11",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/69406248/OFBiz+Tutorial+-+A+Beginners+Development+Guide+for+16.11"
+],
+"69406644": [
+"Running and Debugging OFBiz in Intellij IDEA",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/69406644/Running+and+Debugging+OFBiz+in+Intellij+IDEA"
+],
+"69410041": [
+"Mini Lang Deprecation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/69410041/Mini+Lang+Deprecation"
+],
+"70257523": [
+"Wiki Attic",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/70257523/Wiki+Attic"
+],
+"70257525": [
+"Trash",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/70257525/Trash"
+],
+"70257528": [
+"Outdated Resources",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/70257528/Outdated+Resources"
+],
+"70257530": [
+"Developers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/70257530/Developers"
+],
+"70257551": [
+"Social Media",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/70257551/Social+Media"
+],
+"70258169": [
+"How to Install OFBiz without the Demo Data",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/70258169/How+to+Install+OFBiz+without+the+Demo+Data"
+],
+"7045130": [
+"Using Service Stream Handler",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045130/Using+Service+Stream+Handler"
+],
+"7045131": [
+"OFBiz's Tax Authority Data Model",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045131/OFBiz+s+Tax+Authority+Data+Model"
+],
+"7045132": [
+"Currency",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045132/Currency"
+],
+"7045133": [
+"Access Control Scenario Two",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045133/Access+Control+Scenario+Two"
+],
+"7045134": [
+"OFBiz Security Redesign",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045134/OFBiz+Security+Redesign"
+],
+"7045135": [
+"Content management security - not reviewed",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045135/Content+management+security+-+not+reviewed"
+],
+"7045137": [
+"Planning for Projects Based on OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045137/Planning+for+Projects+Based+on+OFBiz"
+],
+"7045138": [
+"Apache OFBiz Technical Production Setup Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045138/Apache+OFBiz+Technical+Production+Setup+Guide"
+],
+"7045139": [
+"Access Control Scenario Four",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045139/Access+Control+Scenario+Four"
+],
+"7045140": [
+"Access Control Scenario Six",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045140/Access+Control+Scenario+Six"
+],
+"7045141": [
+"Data Model",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045141/Data+Model"
+],
+"7045142": [
+"How to secure your deployment",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045142/How+to+secure+your+deployment"
+],
+"7045143": [
+"Advanced Framework Course",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045143/Advanced+Framework+Course"
+],
+"7045144": [
+"Access Control Scenario One",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045144/Access+Control+Scenario+One"
+],
+"7045145": [
+"Text Translation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045145/Text+Translation"
+],
+"7045146": [
+"Tomcat",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045146/Tomcat"
+],
+"7045148": [
+"Configuration, Deployment and Maintenance",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045148/Configuration+Deployment+and+Maintenance"
+],
+"7045149": [
+"Security Services - Developer",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045149/Security+Services+-+Developer"
+],
+"7045150": [
+"JBoss 4.2.2",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045150/JBoss+4.2.2"
+],
+"7045151": [
+"Business Applications Overview for Developers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045151/Business+Applications+Overview+for+Developers"
+],
+"7045152": [
+"Business Level Technical Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045152/Business+Level+Technical+Overview"
+],
+"7045153": [
+"Geronimo and IBM Websphere Application Server Community Edition",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045153/Geronimo+and+IBM+Websphere+Application+Server+Community+Edition"
+],
+"7045154": [
+"Unified Expression Language (JSR-245) in OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045154/Unified+Expression+Language+JSR-245+in+OFBiz"
+],
+"7045155": [
+"Framework Introduction Videos and Diagrams",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045155/Framework+Introduction+Videos+and+Diagrams"
+],
+"7045156": [
+"Authorization Manager Implementation Details",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045156/Authorization+Manager+Implementation+Details"
+],
+"7045157": [
+"Comprehensive OFBiz Training Outlines",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045157/Comprehensive+OFBiz+Training+Outlines"
+],
+"7045158": [
+"Access Control Scenario Five",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045158/Access+Control+Scenario+Five"
+],
+"7045159": [
+"Simple Method Cleanup Effort (Done)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045159/Simple+Method+Cleanup+Effort+Done"
+],
+"7045160": [
+"Open Source for Business Seminar",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045160/Open+Source+for+Business+Seminar"
+],
+"7045161": [
+"General Entity Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045161/General+Entity+Overview"
+],
+"7045163": [
+"Run OFBiz under outside Application Servers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045163/Run+OFBiz+under+outside+Application+Servers"
+],
+"7045164": [
+"Replace deprecated methods and constructors of entity delegator classes",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045164/Replace+deprecated+methods+and+constructors+of+entity+delegator+classes"
+],
+"7045165": [
+"Calendars, Dates, and Times",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045165/Calendars+Dates+and+Times"
+],
+"7045166": [
+"Revisions Requiring Data Migration - upgrade ofbiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045166/Revisions+Requiring+Data+Migration+-+upgrade+ofbiz"
+],
+"7045167": [
+"Access Control Scenario Three",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045167/Access+Control+Scenario+Three"
+],
+"7045168": [
+"Framework Introduction Course",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045168/Framework+Introduction+Course"
+],
+"7045169": [
+"OFBiz Customized BeanShell Source (with ParsedScript object)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045169/OFBiz+Customized+BeanShell+Source+with+ParsedScript+object"
+],
+"7045170": [
+"Advanced Framework Transcription Work Plan",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045170/Advanced+Framework+Transcription+Work+Plan"
+],
+"7045171": [
+"Service Engine Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045171/Service+Engine+Guide"
+],
+"7045172": [
+"OFBiz Security Permissions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045172/OFBiz+Security+Permissions"
+],
+"7045173": [
+"Internationalization",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045173/Internationalization"
+],
+"7045174": [
+"Glassfish v2.1",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7045174/Glassfish+v2.1"
+],
+"71011323": [
+"From Ant to Gradle - R16.11 version",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/71011323/From+Ant+to+Gradle+-+R16.11+version"
+],
+"71011704": [
+"Closed Feature Proposals",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/71011704/Closed+Feature+Proposals"
+],
+"71012571": [
+"How to install OFBiz with the Demo Data",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/71012571/How+to+install+OFBiz+with+the+Demo+Data"
+],
+"71013152": [
+"Setup OFBiz version 16.11.02 with PostgreSQL on Windows",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/71013152/Setup+OFBiz+version+16.11.02+with+PostgreSQL+on+Windows"
+],
+"71014328": [
+"OFBiz Sanity Test",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/71014328/OFBiz+Sanity+Test"
+],
+"73634093": [
+"Replenishment Planning",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73634093/Replenishment+Planning"
+],
+"73634368": [
+"Customer Relationship Management (CRM)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73634368/Customer+Relationship+Management+CRM"
+],
+"73634374": [
+"Customer Relationship Management (CRM) Process Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73634374/Customer+Relationship+Management+CRM+Process+Overview"
+],
+"73634379": [
+"Sales Order Management Process Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73634379/Sales+Order+Management+Process+Overview"
+],
+"73634382": [
+"PIM Process Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73634382/PIM+Process+Overview"
+],
+"73634574": [
+"Order Fulfillment Process Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73634574/Order+Fulfillment+Process+Overview"
+],
+"73635196": [
+"Mulitchannel Commerce Features",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73635196/Mulitchannel+Commerce+Features"
+],
+"73635199": [
+"B2B Commerce Specific Features",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73635199/B2B+Commerce+Specific+Features"
+],
+"73635201": [
+"Technology Features",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73635201/Technology+Features"
+],
+"73635445": [
+"ScratchPad for collecting Terms and Acronyms under Documentation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73635445/ScratchPad+for+collecting+Terms+and+Acronyms+under+Documentation"
+],
+"73635973": [
+"Introduction to Load Balancing an OFBiz Cluster",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/73635973/Introduction+to+Load+Balancing+an+OFBiz+Cluster"
+],
+"74691283": [
+"Data Migration by releases",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/74691283/Data+Migration+by+releases"
+],
+"7471107": [
+"Customer Reviews Order History and Status",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471107/Customer+Reviews+Order+History+and+Status"
+],
+"7471108": [
+"Accountant Receives Invoice and Sends Payment",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471108/Accountant+Receives+Invoice+and+Sends+Payment"
+],
+"7471109": [
+"Sales Representative Leads Prospects from RFQ to Sales Order",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471109/Sales+Representative+Leads+Prospects+from+RFQ+to+Sales+Order"
+],
+"7471110": [
+"Customer Creates and Edits Account (Profile)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471110/Customer+Creates+and+Edits+Account+Profile"
+],
+"7471111": [
+"Paying Invoices",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471111/Paying+Invoices"
+],
+"7471112": [
+"Company Processes Return Received",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471112/Company+Processes+Return+Received"
+],
+"7471113": [
+"Story of Online Retail Company",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471113/Story+of+Online+Retail+Company"
+],
+"7471114": [
+"Shipment Receiver Receives Shipment",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471114/Shipment+Receiver+Receives+Shipment"
+],
+"7471115": [
+"OFBiz EZBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471115/OFBiz+EZBiz"
+],
+"7471116": [
+"Record Vendor Invoice",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471116/Record+Vendor+Invoice"
+],
+"7471117": [
+"Create Sales Order from Quote",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471117/Create+Sales+Order+from+Quote"
+],
+"7471118": [
+"Carrier Returns Undeliverable Shipment to Company",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471118/Carrier+Returns+Undeliverable+Shipment+to+Company"
+],
+"7471119": [
+"Select Company",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471119/Select+Company"
+],
+"7471120": [
+"Placing Customer Adds Product to Cart",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471120/Placing+Customer+Adds+Product+to+Cart"
+],
+"7471121": [
+"Marketer Maintains General Site Content",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471121/Marketer+Maintains+General+Site+Content"
+],
+"7471122": [
+"Placing Customer Places a Sales Order (Through EBay)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471122/Placing+Customer+Places+a+Sales+Order+Through+EBay"
+],
+"7471123": [
+"Prepare and Deliver Quote",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471123/Prepare+and+Deliver+Quote"
+],
+"7471124": [
+"Inventory Mover Puts Away Inventory",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471124/Inventory+Mover+Puts+Away+Inventory"
+],
+"7471125": [
+"Partner Agreement",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471125/Partner+Agreement"
+],
+"7471126": [
+"Carrier Does Not Deliver Shipment to Customer",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471126/Carrier+Does+Not+Deliver+Shipment+to+Customer"
+],
+"7471127": [
+"Product Marketer Maintains Product Information",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471127/Product+Marketer+Maintains+Product+Information"
+],
+"7471128": [
+"Company Fulfills Sales Order",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471128/Company+Fulfills+Sales+Order"
+],
+"7471129": [
+"Company Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471129/Company+Overview"
+],
+"7471130": [
+"Actor Definitions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471130/Actor+Definitions"
+],
+"7471131": [
+"Placing Customer Places a Sales Order (Online Checkout)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471131/Placing+Customer+Places+a+Sales+Order+Online+Checkout"
+],
+"7471133": [
+"Customer Returns Product",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471133/Customer+Returns+Product"
+],
+"7471134": [
+"Story of Apache Open Source Project",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471134/Story+of+Apache+Open+Source+Project"
+],
+"7471135": [
+"Shipment Receiver Receives Shipment with Packing Slip but No PO",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471135/Shipment+Receiver+Receives+Shipment+with+Packing+Slip+but+No+PO"
+],
+"7471136": [
+"Quick Setup",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471136/Quick+Setup"
+],
+"7471137": [
+"Inventory Mover does Stock Move",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471137/Inventory+Mover+does+Stock+Move"
+],
+"7471138": [
+"HiveMind Screen Outline",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471138/HiveMind+Screen+Outline"
+],
+"7471140": [
+"Buyer Places Purchase Order",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471140/Buyer+Places+Purchase+Order"
+],
+"7471141": [
+"Customer Finds Product",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471141/Customer+Finds+Product"
+],
+"7471142": [
+"OFBiz Requirements and Design Proposals",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471142/OFBiz+Requirements+and+Design+Proposals"
+],
+"7471143": [
+"Accountant Sends Invoice and Receives Payment",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471143/Accountant+Sends+Invoice+and+Receives+Payment"
+],
+"7471144": [
+"Sales Representative Seeks Prospects and Opportunities",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471144/Sales+Representative+Seeks+Prospects+and+Opportunities"
+],
+"7471145": [
+"HiveMind Actors and Stories",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471145/HiveMind+Actors+and+Stories"
+],
+"7471146": [
+"Pay Invoices (AP)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471146/Pay+Invoices+AP"
+],
+"7471147": [
+"EZBiz Main",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471147/EZBiz+Main"
+],
+"7471148": [
+"Communicate Product Information",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471148/Communicate+Product+Information"
+],
+"7471149": [
+"Bank Reconciliation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471149/Bank+Reconciliation"
+],
+"7471150": [
+"Reports Main",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471150/Reports+Main"
+],
+"7471151": [
+"UBPL Introduction",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471151/UBPL+Introduction"
+],
+"7471152": [
+"Placing Customer Places a Sales Order (Through CSR)",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471152/Placing+Customer+Places+a+Sales+Order+Through+CSR"
+],
+"7471153": [
+"Customer Cancels Order",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471153/Customer+Cancels+Order"
+],
+"7471154": [
+"Resources with Information about General Business Processes",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471154/Resources+with+Information+about+General+Business+Processes"
+],
+"7471155": [
+"Inventory Mover Checks Physical Inventory",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471155/Inventory+Mover+Checks+Physical+Inventory"
+],
+"7471157": [
+"Receive Sales Order",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471157/Receive+Sales+Order"
+],
+"7471158": [
+"New Company Setup",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471158/New+Company+Setup"
+],
+"7471159": [
+"Company Approves Sales Order",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471159/Company+Approves+Sales+Order"
+],
+"7471160": [
+"Story of Apache Software Foundation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471160/Story+of+Apache+Software+Foundation"
+],
+"7471161": [
+"Open Standards for OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471161/Open+Standards+for+OFBiz"
+],
+"7471163": [
+"Universal Business Process Library Index",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471163/Universal+Business+Process+Library+Index"
+],
+"7471164": [
+"HiveMind User Manual",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7471164/HiveMind+User+Manual"
+],
+"75964829": [
+"OFBiz Tutorial - From Mini Language to Groovy",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/75964829/OFBiz+Tutorial+-+From+Mini+Language+to+Groovy"
+],
+"75966184": [
+"OFBiz Documentation Team",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/75966184/OFBiz+Documentation+Team"
+],
+"75974495": [
+"OFBiz Documentation Skype Call: February 2018",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/75974495/OFBiz+Documentation+Skype+Call+February+2018"
+],
+"7766017": [
+"Developers Conference 2007-03 Topics and Objectives",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766017/Developers+Conference+2007-03+Topics+and+Objectives"
+],
+"7766018": [
+"Libraries Included in OFBiz",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766018/Libraries+Included+in+OFBiz"
+],
+"7766019": [
+"ASF Board Reports",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766019/ASF+Board+Reports"
+],
+"7766020": [
+"Philosophy",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766020/Philosophy"
+],
+"7766022": [
+"ASF Board Report 2009-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766022/ASF+Board+Report+2009-03"
+],
+"7766023": [
+"HTML and CSS Best Practices",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766023/HTML+and+CSS+Best+Practices"
+],
+"7766024": [
+"ASF Board Report 2007-02",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766024/ASF+Board+Report+2007-02"
+],
+"7766025": [
+"Apache OFBiz Developers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766025/Apache+OFBiz+Developers"
+],
+"7766026": [
+"Why Open Source",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766026/Why+Open+Source"
+],
+"7766027": [
+"Coding Conventions",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766027/Coding+Conventions"
+],
+"7766028": [
+"OFBiz Track at ApacheCon US 2009",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766028/OFBiz+Track+at+ApacheCon+US+2009"
+],
+"7766030": [
+"ASF Board Report 2009-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766030/ASF+Board+Report+2009-09"
+],
+"7766031": [
+"Material for Branding and Marketing",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766031/Material+for+Branding+and+Marketing"
+],
+"7766032": [
+"Best Practices Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766032/Best+Practices+Guide"
+],
+"7766033": [
+"Methodology Recommendations",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766033/Methodology+Recommendations"
+],
+"7766034": [
+"ASF Board Report 2007-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766034/ASF+Board+Report+2007-12"
+],
+"7766035": [
+"ASF Board Report 2007-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766035/ASF+Board+Report+2007-06"
+],
+"7766036": [
+"Release Plan",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766036/Release+Plan"
+],
+"7766037": [
+"ASF Board Report 2007-01",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766037/ASF+Board+Report+2007-01"
+],
+"7766038": [
+"OFBiz Related Books",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766038/OFBiz+Related+Books"
+],
+"7766039": [
+"Development best practices",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766039/Development+best+practices"
+],
+"7766040": [
+"ASF Board Report 2009-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766040/ASF+Board+Report+2009-12"
+],
+"7766041": [
+"ASF Board Report 2007-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766041/ASF+Board+Report+2007-09"
+],
+"7766042": [
+"Documentation",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766042/Documentation"
+],
+"7766043": [
+"New Features Roadmap - Living Document",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766043/New+Features+Roadmap+-+Living+Document"
+],
+"7766044": [
+"ASF Board Report 2009-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766044/ASF+Board+Report+2009-06"
+],
+"7766045": [
+"Strategic Plan",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766045/Strategic+Plan"
+],
+"7766046": [
+"ASF Board Report 2008-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766046/ASF+Board+Report+2008-03"
+],
+"7766048": [
+"Events",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766048/Events"
+],
+"7766049": [
+"Managing Your Source Differences",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766049/Managing+Your+Source+Differences"
+],
+"7766050": [
+"OFBiz Committers Roles and Responsibilities",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766050/OFBiz+Committers+Roles+and+Responsibilities"
+],
+"7766051": [
+"ASF Board Report 2008-12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766051/ASF+Board+Report+2008-12"
+],
+"7766052": [
+"OFBiz Contributors Best Practices",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766052/OFBiz+Contributors+Best+Practices"
+],
+"7766053": [
+"Press Releases",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766053/Press+Releases"
+],
+"7766054": [
+"Apache OFBiz PMC Members and Committers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766054/Apache+OFBiz+PMC+Members+and+Committers"
+],
+"7766055": [
+"ASF Board Report 2008-09",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766055/ASF+Board+Report+2008-09"
+],
+"7766056": [
+"Press Release for Release Branch 9.4",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766056/Press+Release+for+Release+Branch+9.4"
+],
+"7766058": [
+"Apache OFBiz Getting Started",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766058/Apache+OFBiz+Getting+Started"
+],
+"7766059": [
+"ASF Board Report 2008-06",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766059/ASF+Board+Report+2008-06"
+],
+"7766060": [
+"Copyright and License",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766060/Copyright+and+License"
+],
+"7766061": [
+"Apache OFBiz Project Overview",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766061/Apache+OFBiz+Project+Overview"
+],
+"7766063": [
+"Mailing Lists",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766063/Mailing+Lists"
+],
+"7766064": [
+"OFBiz on other sites",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766064/OFBiz+on+other+sites"
+],
+"7766065": [
+"Component and Component Set Dependencies",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766065/Component+and+Component+Set+Dependencies"
+],
+"7766066": [
+"Demo and Test Setup Guide",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766066/Demo+and+Test+Setup+Guide"
+],
+"7766067": [
+"Scaling and Performance Plan",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766067/Scaling+and+Performance+Plan"
+],
+"7766068": [
+"User Interface Layout Best Practices",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766068/User+Interface+Layout+Best+Practices"
+],
+"7766069": [
+"ASF Board Report 2007-03",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/7766069/ASF+Board+Report+2007-03"
+],
+"81789050": [
+"Current Documentation migration status",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/81789050/Current+Documentation+migration+status"
+],
+"8192120": [
+"OFBiz's Data File Tools",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/8192120/OFBiz+s+Data+File+Tools"
+],
+"8552711": [
+"Feature Proposals",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/8552711/Feature+Proposals"
+],
+"8552716": [
+"Saved Searches",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/8552716/Saved+Searches"
+],
+"87296614": [
+"Short Messaging Service (SMS) Gateway Integration",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/87296614/Short+Messaging+Service+SMS+Gateway+Integration"
+],
+"9012088": [
+"Ofbiz as a development framework - release 9.04",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/9012088/Ofbiz+as+a+development+framework+-+release+9.04"
+],
+"9012216": [
+"Git for committers",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/9012216/Git+for+committers"
+],
+"93325429": [
+"OFBiz Tutorial - A Beginners Development Guide for 17.12",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/93325429/OFBiz+Tutorial+-+A+Beginners+Development+Guide+for+17.12"
+],
+"9373097": [
+"Framework-only distribution",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/9373097/Framework-only+distribution"
+],
+"9373486": [
+"Wiki Reorganization Proposal",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/9373486/Wiki+Reorganization+Proposal"
+],
+"97553945": [
+"Successor for elRTE",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/97553945/Successor+for+elRTE"
+],
+"9798255": [
+"Export Ofbiz Services that use complex type parameters via SOAP using AXIS2 - since r892712",
+"https://cwiki.apache.org/confluence/spaces/OFBIZ/pages/9798255/Export+Ofbiz+Services+that+use+complex+type+parameters+via+SOAP+using+AXIS2+-+since+r892712"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_AssignGlAccount.adoc": [
+"Help for Assign GL Account",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_AssignGlAccount.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_AuthorizeTransaction.adoc": [
+"Help for The Authorize Transaction",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_AuthorizeTransaction.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_BankReconciliation.adoc": [
+"Help for Financial Account Bank Reconciliation.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_BankReconciliation.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_BillingAccountInvoices.adoc": [
+"Help for Billing Account Invoices",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_BillingAccountInvoices.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_BillingAccountOrders.adoc": [
+"Help for Billing Account Orders",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_BillingAccountOrders.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_BillingAccountPayments.adoc": [
+"Help for Billing Account Payments",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_BillingAccountPayments.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_CaptureTransaction.adoc": [
+"Help for Capture Transaction",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_CaptureTransaction.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreement.adoc": [
+"Help for Edit Agreement",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreement.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementContents.adoc": [
+"Help for Agreement Content",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementContents.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementItem.adoc": [
+"Help for Edit Agreement Item",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementItem.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementRoles.adoc": [
+"Help for Edit Agreements Roles",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementRoles.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementTerms.adoc": [
+"Help for Edit Agreement Terms",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementTerms.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementWorkEffortApplics.adoc": [
+"Help for Agreement Work Effort Applications",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditAgreementWorkEffortApplics.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditBillingAccount.adoc": [
+"Help for Edit Billing Account",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditBillingAccount.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditBillingAccountRoles.adoc": [
+"Help for Billing Account Roles",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditBillingAccountRoles.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditBillingAccountTerms.adoc": [
+"Help for Billing Account Terms",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditBillingAccountTerms.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditCreditCardTypeGlAccounts.adoc": [
+"Help for Credit Card Type GL Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditCreditCardTypeGlAccounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditDepositSlipAndMembers.adoc": [
+"Help for Financial Account Edit Deposit Slip and member",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditDepositSlipAndMembers.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccount.adoc": [
+"Help for Edit Financial Account",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccount.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountAuths.adoc": [
+"Help for Edit Financial Account Authorizations.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountAuths.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountReconciliations.adoc": [
+"Help for Edit Financial Account Reconciliations",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountReconciliations.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountRoles.adoc": [
+"Help for Edit Financial Account Roles.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountRoles.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountTrans.adoc": [
+"Help for Financial Account Transactions List.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountTrans.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountTypeGlAccounts.adoc": [
+"Help for Financial Account GL Account Type",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditFinAccountTypeGlAccounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditOrganizationTaxAuthorityGlAccounts.adoc": [
+"Help for Tax Authority GL Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditOrganizationTaxAuthorityGlAccounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditPartyGlAccount.adoc": [
+"Help for Party GL Account mapping",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditPartyGlAccount.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditPaymentGatewayConfig.adoc": [
+"Help for Edit Payment Gateway Config",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditPaymentGatewayConfig.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditProductCategoryGlAccounts.adoc": [
+"Help for Product Category GL Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditProductCategoryGlAccounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditProductGlAccounts.adoc": [
+"Help for Product GL Account",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditProductGlAccounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthority.adoc": [
+"Help for Edit Tax Authority",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthority.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityAssocs.adoc": [
+"Help for Edit Tax Authority Associations",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityAssocs.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityCategories.adoc": [
+"Help for Edit Tax Authority Categories",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityCategories.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityGlAccounts.adoc": [
+"Help for Edit Tax Authority GL Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityGlAccounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityPartyInfo.adoc": [
+"Help for Edit Tax Authority Party Info",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityPartyInfo.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityRateProducts.adoc": [
+"Help for Edit Tax Authority Product Rates",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditTaxAuthorityRateProducts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_EditVarianceReasonGlAccounts.adoc": [
+"Help for Variance Reason GL Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_EditVarianceReasonGlAccounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindAgreement.adoc": [
+"Help for Find Agreements",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindAgreement.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindBillingAccount.adoc": [
+"Help for Find Billing Account",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindBillingAccount.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindDepositSlips.adoc": [
+"Help for Find Deposit Slips.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindDepositSlips.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindFinAccount.adoc": [
+"Help for Find Financial Accounts.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindFinAccount.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindFinAccountTrans.adoc": [
+"Help for Find Financial Account Transactions",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindFinAccountTrans.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindGatewayResponses.adoc": [
+"Help for Find Gateway Responses",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindGatewayResponses.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindPurchaseInvoicesByDueDate.adoc": [
+"Help for Find Purchase Invoices By Due Date",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindPurchaseInvoicesByDueDate.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindSalesInvoicesByDueDate.adoc": [
+"Help for Find Sales Invoices By Due Date",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindSalesInvoicesByDueDate.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_FindTaxAuthority.adoc": [
+"Help for Find Tax Authorities",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_FindTaxAuthority.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountNavigate.adoc": [
+"Help for Navigate GL Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountNavigate.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountNrPaymentMethod.adoc": [
+"Help for Payment Method GL Account Type",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountNrPaymentMethod.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountPurInvoice.adoc": [
+"Help for Purchase Invoice default account",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountPurInvoice.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountSalInvoice.adoc": [
+"Help for Sales Invoice default account",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountSalInvoice.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountTypeDefaults.adoc": [
+"Help for GL Account Type Defaults",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountTypeDefaults.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountTypePaymentType.adoc": [
+"Help for Payment Type GL Account Type",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_GlAccountTypePaymentType.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementGeographicalApplic.adoc": [
+"Help for List Agreement Geo",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementGeographicalApplic.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemParties.adoc": [
+"The for Agreement Items Parties help screen",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemParties.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemProducts.adoc": [
+"Help for Agreement Item Products",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemProducts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemSupplierProducts.adoc": [
+"Help for List Agreement Item Supplier Products",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemSupplierProducts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemTerms.adoc": [
+"Help for Agreements Item Terms",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementItemTerms.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementPromoAppls.adoc": [
+"Help for Agreements Item Promotions",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListAgreementPromoAppls.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListGlAccountOrganization.adoc": [
+"Help for Chart of Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListGlAccountOrganization.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ListTaxAuthorityParties.adoc": [
+"Help for List Tax Authority Parties",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ListTaxAuthorityParties.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ManualTransaction.adoc": [
+"Help for Manual Transaction",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ManualTransaction.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_NewDepositPayment.adoc": [
+"Help for Financial Account New Deposit Payment",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_NewDepositPayment.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_NewDepositSlip.adoc": [
+"Help for Financial Account New Deposit Slip",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_NewDepositSlip.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_NewWithdrawalPayment.adoc": [
+"Help for Financial Account New Withdrawal Payment.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_NewWithdrawalPayment.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_PartyAcctgPreference.adoc": [
+"Help for Accounting Preferences",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_PartyAcctgPreference.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_PaymentsDepositWithdraw.adoc": [
+"Help for Financial Account Deposit / Withdraw",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_PaymentsDepositWithdraw.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_SetupGlJournals.adoc": [
+"Help for Journals",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_SetupGlJournals.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_TimePeriods.adoc": [
+"Help for Time Periods",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_TimePeriods.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ViewFXConversions.adoc": [
+"Help for View Foreign Exchange Rates",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ViewFXConversions.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ViewGatewayResponse.adoc": [
+"Help for View Gateway Response",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ViewGatewayResponse.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_ViewGlReconciliationWithTransaction.adoc": [
+"Help for View Financial Account Reconciliations",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_ViewGlReconciliationWithTransaction.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_editInvoice.adoc": [
+"Help for Edit Invoice Header",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_editInvoice.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_editInvoiceApplications.adoc": [
+"Help for Edit Invoice Applications",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_editInvoiceApplications.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_editInvoiceTimeEntries.adoc": [
+"Help for Edit Invoice Time Entries",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_editInvoiceTimeEntries.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_editPayment.adoc": [
+"Help for Payment Header",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_editPayment.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_editPaymentApplications.adoc": [
+"Help for Payment Applications",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_editPaymentApplications.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_findInvoices.adoc": [
+"Help for Find Invoices",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_findInvoices.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_findPayments.adoc": [
+"Help for Find Payments",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_findPayments.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_invoiceOverview.adoc": [
+"Help for Invoice Overview",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_invoiceOverview.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_invoiceRoles.adoc": [
+"Help for Invoice Roles",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_invoiceRoles.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_listInvoiceItems.adoc": [
+"Help for Edit Invoice Items",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_listInvoiceItems.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_newInvoice.adoc": [
+"Help for New Invoice",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_newInvoice.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_newPayment.adoc": [
+"Help for New Payment",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_newPayment.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_paymentOverview.adoc": [
+"Help for Payment Overview",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_paymentOverview.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/HELP_sendPerEmail.adoc": [
+"Help for Send Per Email",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/HELP_sendPerEmail.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-agreements.adoc": [
+"Agreements",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-agreements.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-billing-accounts.adoc": [
+"Billing Accounts.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-billing-accounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-financial-accounts.adoc": [
+"Financial Accounts",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-financial-accounts.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-global-settings.adoc": [
+"Global General Ledger Settings",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-global-settings.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-glossary.adoc": [
+"Accounting Glossary",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-glossary.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-intro.adoc": [
+"About Accounting",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-intro.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-invoices.adoc": [
+"Invoices.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-invoices.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-organization-gl-settings.adoc": [
+"Organization GL Settings.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-organization-gl-settings.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-payment-gateway.adoc": [
+"Payment Gateway",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-payment-gateway.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-payments.adoc": [
+"Payments.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-payments.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/_include/acc-tax-authorities.adoc": [
+"Tax Authorities.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/_include/acc-tax-authorities.adoc"
+],
+"doc:applications/accounting/src/docs/asciidoc/accounting.adoc": [
+"Accounting",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/accounting/src/docs/asciidoc/accounting.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_initialsetup.adoc": [
+"The Main OFBiz Setup Overview",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_initialsetup.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_setup_editFacility.adoc": [
+"Help for Setup Edit Facility",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_setup_editFacility.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_setup_editProductStore.adoc": [
+"Help for Setup Edit Product Store",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_setup_editProductStore.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_setup_editWebSite.adoc": [
+"Help for Setup Edit WebSite",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_setup_editWebSite.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstProdCatalog.adoc": [
+"Help for Setup Edit First Catalog",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstProdCatalog.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstProductCategory.adoc": [
+"Help for Setup Edit First Product Category",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstProductCategory.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstcustomer.adoc": [
+"Help for Setup Create First Customer",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstcustomer.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstproduct.adoc": [
+"Help for Setup Edit First Product",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/_include/HELP_setup_firstproduct.adoc"
+],
+"doc:applications/commonext/src/docs/asciidoc/ofbiz-setup.adoc": [
+"The OFBiz Setup application Overview",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/commonext/src/docs/asciidoc/ofbiz-setup.adoc"
+],
+"doc:applications/content/src/docs/asciidoc/content.adoc": [
+"Content Management",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/content/src/docs/asciidoc/content.adoc"
+],
+"doc:applications/content/src/docs/asciidoc/content_IT.adoc": [
+"Panoramica sul gestore di contenuti",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/content/src/docs/asciidoc/content_IT.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/HELP-hr-EditEmplPosition.adoc": [
+"Create or Edit Employee Position",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/HELP-hr-EditEmplPosition.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/HELP-hr-EmployeeProfile.adoc": [
+"Employee Profile",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/HELP-hr-EmployeeProfile.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/HELP-hr-FindEmployees.adoc": [
+"Find Employees",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/HELP-hr-FindEmployees.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/HELP-hr-Howto-Training.adoc": [
+"Simple Howto for Training UI",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/HELP-hr-Howto-Training.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/HELP-hr-NewEmployee.adoc": [
+"Create New Employee",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/HELP-hr-NewEmployee.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/HELP-hr-PayrollHistory.adoc": [
+"Payroll History",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/HELP-hr-PayrollHistory.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/HELP-hr-main.adoc": [
+"The Human Resources Main screen.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/HELP-hr-main.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-appendix.adoc": [
+"HR Data Model Resource Book Difference",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-appendix.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-data-model.adoc": [
+"HR Data model",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-data-model.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-employee-positions.adoc": [
+"Employee Positions",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-employee-positions.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-employees.adoc": [
+"Employees",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-employees.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-employments.adoc": [
+"Employments",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-employments.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-global-settings.adoc": [
+"Global HR Settings",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-global-settings.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-glossary.adoc": [
+"HR Glossary",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-glossary.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-intro.adoc": [
+"About Human Resources",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-intro.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-leave.adoc": [
+"Leave",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-leave.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-performance-review.adoc": [
+"Performance Review",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-performance-review.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-qualifications.adoc": [
+"Qualifications",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-qualifications.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-recruitment.adoc": [
+"Recruitment",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-recruitment.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-resumes.adoc": [
+"Resumes",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-resumes.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-security.adoc": [
+"Security",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-security.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-skills.adoc": [
+"Skills",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-skills.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/_include/hr-training.adoc": [
+"Training",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/_include/hr-training.adoc"
+],
+"doc:applications/humanres/src/docs/asciidoc/humanres.adoc": [
+"Human Resources",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/humanres/src/docs/asciidoc/humanres.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/HELP-mfg-EditProductionRun.adoc": [
+"Edit Production Run",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/HELP-mfg-EditProductionRun.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/HELP-mfg-EditProductionRun_NL.adoc": [
+"Tonen production run",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/HELP-mfg-EditProductionRun_NL.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-bom.adoc": [
+"Bill Of Material",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-bom.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-bom_NL.adoc": [
+"Bill Of Material",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-bom_NL.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-calendar.adoc": [
+"Calendar",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-calendar.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-calendar_NL.adoc": [
+"Calendar",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-calendar_NL.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-intro.adoc": [
+"About Manufacturing and MRP",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-intro.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-mrp.adoc": [
+"MRP",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-mrp.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-mrp_NL.adoc": [
+"MRP",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-mrp_NL.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-production-run.adoc": [
+"JobShop, or ProductionRun",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-production-run.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-production-run_NL.adoc": [
+"JobShop, or ProductionRun",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-production-run_NL.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-routing-task.adoc": [
+"Routing Task",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-routing-task.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-routing-task_NL.adoc": [
+"Routing Task",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-routing-task_NL.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-routing.adoc": [
+"Routing",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-routing.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/_include/mfg-routing_NL.adoc": [
+"Routing",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/_include/mfg-routing_NL.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/manufacturing.adoc": [
+"Manufacturing",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/manufacturing.adoc"
+],
+"doc:applications/manufacturing/src/docs/asciidoc/manufacturing_NL.adoc": [
+"Manufacturing",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/manufacturing/src/docs/asciidoc/manufacturing_NL.adoc"
+],
+"doc:applications/marketing/src/docs/asciidoc/_include/HELP_EditContactList.adoc": [
+"Edit a contact list.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/marketing/src/docs/asciidoc/_include/HELP_EditContactList.adoc"
+],
+"doc:applications/marketing/src/docs/asciidoc/_include/HELP_FindContactLists.adoc": [
+"Help for Find contact list screen",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/marketing/src/docs/asciidoc/_include/HELP_FindContactLists.adoc"
+],
+"doc:applications/marketing/src/docs/asciidoc/_include/HELP_ImportContactListParties.adoc": [
+"Help for import contact list parties",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/marketing/src/docs/asciidoc/_include/HELP_ImportContactListParties.adoc"
+],
+"doc:applications/marketing/src/docs/asciidoc/_include/marketing_ContactLists.adoc": [
+"Marketing Contact Lists.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/marketing/src/docs/asciidoc/_include/marketing_ContactLists.adoc"
+],
+"doc:applications/marketing/src/docs/asciidoc/marketing.adoc": [
+"Marketing",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/marketing/src/docs/asciidoc/marketing.adoc"
+],
+"doc:applications/marketing/src/docs/asciidoc/sfa.adoc": [
+"SFA",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/marketing/src/docs/asciidoc/sfa.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-bill-settings.adoc": [
+"Order Term",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-bill-settings.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-check-inits.adoc": [
+"Order Entry Init",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-check-inits.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-confirm.adoc": [
+"Order confirmation",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-confirm.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-entry.adoc": [
+"Order Entry",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-entry.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-option-settings.adoc": [
+"Order Option Settings",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-option-settings.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-ship-setting.adoc": [
+"Set Shipping address and Group",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-ship-setting.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-show-cart.adoc": [
+"Add Item(s) to cart",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-show-cart.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/Help-order-view.adoc": [
+"Order View",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/Help-order-view.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/order-create-order-diagrams.adoc": [
+"Create Order Diagrams",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/order-create-order-diagrams.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/order-ecommerce-entry-path.adoc": [
+"ECommerce Entry path",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/order-ecommerce-entry-path.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/order-glossary.adoc": [
+"Order Glossary",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/order-glossary.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/order-payment-diagrams.adoc": [
+"Payment Terms and Method",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/order-payment-diagrams.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/order-return.adoc": [
+"Returns",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/order-return.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/order-status-diagrams.adoc": [
+"Order Status",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/order-status-diagrams.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/_include/order-update-order-diagrams.adoc": [
+"Update Order",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/_include/order-update-order-diagrams.adoc"
+],
+"doc:applications/order/src/docs/asciidoc/order.adoc": [
+"Order",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/order/src/docs/asciidoc/order.adoc"
+],
+"doc:applications/party/src/docs/asciidoc/_include/party-glossary.adoc": [
+"Party Glossary",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/party/src/docs/asciidoc/_include/party-glossary.adoc"
+],
+"doc:applications/party/src/docs/asciidoc/_include/party-howto-create-mainCompany.adoc": [
+"How to Create the main Company",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/party/src/docs/asciidoc/_include/party-howto-create-mainCompany.adoc"
+],
+"doc:applications/party/src/docs/asciidoc/party.adoc": [
+"Party",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/party/src/docs/asciidoc/party.adoc"
+],
+"doc:applications/product/src/docs/asciidoc/_include/product-catalogs.adoc": [
+"Catalogs",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/product/src/docs/asciidoc/_include/product-catalogs.adoc"
+],
+"doc:applications/product/src/docs/asciidoc/_include/product-features.adoc": [
+"Product Features",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/product/src/docs/asciidoc/_include/product-features.adoc"
+],
+"doc:applications/product/src/docs/asciidoc/_include/product-image-management.adoc": [
+"Image Management",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/product/src/docs/asciidoc/_include/product-image-management.adoc"
+],
+"doc:applications/product/src/docs/asciidoc/_include/product-promos.adoc": [
+"Promotions",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/product/src/docs/asciidoc/_include/product-promos.adoc"
+],
+"doc:applications/product/src/docs/asciidoc/_include/product-stores.adoc": [
+"Product Stores",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/product/src/docs/asciidoc/_include/product-stores.adoc"
+],
+"doc:applications/product/src/docs/asciidoc/facility.adoc": [
+"Facility",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/product/src/docs/asciidoc/facility.adoc"
+],
+"doc:applications/product/src/docs/asciidoc/product.adoc": [
+"Catalog",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/product/src/docs/asciidoc/product.adoc"
+],
+"doc:applications/workeffort/src/docs/asciidoc/_include/portlet-calendar.adoc": [
+"The Calendar Portlet",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/applications/workeffort/src/docs/asciidoc/_include/portlet-calendar.adoc"
+],
+"doc:docs/asciidoc/_include/OFBizDocumentationSystem.adoc": [
+"The Apache OFBiz documentation system",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/docs/asciidoc/_include/OFBizDocumentationSystem.adoc"
+],
+"doc:docs/asciidoc/_include/ofbiz-glossary.adoc": [
+"General Glossary",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/docs/asciidoc/_include/ofbiz-glossary.adoc"
+],
+"doc:docs/asciidoc/developer-manual.adoc": [
+"Apache OFBiz Developer Manual",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/docs/asciidoc/developer-manual.adoc"
+],
+"doc:docs/asciidoc/documentation_guidelines.adoc": [
+"Apache OFBiz Documentation Guidelines",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/docs/asciidoc/documentation_guidelines.adoc"
+],
+"doc:docs/asciidoc/resource/article.adoc": [
+"article",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/docs/asciidoc/resource/article.adoc"
+],
+"doc:docs/asciidoc/user-manual.adoc": [
+"Apache OFBiz User Manual",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/docs/asciidoc/user-manual.adoc"
+],
+"doc:framework/base/src/docs/asciidoc/_include/email-receiving.adoc": [
+"Receiving Email.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/base/src/docs/asciidoc/_include/email-receiving.adoc"
+],
+"doc:framework/base/src/docs/asciidoc/_include/email-sending.adoc": [
+"Sending Email in OFBiz",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/base/src/docs/asciidoc/_include/email-sending.adoc"
+],
+"doc:framework/datafile/src/docs/asciidoc/datafiles.adoc": [
+"The OFBiz Datafiles",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/datafile/src/docs/asciidoc/datafiles.adoc"
+],
+"doc:framework/entity/src/docs/asciidoc/entity-engine.adoc": [
+"The Entity Engine.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/entity/src/docs/asciidoc/entity-engine.adoc"
+],
+"doc:framework/minilang/src/docs/asciidoc/minilang-to-groovy-manual.adoc": [
+"From Mini Language to Groovy",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/minilang/src/docs/asciidoc/minilang-to-groovy-manual.adoc"
+],
+"doc:framework/rest-api/src/docs/asciidoc/rest-api.adoc": [
+"Apache OFBiz\u00ae plugin for REST",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/rest-api/src/docs/asciidoc/rest-api.adoc"
+],
+"doc:framework/security/src/docs/asciidoc/_include/sy-CSRF-defense.adoc": [
+"CSRF defense",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/security/src/docs/asciidoc/_include/sy-CSRF-defense.adoc"
+],
+"doc:framework/security/src/docs/asciidoc/_include/sy-entity-field-encryption.adoc": [
+"Entity field encryption (encrypt=\"true\")",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/security/src/docs/asciidoc/_include/sy-entity-field-encryption.adoc"
+],
+"doc:framework/security/src/docs/asciidoc/_include/sy-impersonation.adoc": [
+"Impersonation",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/security/src/docs/asciidoc/_include/sy-impersonation.adoc"
+],
+"doc:framework/security/src/docs/asciidoc/_include/sy-password-and-JWT.adoc": [
+"Passwords and JWT (JSON Web Tokens) usage",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/security/src/docs/asciidoc/_include/sy-password-and-JWT.adoc"
+],
+"doc:framework/security/src/docs/asciidoc/security.adoc": [
+"Security",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/security/src/docs/asciidoc/security.adoc"
+],
+"doc:framework/testtools/src/docs/asciidoc/SingleSignOn.adoc": [
+"OFBiz Single Sign On using CAS and LDAP",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/testtools/src/docs/asciidoc/SingleSignOn.adoc"
+],
+"doc:framework/testtools/src/docs/asciidoc/unit-tests.adoc": [
+"Unit Test (Using JUnit)",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/testtools/src/docs/asciidoc/unit-tests.adoc"
+],
+"doc:framework/webapp/src/docs/asciidoc/_include/wa-cross-domains-SSO.adoc": [
+"Cross-domains Single Sign On (SSO)",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/webapp/src/docs/asciidoc/_include/wa-cross-domains-SSO.adoc"
+],
+"doc:framework/webapp/src/docs/asciidoc/webapp.adoc": [
+"Web Applications",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/webapp/src/docs/asciidoc/webapp.adoc"
+],
+"doc:framework/webtools/src/docs/asciidoc/_include/webtools-main.adoc": [
+"Help for Webtools Main page.",
+"https://github.com/apache/ofbiz-framework/blob/eabcf68a6f1010bef8d87fa5d506977dc9809730/framework/webtools/src/docs/asciidoc/_include/webtools-main.adoc"
+]
+}

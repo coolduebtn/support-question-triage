@@ -53,7 +53,7 @@ class Bundle:
         return None
 
     def question_text(self, qid: str) -> str:
-        return clean_email(self._text.get(qid) or self._gold.get(qid, {}).get("text_raw", ""))
+        return clean_email(self._text.get(qid) or self._gold.get(qid, {}).get("text_raw") or self._gold.get(qid, {}).get("text", ""))
 
     def expected_pages(self, qid: str) -> list[str]:
         return list(dict.fromkeys(canonical_page_id(e["page_id"]) for e in self._gold.get(qid, {}).get("evidence", [])))
@@ -112,9 +112,13 @@ def load_bundle(results_dir: Path, data_dir: Path, split: str = "dev") -> Bundle
                 rows[p["qid"]] = p
         b.predictions[label], b.run_ids[label] = rows, run.name
         b.metrics[label] = json.loads((run / "metrics.json").read_text())
-    b._text = {q["qid"]: q["text_raw"] for q in _jsonl(Path(data_dir) / "gold" / "questions.jsonl")}
+    gold_dir = Path(data_dir) / "gold"
+    public = {g["qid"]: g for g in _jsonl(gold_dir / "gold_public.jsonl")}      # committed; the full files are not
+    b._text = {q["qid"]: q["text_raw"] for q in _jsonl(gold_dir / "questions.jsonl")}
     b._pages = {c["page_id"]: (c["page_title"], c["url"]) for c in _jsonl(Path(data_dir) / "index" / "chunks.jsonl")}
-    b._gold = {g["qid"]: g for g in _jsonl(Path(data_dir) / "gold" / "gold.jsonl")}
+    if not b._pages and (Path(data_dir) / "page_titles.json").exists():
+        b._pages = {k: tuple(v) for k, v in json.loads((Path(data_dir) / "page_titles.json").read_text()).items()}
+    b._gold = {g["qid"]: g for g in _jsonl(gold_dir / "gold.jsonl")} or public
     return b
 
 

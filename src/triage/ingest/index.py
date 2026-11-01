@@ -45,6 +45,8 @@ def build_index(chunks: list[Chunk], embed_fn: EmbedFn, path: Path) -> IndexInfo
                             "heading_path": json.dumps(c.heading_path)} for c in batch])
     body = "".join(json.dumps(c.model_dump(), sort_keys=True) + "\n" for c in chunks)
     (path / "chunks.jsonl").write_text(body)
+    titles = {c.page_id: [c.page_title, c.url] for c in chunks}              # public metadata; lets the viewer label pages
+    (path.parent / "page_titles.json").write_text(json.dumps(titles, sort_keys=True, indent=0) + "\n")
     return IndexInfo(hash=hashlib.sha256(body.encode()).hexdigest(), n_chunks=len(chunks))
 
 

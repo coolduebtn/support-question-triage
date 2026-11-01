@@ -24,3 +24,13 @@ def test_opening_an_older_index_raises_a_low_search_width(tmp_path):
                                           embedding_function=None)
     assert _ef(old) == 100
     assert _ef(open_collection(tmp_path)) == HNSW_EF_SEARCH
+
+
+def test_building_an_index_also_writes_public_page_titles(tmp_path):
+    import json
+
+    index = tmp_path / "index"
+    build_index([Chunk(id="a-0", page_id="a", page_title="A page", text="alpha", heading_path=["A"], url="https://u/a"),
+                 Chunk(id="a-1", page_id="a", page_title="A page", text="beta", heading_path=["A"], url="https://u/a")],
+                lambda texts: [[1.0, 0.0] for _ in texts], index)
+    assert json.loads((tmp_path / "page_titles.json").read_text()) == {"a": ["A page", "https://u/a"]}

@@ -12,3 +12,5 @@ data/index/
 data/cache/
 data/gold/*
 !data/gold/gold_public.jsonl
+.DS_Store
+*.bak
