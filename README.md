@@ -65,6 +65,13 @@ Things that went wrong, what I found, and what changed. Numbers are from the run
 
 _Still to add after the remaining runs: test-split results, error table, risk-coverage curve, probe results, and the final selection._
 
+13. **Hybrid search and the reranker did not show a proven gain, and we looked into why.** On the 15 answerable dev questions, recall@5 went 0.66 (raw vector) to 0.73 (+ cleaning) to 0.81 (+ BM25/RRF), but the confidence interval on the BM25 step includes zero and MRR was flat (0.78 vs 0.77). Causes found from the per-question table:
+    - *Little headroom.* Plain vector search already ranks a gold page first on 12 of 15 questions. Hybrid and reranking mainly help when the first retriever misses often, and here it does not (one wiki plus the docs, questions with specific OFBiz terms).
+    - *The recall change is a few questions moving both ways.* Hybrid gained on 3 questions and lost on 2 (for example `q_0rtlngobnk`, which has 4 gold pages). That is noise at n=15.
+    - *The gold evidence was found with these retrievers.* The annotators' candidate pages were the union of vector and BM25 top-10 results plus a keyword search (`labelling/annotate.py`), so a page neither retriever surfaces was unlikely to become gold. This favours the existing retrievers and makes any new one harder to credit.
+    - *Possible fit problem for the reranker:* MiniLM was trained on short web queries, while these questions are long emails (to be checked against the reranker row).
+    This is "no proven gain on this benchmark", not "these methods do not work". We did not tune anything to force a gain.
+
 ## Data and terms
 
 _Public Apache OFBiz wiki and user mailing list; research use; sources cited; no redistribution of raw dumps._

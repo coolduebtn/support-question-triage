@@ -38,7 +38,7 @@ Failures found so far are in the README failure log (12 entries). The main ones,
 
 - **CLARIFY is too rare to evaluate firmly** (4 real items, 20 invented from real questions). Claims about CLARIFY are indicative only.
 - **Baseline A is unsafe by design** (unsafe-answer 1.00); the threshold A+ halves that but cannot ask for detail.
-- **Retrieval additions are not proven.** Cleaning, BM25 and the reranker each move recall by less than the detectable effect on 15 items; the reranker moved it down.
+- **Retrieval additions are not proven.** Cleaning, BM25 and the reranker each move recall by less than the detectable effect on 15 answerable dev items. Reasons found: vector search already ranks a gold page first on 12 of 15 questions (little headroom); hybrid's recall gain comes from a few questions moving both ways, with flat MRR; and the gold evidence was pooled from vector and BM25 results, which favours those retrievers. See README failure log, entry 13. The conclusion is "no proven gain on this benchmark", not that the methods fail in general.
 - **Judge is stricter than the owner** (11 of 15 agree; all disagreements are false "incorrect").
 - **Spend limit** invalidated two generation rows; they are marked and will be re-run.
 
