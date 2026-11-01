@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from triage.clean import clean_email
+from triage.evals.analysis import cause_hint, risk_coverage
+from triage.schemas import GoldItem, RunResult
 
 APPROACHES = {
     ("A", "vector", False): "A",
@@ -57,6 +59,40 @@ class Bundle:
 
     def reference_answer(self, qid: str) -> str | None:
         return self._gold.get(qid, {}).get("reference_answer")
+
+    def retrieval_rows(self) -> list[dict]:
+        """Page-level hit, recall and MRR of each retrieval variant (policy A) on the answerable questions."""
+        order = ["A", "A + cleaning", "A + hybrid", "A + reranker"]
+        items = {q: [e["page_id"] for e in g["evidence"]] for q, g in self._gold.items()
+                 if g["label"] == "answer" and g.get("evidence")}
+        out = []
+        for label in order:
+            rows = self.predictions.get(label, {})
+            qs = [q for q in items if q in rows]
+            if not qs:
+                continue
+            hit = rec = mrr = 0.0
+            for q in qs:
+                gold_pages, pages = set(items[q]), rows[q]["retrieved_pages"]
+                ranks = [i + 1 for i, p in enumerate(pages) if p in gold_pages]
+                hit += bool(ranks)
+                mrr += 1 / ranks[0] if ranks else 0.0
+                rec += len(gold_pages & set(pages)) / len(gold_pages)
+            out.append({"label": label, "n": len(qs), "hit": hit / len(qs), "recall": rec / len(qs), "mrr": mrr / len(qs)})
+        return out
+
+    def risk_coverage(self, label: str) -> list[tuple[float, float]]:
+        rows = list(self.predictions.get(label, {}).values())
+        if not rows:
+            return []
+        return risk_coverage(RunResult(run_id=label, config_hash="", split="", predictions=rows, metrics={},
+                                       n_errors=0, cost_per_q=0.0, latency_p50=None))
+
+    def cause(self, label: str, qid: str) -> str:
+        row, g = self.predictions.get(label, {}).get(qid), self._gold.get(qid)
+        if row is None or g is None:
+            return "unknown"
+        return cause_hint(GoldItem.model_validate(g), row)
 
     def page(self, page_id: str) -> tuple[str, str]:
         return self._pages.get(page_id, (page_id, ""))

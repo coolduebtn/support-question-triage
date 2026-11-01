@@ -44,6 +44,20 @@ def compare_pair(a: RunResult, b: RunResult, seed: int = 13) -> dict:
             "claim": abs(diff["delta"]) > mde and (lo > 0 or hi < 0)}
 
 
+def cause_hint(g: GoldItem, r: dict) -> str:
+    """Automatic hint for why a prediction is wrong; the owner confirms or corrects it."""
+    gold_pages = {e.page_id for e in g.evidence}
+    if r["pred"] == "error":
+        return "error"
+    if g.label.value == "answer" and gold_pages and not (gold_pages & set(r["retrieved_pages"])):
+        return "retrieval_miss"
+    if g.label.value == "clarify" and r["pred"] == "answer":
+        return "missed_ambiguity"
+    if g.label.value == "escalate" and r["pred"] == "answer":
+        return "unsafe_answer"
+    return "class_boundary"
+
+
 def error_table(result: RunResult, gold: list[GoldItem]) -> list[dict]:
     """Every misclassified item with an automatic cause hint; the owner confirms or corrects the hints."""
     by_qid = {g.qid: g for g in gold}
@@ -53,16 +67,7 @@ def error_table(result: RunResult, gold: list[GoldItem]) -> list[dict]:
             continue
         g = by_qid[r["qid"]]
         gold_pages = {e.page_id for e in g.evidence}
-        if r["pred"] == "error":
-            cause = "error"
-        elif g.label.value == "answer" and gold_pages and not (gold_pages & set(r["retrieved_pages"])):
-            cause = "retrieval_miss"
-        elif g.label.value == "clarify" and r["pred"] == "answer":
-            cause = "missed_ambiguity"
-        elif g.label.value == "escalate" and r["pred"] == "answer":
-            cause = "unsafe_answer"
-        else:
-            cause = "class_boundary"
+        cause = cause_hint(g, r)
         table.append({"qid": r["qid"], "gold": r["gold"], "pred": r["pred"], "text": g.text[:200],
                       "retrieved_pages": r["retrieved_pages"], "gold_pages": sorted(gold_pages),
                       "reason": r.get("reason", ""), "cause_hint": cause})

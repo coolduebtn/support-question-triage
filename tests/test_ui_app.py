@@ -25,3 +25,24 @@ def test_app_without_runs_shows_a_helpful_error(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     at = AppTest.from_file(APP, default_timeout=30).run()
     assert not at.exception and "No saved dev runs" in at.error[0].value
+
+
+def test_scoreboard_shows_retrieval_and_risk_coverage_sections(tree, monkeypatch):
+    res, data = tree
+    (data / "gold" / "gold.jsonl").write_text(json.dumps(
+        {"qid": "q1", "text": "t", "label": "answer", "synthetic": False, "split": "dev", "source": "agree",
+         "reference_answer": None, "missing_detail": None,
+         "evidence": [{"page_id": "p1", "heading": "h", "quote": "q" * 50}]}) + "\n")
+    monkeypatch.chdir(res.parent)
+    at = AppTest.from_file(APP, default_timeout=30).run()
+    text = " ".join(m.value for m in at.markdown)
+    assert not at.exception and "Retrieval variants" in text and "Risk and coverage" in text
+
+
+def test_test_split_notes_that_only_the_first_repeat_is_shown(tree, monkeypatch):
+    res, data = tree
+    write_run(res, "20261101-130000-tttt-test", "B", preds=[pred("q1", "answer", "answer")])
+    monkeypatch.chdir(res.parent)
+    at = AppTest.from_file(APP, default_timeout=30).run()
+    at.sidebar.selectbox[0].select("test").run()
+    assert not at.exception and any("first repeat" in i.value for i in at.info)

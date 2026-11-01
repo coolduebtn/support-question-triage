@@ -132,6 +132,35 @@ def scoreboard_tab(b):
         gold, pred = zip(*[(r["gold"], r["pred"]) for r in b.predictions[label].values()])
         st.caption(label)
         st.dataframe(pd.crosstab(pd.Series(gold, name="correct"), pd.Series(pred, name="predicted")))
+    retrieval_section(b)
+    risk_section(b)
+
+
+def retrieval_section(b):
+    st.markdown("#### Retrieval variants (policy A, answerable questions only)")
+    rows = b.retrieval_rows()
+    if not rows:
+        st.info("No retrieval variants have been run on this split yet.")
+        return
+    df = pd.DataFrame(rows).rename(columns={"label": "variant", "n": "questions", "hit": "hit@5",
+                                            "recall": "recall@5", "mrr": "MRR"}).set_index("variant")
+    st.dataframe(df.style.format({"hit@5": "{:.2f}", "recall@5": "{:.2f}", "MRR": "{:.2f}"}), width="stretch")
+    st.caption("hit = a gold page is in the top 5; recall = share of the gold pages found; MRR = rank of the first gold page. "
+               f"With only {rows[0]['n']} answerable questions, differences of a few points are not reliable; "
+               "paired confidence intervals are in the README.")
+
+
+def risk_section(b):
+    st.markdown("#### Risk and coverage (policy A, sweeping the top similarity score)")
+    curve = b.risk_coverage("A")
+    if not curve:
+        st.info("Policy A has not been run on this split.")
+        return
+    df = pd.DataFrame(curve, columns=["coverage", "risk"]).set_index("coverage")
+    st.line_chart(df)
+    st.caption("Coverage = share of questions answered. Risk = share of those answers that should have been "
+               "an escalation or a follow-up. If risk stays high as coverage falls, similarity alone cannot tell "
+               "answerable questions apart.")
 
 
 def failures_tab(b):
@@ -140,6 +169,7 @@ def failures_tab(b):
     st.write(f"{len(wrong)} of {len(b.predictions.get(label, {}))} questions are wrong or errored for **{label}**.")
     for qid, r in wrong:
         with st.expander(f"correct: {r['gold']} → predicted: {r['pred']} · " + b.question_text(qid).split("\n")[0][:70]):
+            st.caption(f"Likely cause: {b.cause(label, qid).replace('_', ' ')}")
             st.text(b.question_text(qid)[:800])
             st.markdown("**Why it chose that:** " + (r["reason"] or r.get("error") or "-"))
 
@@ -165,6 +195,9 @@ def main():
     if not b.predictions:
         st.error(f"No saved {split} runs in results/runs. Run `triage eval --split {split}` first.")
         return
+    if split == "test":
+        st.info("The test set is scored once per approach. Where an approach was run several times (B, three repeats), "
+                "only the first repeat is shown here.")
     st.sidebar.markdown("Runs shown (latest per approach)")
     st.sidebar.caption("\n".join(f"{a}: {r}" for a, r in b.run_ids.items()))
     t1, t2, t3, t4 = st.tabs(["Compare on a question", "Scoreboard", "Where it fails", "Try your own"])
