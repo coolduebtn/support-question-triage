@@ -191,8 +191,9 @@ The drop from dev (0.66) to test is real and about 0.04 to 0.10 depending on whi
 
 Source: `results/failure_analysis.md`, built by `scripts/failure_analysis.py` from the saved runs.
 
-**What B got wrong.** On dev B was wrong on 16 of 52; on test, 20 of 65. Automatic cause hints on test: 7 class-boundary mismatches, 6 unsafe
-answers (answered an ESCALATE item), 4 missed ambiguities (answered a CLARIFY item), and 3 retrieval misses. The hints are automatic and are confirmed or corrected by reading the rows.
+**What B got wrong.** On dev B was wrong on 16 of 52; on test, 20 of 65. Automatic cause hints on test: 9 class-boundary mismatches, 6 unsafe
+answers (answered an ESCALATE item), 4 missed ambiguities (answered a CLARIFY item), and 1 retrieval miss. Retrieval is rarely the cause: on test, only 1 of B's 20 errors
+is a retrieval miss, so the remaining errors are decision errors. The hints are automatic and are confirmed or corrected by reading the rows.
 
 | Per-class correct (test) | answer | escalate | clarify (all) | clarify, real | clarify, constructed |
 |---|---|---|---|---|---|
