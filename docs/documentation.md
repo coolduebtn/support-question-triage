@@ -165,7 +165,7 @@ and judged quality only. Judged correctness is computed on just 15 answerable it
 
 | Approach | Macro-F1 [95% interval] | Unsafe-answer | Over-ask | Judged correct | Citation support | Cost/q |
 |---|---|---|---|---|---|---|
-| A | 0.11 [0.11, 0.11] | 1.00 | 0.00 | 0.62 | 0.67 | $0.0027 |
+| A | 0.11 [0.11, 0.11] | 1.00 | 0.00 | 0.62 | 0.67 | $0.0028 |
 | A+ | 0.33 [0.25, 0.42] | 0.25 | 0.00 | 0.80 | 0.71 | $0.0007 |
 | **B** (first repeat) | **0.62 [0.48, 0.74]** | **0.19** | 0.15 | 0.75 | 0.70 | $0.0027 |
 
