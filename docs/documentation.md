@@ -17,7 +17,8 @@ Nothing is ever sent. Replies are drafts for a person to review.
 **Hypothesis.** An explicit decision step handles more questions correctly (higher action macro-F1) and gives fewer unsafe answers
 than plain RAG, without asking unnecessary follow-ups.
 
-The public stand-in for a private support desk is the [Apache OFBiz Confluence wiki](https://cwiki.apache.org/confluence/display/OFBIZ)
+The idea comes from my company's IT support desk. Its tickets are private, so for this capstone I changed the scope to public questions.
+The public stand-in for that support desk is the [Apache OFBiz Confluence wiki](https://cwiki.apache.org/confluence/display/OFBIZ)
 and the [OFBiz documentation sources](https://github.com/apache/ofbiz-framework), with questions taken from the
 [`user@ofbiz.apache.org` mailing list](https://lists.apache.org/list.html?user@ofbiz.apache.org).
 
@@ -242,10 +243,11 @@ That explanation fits the numbers but was not tested separately. Nothing was tun
   change; recall moved by up to 0.03). The test runs were repeated once with the corrected retriever, as a disclosed exception to the test-once rule. Only 1 of 65 test questions had different retrieval
   (`q_hz0ohskd9k`); A's and A+'s predictions were unchanged and B's changed on that question in one repeat. The tables in section 7 are from the re-run, and the
   first run's rows are kept in `results/ablation.md` (the headline figures were identical).
-- **Not built:** approach C (LangGraph) and the bge reranker row, both planned as stretch items.
+- **Not built:** approach C (LangGraph) and the bge reranker row, both planned as stretch items. A single agent that decides for itself when to search (approach D) was also not built and is a natural next comparison.
 
 ## 10. Reproduction and decisions
 
+Code and data: https://github.com/coolduebtn/support-question-triage.
 The README's "Setup and reproduction" section has the exact commands, the `.env` variables, and what works without a key. In short: `uv sync`, set the API keys in a local `.env` (never committed), then `triage ingest`, `triage collect`, `triage eval --policy ... --split dev|test`,
 `triage report`, and `triage ui` for the viewer. `uv run pytest` runs the tests without any key. Rules and decisions are in `docs/decisions.md`;
 deviations from the submitted one-pager (LLM-drafted labels, a second document source, constructed CLARIFY items, extra metrics) are in the README.

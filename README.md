@@ -4,6 +4,9 @@ For each incoming support question, decide whether to **ANSWER** from the docume
 targeted follow-up) or **ESCALATE** to a human. Public stand-in data: the Apache OFBiz Confluence wiki and the `user@ofbiz.apache.org`
 mailing list. Replies are drafts only; nothing is sent.
 
+The idea comes from a company IT support desk. Its tickets are private, so for this capstone the scope changed to public Apache OFBiz questions.
+Code and data links: https://github.com/coolduebtn/support-question-triage
+
 Hypothesis: an explicit decision step handles more questions correctly (higher macro-F1, fewer unsafe answers) without asking
 unnecessary follow-ups. Approaches compared: **A** vanilla RAG (always answers), **A+** retrieval-score threshold, **B** typed LLM
 decision (Pydantic AI), **C** required-detail checklist (LangGraph, stretch). Retrieval is improved one component at a time
@@ -16,9 +19,10 @@ Requirements: Python 3.11 or newer, [uv](https://docs.astral.sh/uv/), and `git` 
 ### 1. Look at the results (no key, no data download)
 
 ```bash
+git clone https://github.com/coolduebtn/support-question-triage.git && cd support-question-triage
 uv sync
 uv run pytest                                  # 252 tests
-uv run triage ui                               # viewer at http://localhost:8501 (Methodology, Compare, Scoreboard, Where it fails)
+uv run triage ui                               # viewer at http://localhost:8501 (Methodology, Compare, Scoreboard, Where it fails, Try your own)
 uv run triage report                           # rebuilds the table in this README from results/ablation.md
 uv run python scripts/test_comparisons.py      # paired comparisons and B's repeat stability on test, from saved runs
 ```

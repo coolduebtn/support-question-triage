@@ -19,4 +19,4 @@
 - Not built: approach C (LangGraph) and the bge reranker row.
 
 ## Submission checklist
-- [ ] Repo access for reviewers  - [x] Design doc (`docs/design/`)  - [x] Documentation (`docs/documentation.md`, about 3,100 words; the limit is 4 to 5 pages, so it needs trimming)  - [ ] 3-minute demo video link
+- [x] Repo access for reviewers (public: https://github.com/coolduebtn/support-question-triage)  - [x] Design doc (`docs/design/`)  - [x] Documentation (`docs/documentation.md`, about 3,100 words; the limit is 4 to 5 pages, so it needs trimming)  - [ ] 3-minute demo video link

@@ -204,8 +204,10 @@ METHOD_DIAGRAM = "digraph G {" + STYLE + """
   appr [label="Approaches\\nA, A+, B"];
   sel [label="Selection rule\\nfixed before the test run:\\nmacro-F1, unsafe-answer, cost cap,\\nties go to the simpler system"];
   final [label="Selected: B\\nscored on test", fillcolor="#fbe9d5"];
+  judge [label="LLM judge (Claude, not the\\nOpenAI system model)\\nscores answer correctness and\\ncitations; agreed with 10 of 15\\nowner grades", fillcolor="#f3e8f7"];
   data -> gold -> dev; gold -> test;
   dev -> ladder -> appr -> sel -> final; test -> final;
+  final -> judge [style=dashed, label="also scored by"];
 }"""
 
 
