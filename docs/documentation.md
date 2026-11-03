@@ -217,33 +217,18 @@ is a retrieval miss, so the remaining errors are decision errors. The hints are 
    cover the question. The error is in retrieval, not in the decision.
 5. **B is noisy** between runs (section 7).
 
-**Why hybrid search and the reranker showed no gain.** Plain vector search with cleaning already has a gold page in its top 5 for 14 of 15 answerable dev
-questions (ranked first for 12), and hybrid raises that to 15 of 15, a single question, which leaves little room to improve. Hybrid's recall gain over cleaning (+0.067) is two questions improving and one getting worse. The
-gold evidence was found by annotators using the union of vector and BM25 top results plus a keyword search, which favours pages those retrievers
-already surface. The reranker (MiniLM) was trained on short web queries, while these questions are long emails, and it pushed the gold pages out of the top 5 on two questions (hit@5 fell from 1.00 to 0.87).
-That explanation fits the numbers but was not tested separately. Nothing was tuned to force a gain.
+**Why hybrid search and the reranker showed no gain.** Vector search with cleaning already has a gold page in its top 5 for 14 of 15 answerable dev questions, so there is little room to improve. Hybrid's gain (+0.067) is two questions improving and one getting worse. The reranker (MiniLM) was trained on short web queries, while these questions are long emails, and it pushed the gold pages out of the top 5 on two questions. This explanation fits the numbers but was not tested separately. Nothing was tuned to force a gain.
 
 ## 9. Limitations and threats to validity
 
-- **Small evaluation set.** Only 15 answerable dev questions and 13 answerable test questions. Differences of a few points are not claimed. Retrieval and
-  judged-quality comparisons rest on very few items.
-- **CLARIFY is mostly constructed.** 20 of 24 CLARIFY items were made by deleting details from real questions. They test whether a system notices
-  missing information, but they are cleaner than real messy questions. Only 4 are real, so the CLARIFY conclusions are indicative.
-- **Labels are LLM-drafted.** They were checked mechanically and reviewed by the owner (85% agreement on a blind subset), but they are not hand-labelled in full.
+- **Small evaluation set.** Only 15 answerable dev and 13 answerable test questions, so differences of a few points are not claimed.
+- **CLARIFY is mostly constructed.** 20 of 24 CLARIFY items were made by deleting details from real questions, and only 4 are real. The CLARIFY conclusions are indicative.
+- **Labels are LLM-drafted.** They were checked mechanically and reviewed by the owner (85% agreement on a blind subset), but not hand-labelled in full.
 - **Evidence pooling bias.** Gold evidence came from the same kinds of retrievers that are being evaluated.
-- **Vendor overlap.** The annotators and the system model are both OpenAI models. The judge is a Claude model, which reduces but does not remove self-preference
-  bias. The judge is stricter than the owner and was validated on only 15 items.
-- **One system model and one prompt.** B uses its first prompt version; no prompt search was done. Results are for `gpt-5-mini` and may differ with other models.
-- **Gold evidence ids.** Some evidence entries had stored a chunk id instead of a page id, which understated page-level retrieval scores (25 of 85 entries on
-  answerable questions). `Evidence` now canonicalises ids; dev retrieval figures above are corrected (recall@5 rose by about 0.05 to 0.07 per row), and no keep/drop decision or action metric changed. The test rows were refreshed once more, fully cached,
-  so their retrieval figures are corrected too (recall@5 0.36 to 0.76, hit@5 0.46 to 0.92) while every action metric is identical; this is a third run of the test configs and a disclosed exception to the test-once rule.
-- **Test used once.** Each finalist was run once on test (B three times). No decision was changed after seeing test.
-- **Approximate-search fix after the test runs.** The vector index (HNSW) was found to drop a true top-5 chunk for a few questions at its default search width
-  (3 of 117 questions differed from exact cosine). The width was raised from 100 to 400, after which none differ, and the dev rows were re-run (macro-F1 and the selection did not
-  change; recall moved by up to 0.03). The test runs were repeated once with the corrected retriever, as a disclosed exception to the test-once rule. Only 1 of 65 test questions had different retrieval
-  (`q_hz0ohskd9k`); A's and A+'s predictions were unchanged and B's changed on that question in one repeat. The tables in section 7 are from the re-run, and the
-  first run's rows are kept in `results/ablation.md` (the headline figures were identical).
-- **Not built:** approach C (LangGraph) and the bge reranker row, both planned as stretch items. A single agent that decides for itself when to search (approach D) was also not built and is a natural next comparison.
+- **Vendor overlap.** The annotators and the system model are OpenAI models. The judge is a Claude model, which reduces but does not remove self-preference bias. It was validated on only 15 items.
+- **One system model and one prompt.** Results are for `gpt-5-mini` with B's first prompt version, and may differ with other models.
+- **Disclosed re-runs of test.** After the first test runs, two fixes were needed: gold evidence ids that stored a chunk id instead of a page id (25 of 85 entries), and an approximate-search width (HNSW) that dropped a true top-5 chunk for 3 of 117 questions. The test configs were re-run or refreshed, a disclosed exception to the test-once rule. Action metrics did not change, apart from one question whose retrieval changed in one B repeat. No decision was changed after seeing test. Details are in the README and `docs/decisions.md`.
+- **Not built:** approach C (LangGraph), the bge reranker row, and a single agent that decides for itself when to search (approach D). The last is a natural next comparison.
 
 ## 10. Reproduction and decisions
 
